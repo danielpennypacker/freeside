@@ -1,0 +1,132 @@
+.Character {
+    position: relative;
+    text-align: left;
+    padding: 5px;
+  }
+  
+  .Character .pageTop {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }  
+  
+  .Character .combatStatValue-armorClass,  
+  .Character .combatStatValue-bonus,
+  .Character .combatStatValue-damage,
+  .Character .combatStatValue-hitPoints {
+    font-weight: bold;
+    font-size: 10pt;
+    line-height: 1.3rem;
+  }
+  
+  .Character .pageTop table,
+  .Character .midPage table {
+    margin-top: 0;
+    margin: 0 15px 0 0;
+    vertical-align: top;
+
+  }
+
+  .combatStatstats {
+    width: 90px;
+  }
+  .Character .midPage {
+    display: flex;
+    align-items: flex-start;
+    margin: 15px 0 ;
+  }  
+  
+  .Character .midPage .basicInfo {
+    width: 35%;
+    margin-right: 0;    
+  }
+    
+  .Character thead {
+    font-size: 8pt;
+  }
+  
+  .Character .skills {
+    margin-right: 5px;
+    width: 163px;
+  }
+  
+  .Character .skills tbody {
+    font-size: 8pt;
+  }
+  
+  .Character td:first-child {  
+    text-transform: capitalize;
+  }  
+  
+  .Character td.right, .Character th.right {
+    text-align: right;  
+  }  
+  
+  .Character td.left, .Character th.left {
+    text-align: left;  
+  }  
+  
+  .Character .storyTitle {  
+    vertical-align: top;
+    width: 30px; 
+  }
+  
+  .Character .storyValue {  
+    padding: 3px;
+    vertical-align: top;  
+  }
+  
+  .Character .storyValue, 
+  .Character .storyTitle {  
+    height: 2rem;  
+    vertical-align: top;  
+    padding: 3px;
+  }
+  
+  .Character .dialogue.storyValue, 
+  .Character .dialogue.storyTitle {
+    height: 1.2rem;  
+  }  
+  
+  .Character .dialogue tr td {  
+    background-color: #cce6ff;
+    border-bottom: 1px dotted white;
+  }
+
+
+  .Character .storyInfo tr td {
+    background-color: bisque;
+    border-bottom: 1px dotted white;    
+  }
+  
+  .Character .basicStats {
+    width: 130px;
+  }
+  
+  .Character .rewards {
+    width: 100%;
+  }
+  
+  
+  .Character .storyStat-introduction.storyValue span, 
+  .Character .storyStat-roleplayInspiration.storyValue span
+   {
+    font-weight: bold;  
+    font-size: 10pt;
+    padding: 1px;
+  }  
+  .Character .portrait {  
+    width: 125px;
+    height: 100px;
+    margin: 0 15px 0 0;
+    background-color: lightgray;
+  }  
+
+  .Character .portraitSmall {
+    height: 70px;
+  }
+  
+  .Character .id { 
+    color: green;
+    
+  }  

@@ -1,0 +1,107 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Location,
+.Character {
+  height: 20cm;
+  width: 14cm; 
+  border: 2px dashed black;
+  margin: 10px;
+
+  font-size: 8pt;
+}
+
+body {
+  -webkit-print-color-adjust: exact !important;
+}
+
+body table {
+  border-spacing: 0;
+  border-collapse: separate;
+}  
+.header { 
+  display: flex;
+  font-size: 14pt;
+  justify-content: space-between;
+  padding: 5px;
+  object-fit: cover;
+  font-weight: bold;  
+}  
+
+  
+.storyInfo td:first-child {  
+  text-transform: capitalize;
+}  
+
+
+.storyInfo {
+  width: 100%;
+}
+
+.storyInfo tr:nth-child(odd) td {  
+  background-color: #E7E7E7;
+}
+
+.storyValue, 
+.storyTitle {   
+  vertical-align: top;  
+  padding: 3px;
+}
+
+table.twoLine td {
+  height: 2rem;
+  vertical-align: top;
+}
+
+.stripped tr:nth-child(odd) td {  
+  background-color: #E7E7E7;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.highlightText {
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+table.greyBlock td, 
+table.blueBlock td,
+table.brownBlock td {
+  border-bottom: 1px dotted white;
+  min-height: 1.2rem;  
+  padding: 3px;
+}
+
+table.greyBlock,
+table.blueBlock, 
+table.brownBlock {
+  width: 100%;
+  margin-top: 10px;
+}
+
+table.blueBlock td {
+  background-color: #cce6ff;
+}
+table.greyBlock td {
+  background-color: #E7E7E7;
+}
+table.brownBlock td {
+  background-color: bisque;
+}
+
+.greenText {
+  color: green;
+}
+
+.boldText {
+  font-weight: bold;
+}
+
+.bigText {
+  font-size: 10pt;
+}
+
