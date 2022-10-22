@@ -19,7 +19,10 @@ function Location(props: LocationProps) {
         <div className="name">{location.name}</div>
         <div className="id">L{location.id}</div>
       </div>
-      <img className="splash" src={`/img/locations/${location.code}.png`} />
+      <img
+        className="splash"
+        src={process.env.PUBLIC_URL + `/img/locations/${location.code}.png`}
+      />
 
       <div className="descriptions">
         <table className="brownBlock">

@@ -75,7 +75,9 @@ function Character(props: CharacterProps) {
         <div>
           <img
             className="portrait"
-            src={`/img/characters/${character.code}.png`}
+            src={
+              process.env.PUBLIC_URL + `/img/characters/${character.code}.png`
+            }
           />
         </div>
 
@@ -192,7 +194,9 @@ function Character(props: CharacterProps) {
         <div>
           <img
             className="portrait portraitSmall"
-            src={`/img/characters/${character.code}.png`}
+            src={
+              process.env.PUBLIC_URL + `/img/characters/${character.code}.png`
+            }
           />
         </div>
 
