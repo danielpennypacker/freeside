@@ -78,6 +78,7 @@ table.brownBlock td {
   border-bottom: 1px dotted white;
   min-height: 1.2rem;  
   padding: 3px;
+  font-size: 8pt;
 }
 
 table.greyBlock,
@@ -102,10 +103,10 @@ table.brownBlock td {
 }
 
 .boldText {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .bigText {
-  font-size: 10pt;
+  font-size: 10pt !important;
 }
 
