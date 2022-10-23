@@ -1,8 +1,3 @@
-.Character {
-    position: relative;
-    text-align: left;
-    padding: 5px;
-  }
   
   .Character .pageTop {
     display: flex;
@@ -107,16 +102,8 @@
     width: 100%;
   }
   
-  
-  .Character .storyStat-introduction.storyValue span, 
-  .Character .storyStat-roleplayInspiration.storyValue span
-   {
-    font-weight: bold;  
-    font-size: 10pt;
-    padding: 1px;
-  }  
   .Character .portrait {  
-    width: 125px;
+    width: 100px;
     height: 100px;
     margin: 0 15px 0 0;
     background-color: lightgray;
