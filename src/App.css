@@ -3,13 +3,17 @@
   flex-wrap: wrap;
 }
 
+.Character th,
+.Location th {
+  text-align: left;
+}
+
 .Location,
 .Character {
   height: 20cm;
   width: 14cm; 
   border: 2px dashed black;
   margin: 10px;
-
   font-size: 8pt;
 }
 
