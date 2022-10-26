@@ -6,6 +6,7 @@ body, body * {
 .App {
   display: flex;
   flex-wrap: wrap;
+  background-color: gray;
 }
 
 .Character th,
@@ -15,9 +16,10 @@ body, body * {
 
 .Location,
 .Character {
+  padding: 3px;
   height: 20cm;
   width: 14cm; 
-  border: 2px dashed black;
+  background-color: white;
   margin: 10px;
   font-size: 10px;
 }
