@@ -73,12 +73,12 @@ function Character(props: CharacterProps) {
         </table>
 
         <div>
-          <img
+          {/* <img
             className="portrait"
             src={
               process.env.PUBLIC_URL + `/img/characters/${character.code}.png`
             }
-          />
+          /> */}
         </div>
 
         <table className="combatStatstats combatStatstats1">
@@ -191,15 +191,6 @@ function Character(props: CharacterProps) {
           </tbody>
         </table>
 
-        <div>
-          <img
-            className="portrait portraitSmall"
-            src={
-              process.env.PUBLIC_URL + `/img/characters/${character.code}.png`
-            }
-          />
-        </div>
-
         {/* ==== Basic Stats ==== */}
         <table className="basicInfo">
           <thead>
@@ -232,21 +223,15 @@ function Character(props: CharacterProps) {
         </thead>
         <tbody>
           <tr>
-            <td>
-              <span>Similar Characters</span>
-            </td>
+            <td>Similar Characters</td>
             <td className="boldText bigText">
-              <span>{character.roleplayInspiration.split(".")[0]}.</span>
+              {character.roleplayInspiration.split(".")[0]}.
             </td>
           </tr>
 
           <tr>
-            <td>
-              <span>{data.toTitle("visualDescription")}</span>
-            </td>
-            <td>
-              <span>{character.visualDescription}</span>
-            </td>
+            <td>{data.toTitle("visualDescription")}</td>
+            <td>{character.visualDescription}</td>
           </tr>
 
           <tr>
@@ -262,12 +247,8 @@ function Character(props: CharacterProps) {
           {["background", "question", "ideal", "bond", "flaw"].map((stat) => {
             return (
               <tr>
-                <td>
-                  <span>{data.toTitle(stat)}</span>
-                </td>
-                <td>
-                  <span>"{anyCharacter[stat]}"</span>
-                </td>
+                <td>{data.toTitle(stat)}</td>
+                <td>"{anyCharacter[stat]}"</td>
               </tr>
             );
           })}

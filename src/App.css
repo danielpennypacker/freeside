@@ -1,3 +1,8 @@
+body, body * {
+  max-height: 1000000px;
+}
+
+
 .App {
   display: flex;
   flex-wrap: wrap;
@@ -14,8 +19,15 @@
   width: 14cm; 
   border: 2px dashed black;
   margin: 10px;
-  font-size: 8pt;
+  font-size: 10px;
 }
+
+@media screen and (max-device-width: 640px) {
+  .Character, .Location {    
+    height: inherit;    
+  }
+}
+
 
 body {
   -webkit-print-color-adjust: exact !important;
@@ -76,7 +88,6 @@ table.greyBlock td,
 table.blueBlock td,
 table.brownBlock td {
   border-bottom: 1px dotted white;
-  min-height: 1.2rem;  
   padding: 3px;
   font-size: 8pt;
 }
