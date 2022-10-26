@@ -31,6 +31,7 @@ function Character(props: CharacterProps) {
       </div>
 
       {/* ==== Top of page ==== */}
+
       <div className="pageTop">
         {/* ==== Basic attributes ==== */}
         <table className="basicStats">
@@ -73,14 +74,13 @@ function Character(props: CharacterProps) {
         </table>
 
         <div>
-          {/* <img
-            className="portrait"
+          <img
+            className="portrait portraitSmall"
             src={
               process.env.PUBLIC_URL + `/img/characters/${character.code}.png`
             }
-          /> */}
+          />
         </div>
-
         <table className="combatStatstats combatStatstats1">
           <thead>
             <tr>
@@ -118,53 +118,6 @@ function Character(props: CharacterProps) {
           </tbody>
         </table>
 
-        {/* ==== Attack Stats ==== */}
-        <table className="combatStatstats combatStatstats2">
-          <thead>
-            <tr>
-              <th colSpan={2}>Attack</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className={`combatStatTitle combatStatTitle-${"bonus"}`}>
-                {data.toTitle("bonus")}
-              </td>
-              <td
-                className={`combatStatValue right combatStatValue-${"bonus"}`}
-              >
-                +{anyCharacter.attack["bonus"]}
-              </td>
-            </tr>
-            {["damage", "range"].map((stat) => {
-              return (
-                <tr>
-                  <td className={`combatStatTitle combatStatTitle-${stat}`}>
-                    {data.toTitle(stat)}
-                  </td>
-                  <td
-                    className={`combatStatValue right combatStatValue-${stat}`}
-                  >
-                    {anyCharacter.attack[stat]}
-                  </td>
-                </tr>
-              );
-            })}
-            <tr>
-              <td className={`combatStatTitle combatStatTitle-${"multi"}`}>
-                Num. Atk.
-              </td>
-              <td
-                className={`combatStatValue right combatStatValue-${"multi"}`}
-              >
-                {character.attack?.multi}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div className="midPage">
         {/* ==== Skills ==== */}
         <table className="skills skills1">
           <thead>
@@ -210,6 +163,51 @@ function Character(props: CharacterProps) {
 
             <td>Chal. Rating</td>
             <td>{character.challengeRating}</td>
+          </tbody>
+        </table>
+
+        {/* ==== Attack Stats ==== */}
+        <table className="combatStatstats combatStatstats2">
+          <thead>
+            <tr>
+              <th colSpan={2}>Attack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className={`combatStatTitle combatStatTitle-${"bonus"}`}>
+                {data.toTitle("bonus")}
+              </td>
+              <td
+                className={`combatStatValue right combatStatValue-${"bonus"}`}
+              >
+                +{anyCharacter.attack["bonus"]}
+              </td>
+            </tr>
+            {["damage", "range"].map((stat) => {
+              return (
+                <tr>
+                  <td className={`combatStatTitle combatStatTitle-${stat}`}>
+                    {data.toTitle(stat)}
+                  </td>
+                  <td
+                    className={`combatStatValue right combatStatValue-${stat}`}
+                  >
+                    {anyCharacter.attack[stat]}
+                  </td>
+                </tr>
+              );
+            })}
+            <tr>
+              <td className={`combatStatTitle combatStatTitle-${"multi"}`}>
+                Num. Atk.
+              </td>
+              <td
+                className={`combatStatValue right combatStatValue-${"multi"}`}
+              >
+                {character.attack?.multi}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
