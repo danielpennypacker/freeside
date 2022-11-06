@@ -108,16 +108,10 @@
   }
   
   .Character .portrait {  
-    width: 100px;
+    width: 75px;
     height: 100px;
-    margin: 0 15px 0 0;
     background-color: lightgray;
   }  
-
-  .Character .portraitSmall {
-    height: 90px;
-  }
-  
   .Character .id { 
     color: green;
     

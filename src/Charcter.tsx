@@ -152,7 +152,7 @@ function Character(props: CharacterProps) {
             </tr>
           </thead>
           <tbody>
-            {["age", "race", "aligment"].map((stat) => {
+            {["age", "race", "alignment"].map((stat) => {
               return (
                 <tr>
                   <td className="basicStatTitle">{data.toTitle(stat)}</td>

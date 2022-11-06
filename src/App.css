@@ -2,7 +2,10 @@ body, body * {
   max-height: 1000000px;
 }
 
-
+.connectedLocationId {
+  color: blue;
+  font-weight: bold;
+}
 .App {
   display: flex;
   flex-wrap: wrap;
@@ -17,8 +20,8 @@ body, body * {
 .Location,
 .Character {
   padding: 3px;
-  height: 20cm;
-  width: 14cm; 
+  height: 21cm;
+  width: 13cm; 
   background-color: white;
   margin: 10px;
   font-size: 10px;

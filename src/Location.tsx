@@ -76,8 +76,8 @@ function Location(props: LocationProps) {
           })}
 
           {/* ==== Named NPCs ==== */}
-          {location.namedNpcs.map((npcId) => {
-            const char = data.getNpc(npcId);
+          {location.namedNpcs.map((code: data.CC) => {
+            const char = data.c(code);
             return (
               <tr>
                 <td>Major NPC</td>
@@ -94,11 +94,13 @@ function Location(props: LocationProps) {
 
           {/* ==== Connected Locations ==== */}
           {location.connectedAreas.map((locationId) => {
-            const loc = data.getLocation(locationId);
+            console.log(locationId);
+            const loc = data.l(locationId);
+
             return (
               <tr>
                 <td>Connected Location</td>
-                <td>L{loc.id}</td>
+                <td className="connectedLocationId">L{loc.id}</td>
                 <td>{loc.name}</td>
                 <td className="connectedDescription">{loc.exterior}</td>
               </tr>
