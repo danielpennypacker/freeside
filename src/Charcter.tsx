@@ -221,14 +221,14 @@ function Character(props: CharacterProps) {
         </thead>
         <tbody>
           <tr>
-            <td>Similar Characters</td>
+            <td>Refrences</td>
             <td className="boldText bigText">
               {character.roleplayInspiration.split(".")[0]}.
             </td>
           </tr>
 
           <tr>
-            <td>{data.toTitle("visualDescription")}</td>
+            <td>Description</td>
             <td>{character.visualDescription}</td>
           </tr>
 
@@ -282,7 +282,7 @@ function Character(props: CharacterProps) {
 
             return (
               <tr>
-                <td>
+                <td className="plotInfoTitle">
                   <span>{data.toTitle(stat)}</span>
                 </td>
                 <td>

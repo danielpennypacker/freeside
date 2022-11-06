@@ -26,7 +26,7 @@ export enum CC {
     caspian="caspian",
     chit="chit",
     cloaked="cloaked",
-    conrd="conrd",
+    conrad="conrad",
     crap="crap",
     dark="dark",
     dragon="dragon",
@@ -152,7 +152,7 @@ export type Character =  {
     plotFlower: string;
     plotConvoy: string;
     plotParty: string;
-    plotGladiator: string;
+    plotArena: string;
     plotKaiju: string;
 }
 
@@ -206,12 +206,12 @@ export const characters: Character[] = [
         plotFlower: "None. He would destory the flower if he found out about it.",
         plotConvoy: "He's the main anti-Convoy NPC/Leader.",
         plotParty: "will attend and try to be a big deal",
-        plotGladiator: "Will meet the players after they get into club delux",
+        plotArena: "Will meet the players after they get into club delux",
         plotKaiju: "hell try and fight"
     
     },
     {
-        code: CC.conrd,
+        code: CC.conrad,
         age: 45,
         race: "human",
         notoriety: "No one really knows him, he could be any Convoy official to most people.",    
@@ -255,7 +255,7 @@ export const characters: Character[] = [
         plotFlower: "If he finds out about it, he'll use it to get promoted.",
         plotConvoy: "He wants the secret port to sucede and becomes it's new chief.",
         plotParty: "Won't go, he works at night.",
-        plotGladiator: "Thinks it's a waste of time.",
+        plotArena: "Thinks it's a waste of time.",
         plotKaiju: "He'll help organize to fight it. Even teaming up with enemies."
     
     },
@@ -304,7 +304,7 @@ export const characters: Character[] = [
         plotFlower: "If he finds out about it, he'll use it to get promoted.",
         plotConvoy: "He wants the secret port to sucede and becomes it's new chief.",
         plotParty: "Won't go, he works at night.",
-        plotGladiator: "Thinks it's a waste of time.",
+        plotArena: "Thinks it's a waste of time.",
         plotKaiju: "He'll help organize to fight it. Even teaming up with enemies."
     
     },
@@ -427,7 +427,7 @@ export const locations: Location[] = [
     detailTwo: "The door to the barracks is locked",
     dmNotes: "The locked door is an entrance to the secret Convoy base.",
     connectedAreas: [LC.land],
-    namedNpcs: [CC.conrd],
+    namedNpcs: [CC.conrad],
     events: [
         "Conrad will try to recuit the Convoy. His first assigment is to do a pro-Convoy story at the Fools Court.",        
     ],
@@ -525,7 +525,7 @@ export const pages: any[] = addId([
     l(LC.pcafe),
     c(CC.boz),
     l(LC.convoy),
-    c(CC.conrd),
+    c(CC.conrad),
     l(LC.orc),
 ])
 

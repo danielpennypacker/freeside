@@ -27,6 +27,13 @@ body, body * {
   font-size: 10px;
 }
 
+
+
+.Character td:first-child, 
+.Location td:first-child {  
+  text-transform: capitalize;  
+}  
+
 @media screen and (max-device-width: 640px) {
   .Character, .Location {    
     height: inherit;    
@@ -63,6 +70,11 @@ body table {
 
 .storyInfo tr:nth-child(odd) td {  
   background-color: #E7E7E7;
+}
+
+.Character .brownBlock td:first-child,
+.Character .blueBlock td:first-child {
+  width: 65px;
 }
 
 .storyValue, 

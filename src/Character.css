@@ -17,7 +17,7 @@
     grid-gap: 10px;
     width: 100%;
   }  
-  
+
 
   .Character .combatStatValue-armorClass,  
   .Character .combatStatValue-bonus,
@@ -55,10 +55,6 @@
   .Character .skills tbody {
     font-size: 8pt;
   }
-  
-  .Character td:first-child {  
-    text-transform: capitalize;
-  }  
   
   .Character td.right, .Character th.right {
     text-align: right;  

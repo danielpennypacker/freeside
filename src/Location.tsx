@@ -66,7 +66,7 @@ function Location(props: LocationProps) {
           {location.events.map((evDesc, i) => {
             return (
               <tr>
-                <td>Event</td>
+                <td>{i == 0 ? "Events" : ""}</td>
                 <td className="eventId">
                   <span>{i + 1}.</span>
                 </td>
@@ -76,11 +76,11 @@ function Location(props: LocationProps) {
           })}
 
           {/* ==== Named NPCs ==== */}
-          {location.namedNpcs.map((code: data.CC) => {
+          {location.namedNpcs.map((code: data.CC, i) => {
             const char = data.c(code);
             return (
               <tr>
-                <td>Major NPC</td>
+                <td>{i == 0 ? "NPC" : ""}</td>
                 <td className="greenText boldText">C{char.id}</td>
                 <td>
                   {char.name}, {char.title}
@@ -93,13 +93,11 @@ function Location(props: LocationProps) {
           })}
 
           {/* ==== Connected Locations ==== */}
-          {location.connectedAreas.map((locationId) => {
-            console.log(locationId);
+          {location.connectedAreas.map((locationId, i) => {
             const loc = data.l(locationId);
-
             return (
               <tr>
-                <td>Connected Location</td>
+                <td>{i == 0 ? "Location" : ""}</td>
                 <td className="connectedLocationId">L{loc.id}</td>
                 <td>{loc.name}</td>
                 <td className="connectedDescription">{loc.exterior}</td>
