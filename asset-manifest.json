@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/freeside/static/css/main.0a99b64d.css",
-    "main.js": "/freeside/static/js/main.ca7ed055.js",
+    "main.js": "/freeside/static/js/main.db918bd2.js",
     "static/js/787.795f01df.chunk.js": "/freeside/static/js/787.795f01df.chunk.js",
     "index.html": "/freeside/index.html",
     "main.0a99b64d.css.map": "/freeside/static/css/main.0a99b64d.css.map",
-    "main.ca7ed055.js.map": "/freeside/static/js/main.ca7ed055.js.map",
+    "main.db918bd2.js.map": "/freeside/static/js/main.db918bd2.js.map",
     "787.795f01df.chunk.js.map": "/freeside/static/js/787.795f01df.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0a99b64d.css",
-    "static/js/main.ca7ed055.js"
+    "static/js/main.db918bd2.js"
   ]
 }
