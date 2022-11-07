@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       {data.pages.map((page: any) => {
-        if (page.crowd) {
+        if (page.crowd || page.crowd === "") {
           return <Location location={page} />;
         } else {
           return <Character character={page} />;

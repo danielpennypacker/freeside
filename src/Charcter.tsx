@@ -10,6 +10,11 @@ type CharacterProps = {
 function Character(props: CharacterProps) {
   const { character } = props;
 
+  if (!character.skills) {
+    console.log("=========");
+    console.log(character);
+  }
+
   const getAttrBonus = (value: number) => {
     const bonus = Math.floor((value - 10) / 2);
     if (bonus > 0) {
