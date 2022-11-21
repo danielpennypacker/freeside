@@ -28,11 +28,17 @@ function Character(props: CharacterProps) {
   return (
     <div className="Character" id={character?.id?.toString()}>
       <div className="header">
-        <div className="id">C{character.id}</div>
+        <div className="idContainer">
+          <div className="id">C{character.id}</div>
+          <div className="pageNumber">p. {character.page}</div>
+        </div>
         <div className="name">
           {character.name}, {character.title}
         </div>
-        <div className="id">C{character.id}</div>
+        <div className="idContainer">
+          <div className="pageNumber">p. {character.page}</div>
+          <div className="id">C{character.id}</div>
+        </div>
       </div>
 
       {/* ==== Top of page ==== */}

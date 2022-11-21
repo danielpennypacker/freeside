@@ -12,6 +12,11 @@ body, body * {
   background-color: gray;
 }
 
+.pageNumber {
+  font-size: 8pt;
+  font-weight: normal;  
+}
+
 .Character th,
 .Location th {
   text-align: left;
@@ -56,6 +61,13 @@ body table {
   padding: 5px;
   object-fit: cover;
   font-weight: bold;  
+}  
+
+.idContainer { 
+  width: 65px;
+  justify-content: space-between;
+  display: flex;
+  align-items: baseline;
 }  
 
   

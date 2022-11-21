@@ -15,9 +15,15 @@ function Location(props: LocationProps) {
   return (
     <div className="Location">
       <div className="header">
-        <div className="id">L{location.id}</div>
+        <div className="idContainer">
+          <div className="id">L{location.id}</div>
+          <div className="pageNumber">p. {location.page}</div>
+        </div>
         <div className="name">{location.name}</div>
-        <div className="id">L{location.id}</div>
+        <div className="idContainer">
+          <div className="pageNumber">p. {location.page}</div>
+          <div className="id">L{location.id}</div>
+        </div>
       </div>
       <img
         className="splash"
