@@ -19,6 +19,7 @@ export const toTitle = (val: string) => {
 
 
 export enum CC {
+    ann="ann", 
     artok="artok", 
     ban="ban",
     bosph="bosph",
@@ -35,6 +36,7 @@ export enum CC {
     scholars="scholars",
     torbin="torbin",
     trap="trap",
+    yondo="yondo",
     wanwan="wanwan",
     zaza="zaza",
 }    
@@ -162,6 +164,56 @@ export type Character =  {
 
 
 export const characters: Character[] = [
+    {
+        code: CC.ann,
+        age: 19,
+        race: "human",
+        notoriety: "None, totally new, and a bit too timid to earn attention",    
+        page: 1,
+        id: 1,
+        name: "Ann",
+        title: "Newby captain",
+        strength: 10,        
+        dexterity: 14,
+        constitution: 10,                
+        intelligence: 12,                
+        wisdom: 9,        
+        charisma: 9,
+        challengeRating: 2,
+        armorClass: 14,
+        hitPoints: 45,
+        speed: 30,
+        passivePerception: 10,
+        proficiencyBonus: 2,        
+        attack:{
+            bonus: 5,
+            range: 5,
+            multi: 2,
+            damage: "2d6",                        
+        },
+        spells: [],
+        alignment: "Lawful Good",
+        roleplayInspiration: "Newvous Starlet, Princess Leia, Mulan",
+        motivation: "Wants to command her own fleet one day",
+        dmNotes: "Her main hook is her potion being used for the party or other profits. She's a bit niave and will be go along with what the players say.",
+        characterConnections: [],
+        visualDescription: "A plainly dressed young woman, standing on her own and being ignored.",
+        introduction: "Hello, I'm Ann.",
+        question: "How much do you think my potion is worth?",
+        background: "I don't want to be a nobody like the people from my villiage, so I came here.",
+        ideal: "I've got a dream to be a big merchant one day.",
+        bond: "Once I've become something, I can return to my villiage and make them proud.",
+        flaw: "I know what I want, and don't think you can change my mind.",
+        skills: [Skills.AnimalHandling, Skills.Athletics, Skills.Nature],
+        rewards: "She has access to a potion what makes the drinkers flowing tie-dye colors for a couple hours, and harmlessly wears off.",
+        plotFlower: "If she finds out about she'll be tempted to try and sell it, but won't betray the party.",
+        plotConvoy: "She doesn't want to join the Convoy, but admires them.",
+        plotParty: "Her potion will be a big boon to the party.",
+        plotArena: "",
+        plotKaiju: ""
+    
+    },
+
     // ++++  C1 - Bozfield, Pirate Captain ++++
     {
         code: CC.boz,
@@ -1030,6 +1082,54 @@ export const characters: Character[] = [
         plotArena: "",
         plotKaiju: ""    
     },
+    {
+        code: CC.yondo,
+        age: 120,
+        race: "3 headed person",
+        notoriety: "One more the most popular food stalls.",    
+        page: 1,
+        id: 1,
+        name: "Yondo",
+        title: "3 headed chef.",
+        strength: 13,        
+        dexterity: 18,
+        constitution: 12,                
+        intelligence: 13,                
+        wisdom: 15,        
+        charisma: 12,
+        challengeRating: 2,
+        armorClass: 12,
+        hitPoints: 20,
+        speed: 30,
+        passivePerception: 10,
+        proficiencyBonus: 2,        
+        attack:{
+            bonus: 5,
+            range: 5,
+            multi: 1,
+            damage: "1d8",                        
+        },
+        spells: [],
+        alignment: "Neutral Good",
+        roleplayInspiration: "TV Chef, but different personality per head.",
+        motivation: "Wants to serve as many customers as possible.",
+        dmNotes: "They can direct the player different places based on their repsonses.",
+        characterConnections: [],
+        visualDescription: "3 heads and 6 arms, rotating cooking and serving customers.",
+        introduction: "Welcome. We've been having a discusion...",
+        question: "If you're making a dish, what's the best way to do it?",
+        background: "Head 1: You should plan it out, and not deviate, otherwise you'll never learn how to improve it!",
+        ideal: "Head 2: No, you should only spice as you, always tasting be adjusting!",
+        bond: "Head 3: No, No, it's all wrong, don't trust yourself so much, you should be asking the customers!",
+        flaw: "What do you think?",
+        skills: [],
+        rewards: "They'll mention they've heard a legend about a flower petal that's tastes amazing, and they if you bring it to them you'll get a reward. Depending on your answers, they'll point you different locations.",
+        plotFlower: "",
+        plotConvoy: "",
+        plotParty: "",
+        plotArena: "",
+        plotKaiju: ""    
+    },
 ]
 
 
@@ -1488,7 +1588,7 @@ export const locations: Location[] = [
     ]
 },
 {
-    name: "Library",
+    name: "Dog Library",
     code: LC.library,    
     exterior: "A large library with a statue of a sitting dog with a book in it's mouth.",
     interior: "A reading area with people reading books. Next to it is a roped off area of endless seeming stacks of books. Visitors walk up to the ropes with offerings of food and a dog comes up to take. The dog then runs to fetch the book and bring it back. Books cannot be taken out of the library.",
@@ -1665,8 +1765,8 @@ export const pages: any[] = addId([
     c(CC.bosph),
     l(LC.merchant),
     c(CC.caspian),
-    // 3 headed, 6 armed chef. 
-    // Ann with her skin changing potion
+    c(CC.yondo),  
+    c(CC.ann),        
     l(LC.library),
     c(CC.trap),
     c(CC.lobi),
