@@ -37,13 +37,11 @@ function Location(props: LocationProps) {
           </thead>
           <tbody>
             {[
-              // "distance",
               "exterior",
               "interior",
               "crowd",
               "detailOne",
               "detailTwo",
-              // "detailThree",
               "dmNotes",
             ].map((stat) => {
               return (
@@ -62,7 +60,6 @@ function Location(props: LocationProps) {
       </div>
 
       {/* ==== Middle page ==== */}
-
       <table className="blueBlock">
         <thead>
           <th colSpan={2}>Connections</th>

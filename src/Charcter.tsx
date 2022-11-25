@@ -234,7 +234,7 @@ function Character(props: CharacterProps) {
           <tr>
             <td>Refrences</td>
             <td className="boldText bigText">
-              {character.roleplayInspiration.split(".")[0]}.
+              {character.roleplayInspiration}
             </td>
           </tr>
 
