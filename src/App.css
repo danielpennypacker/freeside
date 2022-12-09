@@ -22,16 +22,32 @@ body, body * {
   text-align: left;
 }
 
-.Location,
-.Character {
-  padding: 3px;
-  height: 21cm;
-  width: 13cm; 
-  background-color: white;
-  margin: 10px;
-  font-size: 10px;
+.notesCallout {
+  font-weight: bold;
+  padding: 10px 10px 0px 10px;
 }
 
+.TextPage,
+.Location,
+.Character {  
+  height: 8.477in;
+  width: 13cm; 
+  background-color: white;
+  margin: 10px 10px;
+  font-size: 10px;
+  overflow: hidden;
+}
+
+.infoHeader {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+.infoPara {
+  font-size: 10pt;
+  margin-top: 5px;
+}
 
 
 .Character td:first-child, 
@@ -55,6 +71,7 @@ body table {
   border-collapse: separate;
 }  
 .header { 
+  margin-top: 15px;
   display: flex;
   font-size: 14pt;
   justify-content: space-between;
@@ -147,6 +164,6 @@ table.brownBlock td {
 }
 
 .bigText {
-  font-size: 10pt !important;
+  /* font-size: 10pt !important; */
 }
 

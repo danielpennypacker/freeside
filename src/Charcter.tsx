@@ -225,6 +225,8 @@ function Character(props: CharacterProps) {
 
       {/* ==== Bottom Page ==== */}
 
+      <div className="notesCallout">{character.dmNotes}</div>
+
       {/* ==== Roleplaying Information ==== */}
       <table className="brownBlock">
         <thead>
@@ -285,7 +287,6 @@ function Character(props: CharacterProps) {
             "plotParty",
             "plotGladiator",
             "plotKaiju",
-            "dmNotes",
           ].map((stat) => {
             if (!anyCharacter[stat]) {
               return null;

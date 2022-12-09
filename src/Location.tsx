@@ -30,31 +30,28 @@ function Location(props: LocationProps) {
         src={process.env.PUBLIC_URL + `/img/locations/${location.code}.png`}
       />
 
+      <div className="notesCallout">{location.dmNotes}</div>
+
       <div className="descriptions">
         <table className="brownBlock">
           <thead>
             <th colSpan={2}>Descriptions</th>
           </thead>
           <tbody>
-            {[
-              "exterior",
-              "interior",
-              "crowd",
-              "detailOne",
-              "detailTwo",
-              "dmNotes",
-            ].map((stat) => {
-              return (
-                <tr>
-                  <td className={`storyTitle storyStat-${stat}`}>
-                    <span>{data.toTitle(stat)}</span>
-                  </td>
-                  <td className={`storyValue storyValue-${stat}`}>
-                    <span>{anyLocation[stat]}</span>
-                  </td>
-                </tr>
-              );
-            })}
+            {["exterior", "interior", "crowd", "detailOne", "detailTwo"].map(
+              (stat) => {
+                return (
+                  <tr>
+                    <td>
+                      <span>{data.toTitle(stat)}</span>
+                    </td>
+                    <td>
+                      <span>{anyLocation[stat]}</span>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
           </tbody>
         </table>
       </div>
