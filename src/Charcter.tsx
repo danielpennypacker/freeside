@@ -15,6 +15,12 @@ function Character(props: CharacterProps) {
     console.log(character);
   }
 
+  const noneRow = (
+    <tr>
+      <td colSpan={2}>None.</td>
+    </tr>
+  );
+
   const getAttrBonus = (value: number) => {
     const bonus = Math.floor((value - 10) / 2);
     if (bonus > 0) {
@@ -275,10 +281,16 @@ function Character(props: CharacterProps) {
           <th colSpan={2}>Quests</th>
         </thead>
         <tbody>
-          <tr>
-            <td>1.</td>
-            <td>He'll try to recruit you to fight the Convoy.</td>
-          </tr>
+          {character.dialogue.map((line, i) => {
+            return (
+              <tr>
+                <td>{i + 1}.</td>
+                <td>"{line}"</td>
+              </tr>
+            );
+          })}
+
+          {character.quests.length === 0 && noneRow}
         </tbody>
       </table>
 

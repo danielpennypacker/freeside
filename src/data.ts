@@ -167,6 +167,7 @@ export type Character =  {
     flaw?: string;
     skills: Skills[]
     rewards: string;
+    quests: string[];
     plotFlower: string;
     plotConvoy: string;
     plotParty: string;
@@ -181,6 +182,7 @@ export const characters: Character[] = [
     {
         code: CC.ann,        
         age: 19,
+        quests: [],
         race: "human",
         notoriety: "None, totally new, and a bit too timid to earn attention",    
         page: 1,
@@ -236,6 +238,7 @@ export const characters: Character[] = [
     // ++++  C1 - Bozfield, Pirate Captain ++++
     {
         code: CC.boz,
+        quests: [],
         dialogue: [
             [DT.introduction, "Hello, have you come here to help my destroy the Convoy?"],
         ],
@@ -288,6 +291,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.conrad,
+        quests: [],
         age: 45,
         dialogue: [
             [DT.introduction, "Well, aren't you a fins bunch, what would you like to know about the Convy?"],
@@ -340,6 +344,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.crap,
+        quests: [],
         age: 100,
         dialogue: [
             [DT.introduction, "So, you think you can beat crap face?"],
@@ -391,6 +396,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.cloaked,
+        quests: [],
         age: 0,
         race: "human.",
         notoriety: "Only the other flower eaters know what she's doing. About a dozen people suspect she exists, but don't know her exact nature.",    
@@ -442,6 +448,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.artok,
+        quests: [],
         age: 60,
         race: "human",
         dialogue: [
@@ -493,6 +500,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.ban,
+        quests: [],
         age: 45,
         race: "human",
         notoriety: "Has a small group of followers, but she tries to not encourage them.",    
@@ -544,6 +552,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.bosph,
+        quests: [],
         age: 25,
         race: "tiefling",
         notoriety: "Everyone who pays attention to the areana knows her as a promoter.",    
@@ -595,6 +604,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.caspian,
+        quests: [],
         age: 19,
         race: "Half Elf",
         notoriety: "Know in all as Freeside as a brilliant merchant and business person.",    
@@ -645,6 +655,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.chit,
+        quests: [],
         age: 99999,
         race: "",
         notoriety: "",    
@@ -696,6 +707,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.dark,
+        quests: [],
         age: 0,
         race: "human",
         notoriety: "Only a couple shady people know about him.",   
@@ -747,6 +759,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.dragon,
+        quests: [],
         age: 200,
         race: "dargon",
         notoriety: "He's a regular at this bar.",    
@@ -798,6 +811,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.lobi,
+        quests: [],
         age: 16,
         race: "halfling",
         dialogue: [
@@ -849,6 +863,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.planithr,
+        quests: [],
         age: 23,
         race: "Half elf",
         notoriety: "One of the most popular and coolest people in freeside.",    
@@ -900,6 +915,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.scholars,
+        quests: [],
         age: 75,
         race: "mixed",
         notoriety: "Known as regulars at the club",    
@@ -952,6 +968,7 @@ export const characters: Character[] = [
  
     {
         code: CC.torbin,
+        quests: [],
         age: 50,
         race: "Dwarf",
         notoriety: "Known as the head of the yards",    
@@ -1003,6 +1020,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.trap,
+        quests: [],
         age: 45,
         race: "Human",
         notoriety: "Seen as a regular loner eccentric.",    
@@ -1054,6 +1072,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.wanwan,
+        quests: [],
         age: 99999,
         race: "Diety",
         notoriety: "Most people in freeside recognize hime",    
@@ -1106,6 +1125,7 @@ export const characters: Character[] = [
     {
         code: CC.zaza,
         age: 40,
+        quests: [],
         race: "Human",
         notoriety: "She's the most influencial task maker in the Fire district.",    
         page: 1,
@@ -1156,6 +1176,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.yondo,
+        quests: [],
         age: 120,
         race: "3 headed person",
         notoriety: "One more the most popular food stalls.",    
@@ -1207,6 +1228,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.may,
+        quests: [],
         age: 150,
         race: "human",
         dialogue: [
@@ -1258,6 +1280,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.queen,
+        quests: [],
         age: 60,
         race: "human",
         notoriety: "Everyone knows the current queen of the fools court, but they don't last more than a year or two.",    
@@ -1309,6 +1332,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.gods,
+        quests: [],
         age: 99999,
         race: "gods",
         notoriety: "Possibly recognizable gods to the PC's",    
@@ -1361,6 +1385,7 @@ export const characters: Character[] = [
     {
         code: CC.master,
         age: 25,
+        quests: [],
         race: "human",
         dialogue: [
             [DT.introduction, "What do you want, I'm sure I've got something more important to be doing than talking to you lot."],
