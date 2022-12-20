@@ -5,7 +5,11 @@
 
   .Location .splash {
     width: 100%;
-    height: 200px;
+    height: 188px;
+  }
+
+  .Location .descriptions td:first-child {
+    width: 60px;
   }
 
   .Location .connections {

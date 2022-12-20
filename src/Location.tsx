@@ -12,6 +12,12 @@ function Location(props: LocationProps) {
 
   const anyLocation: any = location;
 
+  const noneRow = (
+    <tr>
+      <td colSpan={2}>None.</td>
+    </tr>
+  );
+
   return (
     <div className="Location">
       <div className="header">
@@ -25,12 +31,11 @@ function Location(props: LocationProps) {
           <div className="id">L{location.id}</div>
         </div>
       </div>
+      <div className="notesCallout">{location.dmNotes}</div>
       <img
         className="splash"
         src={process.env.PUBLIC_URL + `/img/locations/${location.code}.png`}
       />
-
-      <div className="notesCallout">{location.dmNotes}</div>
 
       <div className="descriptions">
         <table className="brownBlock">
@@ -56,17 +61,15 @@ function Location(props: LocationProps) {
         </table>
       </div>
 
-      {/* ==== Middle page ==== */}
-      <table className="blueBlock">
+      {/* ==== Events ==== */}
+      <table className="greyBlock">
         <thead>
-          <th colSpan={2}>Connections</th>
+          <th colSpan={2}>Events</th>
         </thead>
         <tbody>
-          {/* ==== Events ==== */}
           {location.events.map((evDesc, i) => {
             return (
               <tr>
-                <td>{i == 0 ? "Events" : ""}</td>
                 <td className="eventId">
                   <span>{i + 1}.</span>
                 </td>
@@ -74,36 +77,32 @@ function Location(props: LocationProps) {
               </tr>
             );
           })}
+        </tbody>
 
-          {/* ==== Named NPCs ==== */}
-          {location.namedNpcs.map((code: data.CC, i) => {
-            const char = data.c(code);
+        {location.events.length === 0 && noneRow}
+      </table>
+
+      {/* ==== Named NPC's ==== */}
+      <table className="greyBlock">
+        <thead>
+          <th colSpan={2}>Named NPC's</th>
+        </thead>
+        <tbody>
+          {location.namedNpcs.map((code: [data.CC, string], i) => {
+            const char = data.c(code[0]);
             return (
               <tr>
-                <td>{i == 0 ? "NPC" : ""}</td>
                 <td className="greenText boldText">C{char.id}</td>
                 <td>
-                  {char.name}, {char.title}
+                  {char.name},
+                  <br /> {char.title}
                 </td>
-                <td className="namedNpcDescription">
-                  {char.visualDescription}
-                </td>
+                <td className="namedNpcDescription">{code[1]}</td>
               </tr>
             );
           })}
 
-          {/* ==== Connected Locations ==== */}
-          {location.connectedAreas.map((locationId, i) => {
-            const loc = data.l(locationId);
-            return (
-              <tr>
-                <td>{i == 0 ? "Location" : ""}</td>
-                <td className="connectedLocationId">L{loc.id}</td>
-                <td>{loc.name}</td>
-                <td className="connectedDescription">{loc.exterior}</td>
-              </tr>
-            );
-          })}
+          {location.namedNpcs.length === 0 && noneRow}
         </tbody>
       </table>
 
@@ -113,7 +112,7 @@ function Location(props: LocationProps) {
           <th colSpan={2}>Random NPCs</th>
         </thead>
         <tbody>
-          {location.randomNpcs.map((npc) => {
+          {location.randomNpcs.slice(0, 2).map((npc) => {
             return (
               <tr>
                 <td>{npc.name}</td>
@@ -121,6 +120,26 @@ function Location(props: LocationProps) {
                 <td>{npc.job}</td>
                 <td>{npc.description}</td>
                 <td className="randomNpcDialogue">"{npc.dialogue}"</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      {/* ==== Connected Locations ==== */}
+      <table className="blueBlock">
+        <thead>
+          <th colSpan={2}>Connected Locations</th>
+        </thead>
+        <tbody>
+          {/* ==== Events ==== */}
+          {location.connectedAreas.map((locationId, i) => {
+            const loc = data.l(locationId);
+            return (
+              <tr>
+                <td className="connectedLocationId">L{loc.id}</td>
+                <td>{loc.name}</td>
+                <td className="connectedDescription">{loc.exterior}</td>
               </tr>
             );
           })}

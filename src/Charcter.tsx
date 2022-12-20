@@ -40,6 +40,7 @@ function Character(props: CharacterProps) {
           <div className="id">C{character.id}</div>
         </div>
       </div>
+      <div className="notesCallout">{character.dmNotes}</div>
 
       {/* ==== Top of page ==== */}
 
@@ -63,19 +64,19 @@ function Character(props: CharacterProps) {
                 "intelligence",
                 "wisdom",
                 "charisma",
-              ] as data.Attributes[]
+              ] as string[]
             ).map((attr) => {
               const typedAttr = attr;
               return (
                 <tr>
                   <td className={`attrTitle attrTitle-${attr}`}>{attr}</td>
-                  <td className="attrValue right">{character[attr]}</td>
+                  <td className="attrValue right">{anyCharacter[attr]}</td>
                   <td className="attrBonus right">
-                    {getAttrBonus(character[typedAttr])}
+                    {getAttrBonus(anyCharacter[typedAttr])}
                   </td>
                   <td className="attrSave right">
                     {getAttrBonus(
-                      character[typedAttr] + character.proficiencyBonus
+                      anyCharacter[typedAttr] + character.proficiencyBonus
                     )}
                   </td>
                 </tr>
@@ -223,20 +224,18 @@ function Character(props: CharacterProps) {
         </table>
       </div>
 
-      {/* ==== Bottom Page ==== */}
-
-      <div className="notesCallout">{character.dmNotes}</div>
-
       {/* ==== Roleplaying Information ==== */}
       <table className="brownBlock">
         <thead>
-          <th colSpan={2}>Roleplaying Inspiration</th>
+          <th colSpan={2}>Background</th>
         </thead>
         <tbody>
           <tr>
-            <td>Refrences</td>
-            <td className="boldText bigText">
-              {character.roleplayInspiration}
+            <td>Inspiration</td>
+            <td className="boldText bigText flexEven">
+              {character.roleplayInspiration.split(",").map((name) => {
+                return <div>{name}</div>;
+              })}
             </td>
           </tr>
 
@@ -246,48 +245,68 @@ function Character(props: CharacterProps) {
           </tr>
 
           <tr>
-            <td>
-              <span>{data.toTitle("introduction")}</span>
-            </td>
-            <td>
-              <span className="bigText boldText">
-                "{character.introduction}"
-              </span>
-            </td>
+            <td>Detail</td>
+            <td>{character.notoriety}</td>
           </tr>
-          {["background", "question", "ideal", "bond", "flaw"].map((stat) => {
+        </tbody>
+      </table>
+
+      {/* === Dialogue === */}
+      <table className="greyBlock">
+        <thead>
+          <th colSpan={2}>Dialogue</th>
+        </thead>
+        <tbody>
+          {character.dialogue.map((line, i) => {
             return (
               <tr>
-                <td>{data.toTitle(stat)}</td>
-                <td>"{anyCharacter[stat]}"</td>
+                <td>{i + 1}.</td>
+                <td>{data.toTitle(line[0])}</td>
+                <td>"{line[1]}"</td>
               </tr>
             );
           })}
         </tbody>
       </table>
 
-      {/* ==== Plot Information ==== */}
-      <table className="blueBlock">
+      {/* === Quests === */}
+      <table className="greyBlock">
         <thead>
-          <th colSpan={2}>Plot Information</th>
+          <th colSpan={2}>Quests</th>
         </thead>
         <tbody>
           <tr>
+            <td>1.</td>
+            <td>He'll try to recruit you to fight the Convoy.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* === Rewards === */}
+      <table className="greyBlock">
+        <thead>
+          <th colSpan={2}>Rewards</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.</td>
             <td>
-              <span>{data.toTitle("goal")}</span>
-            </td>
-            <td>
-              <span className="bigText boldText">{character.motivation}</span>
+              <span>
+                He'll offer you a share of the bounty from the incoming Convoy
+                Fleet.
+              </span>
             </td>
           </tr>
-          {[
-            "notoriety",
-            "plotFlower",
-            "plotConvoy",
-            "plotParty",
-            "plotGladiator",
-            "plotKaiju",
-          ].map((stat) => {
+        </tbody>
+      </table>
+
+      {/* ==== Plot Information ==== */}
+      <table className="blueBlock">
+        <thead>
+          <th colSpan={2}>Plot Connections</th>
+        </thead>
+        <tbody>
+          {["plotFlower", "plotConvoy", "plotParty"].map((stat) => {
             if (!anyCharacter[stat]) {
               return null;
             }
@@ -303,23 +322,6 @@ function Character(props: CharacterProps) {
               </tr>
             );
           })}
-        </tbody>
-      </table>
-
-      {/* ==== Miscelanios ==== */}
-      <table className="greyBlock">
-        <thead>
-          <th colSpan={2}>Miscelanios</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <span>{data.toTitle("rewards")}</span>
-            </td>
-            <td>
-              <span>{character.rewards}</span>
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>

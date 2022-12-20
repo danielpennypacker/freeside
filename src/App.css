@@ -20,12 +20,27 @@ body, body * {
 .Character th,
 .Location th {
   text-align: left;
+  font-weight: normal;
+  text-decoration: underline;
 }
 
 .notesCallout {
   font-weight: bold;
-  padding: 10px 10px 0px 10px;
+  background-color: lightgray;
+  padding: 5px;
+  text-align: center;
 }
+
+.flexEven {
+  display: flex;  
+  width: 100%;
+}
+
+.flexEven div{
+  width: 32%;
+  text-align: center;
+}  
+
 
 .TextPage,
 .Location,
@@ -101,6 +116,7 @@ body table {
   background-color: #E7E7E7;
 }
 
+.Character .normalTable td:first-child,
 .Character .brownBlock td:first-child,
 .Character .blueBlock td:first-child {
   width: 65px;
@@ -130,6 +146,7 @@ table.twoLine td {
   font-weight: bold;
 }
 
+table.normalTable td,
 table.greyBlock td, 
 table.blueBlock td,
 table.brownBlock td {
@@ -138,6 +155,8 @@ table.brownBlock td {
   font-size: 8pt;
 }
 
+
+table.normalTable,
 table.greyBlock,
 table.blueBlock, 
 table.brownBlock {

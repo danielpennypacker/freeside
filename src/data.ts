@@ -17,7 +17,7 @@ export const toTitle = (val: string) => {
     return val.replace(/([a-z])([A-Z])/g, "$1 $2");
   };
 
-
+// Chracter Code.
 export enum CC {
     ann="ann", 
     artok="artok", 
@@ -45,6 +45,21 @@ export enum CC {
     zaza="zaza",
 }    
 
+// Dialogue Type.
+export enum DT {
+    introduction='introduction',
+    question="question",
+    line="line",
+    background="background",
+    ideal="ideal",
+    bond="bond",
+    flaw="flaw",
+    clue="clue",
+    lore="lore",
+    quest="quest",
+}
+
+// Location Code.
 export enum LC {
     ball="ball",
     bank="bank",
@@ -86,20 +101,13 @@ export interface Skill {
     [key: string]: number
 }
 
-
-
 export interface CharacterConnection {
     id: number;
     type: string;
     description: string;
 }
 
-// const sizes = ["xs", "sm", "md", "lg", "xl"] as const
-
-export type Attributes = "constitution" | "strength"
-
-
-enum Skills {
+export enum Skills {
     Acrobatics = "Acrobatics",
     AnimalHandling = "Animal Handling",
     Arcana = "Arcana",
@@ -128,6 +136,7 @@ export type Character =  {
     notoriety: string;
     page: number;
     id?: number;
+    dialogue: [DT, string][],
     name: string,
     title: string,
     strength: number;
@@ -151,11 +160,11 @@ export type Character =  {
     dmNotes: string;
     characterConnections: CharacterConnection[];
     visualDescription: string;
-    introduction: string;
-    question: string;
-    ideal: string;
-    bond: string;
-    flaw: string;
+    introduction?: string;
+    question?: string;
+    ideal?: string;
+    bond?: string;
+    flaw?: string;
     skills: Skills[]
     rewards: string;
     plotFlower: string;
@@ -170,12 +179,18 @@ export type Character =  {
 
 export const characters: Character[] = [
     {
-        code: CC.ann,
+        code: CC.ann,        
         age: 19,
         race: "human",
         notoriety: "None, totally new, and a bit too timid to earn attention",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Hello, I'm Ann. I'm looking to sell my cargo of potions"],
+            [DT.lore, "It's been hard getting people's attention, I think they only like talking to people with enough jewlery."],
+            [DT.background, "I came here to make it as a ship Captain."],
+            [DT.quest, "If you think you can help me, I'll show you what my potion does."],
+        ],
         name: "Ann",
         title: "Newby captain",
         strength: 10,        
@@ -200,10 +215,9 @@ export const characters: Character[] = [
         alignment: "Lawful Good",
         roleplayInspiration: "Newvous Starlet, Princess Leia, Mulan",
         motivation: "Wants to command her own fleet one day",
-        dmNotes: "She has a ship fulll of a fun potion the players can try to sell, steal, or use for planning a party.",
+        dmNotes: "She's looking to sell a ship full of a fun new potion",
         characterConnections: [],
         visualDescription: "A plainly dressed young woman, standing on her own and being ignored.",
-        introduction: "Hello, I'm Ann.",
         question: "How much do you think my potion is worth?",
         background: "I don't want to be a nobody like the people from my villiage, so I came here.",
         ideal: "I've got a dream to be a big merchant one day.",
@@ -222,6 +236,9 @@ export const characters: Character[] = [
     // ++++  C1 - Bozfield, Pirate Captain ++++
     {
         code: CC.boz,
+        dialogue: [
+            [DT.introduction, "Hello, have you come here to help my destroy the Convoy?"],
+        ],
         age: 28,
         race: "human",
         notoriety: "All Freeside",    
@@ -249,7 +266,7 @@ export const characters: Character[] = [
         },
         spells: [],
         alignment: "Chaotic Good",
-        roleplayInspiration: "Gaston, Che Guevara, Han Solo. He’s so attractive no one ever says no to him.",
+        roleplayInspiration: "Gaston, Che Guevara, Han Solo.",
         motivation: "Wants to recruit people to fight the Convoy.",
         dmNotes: "This is the most anti-Convoy NPC.",
         characterConnections: [],
@@ -272,6 +289,9 @@ export const characters: Character[] = [
     {
         code: CC.conrad,
         age: 45,
+        dialogue: [
+            [DT.introduction, "Well, aren't you a fins bunch, what would you like to know about the Convy?"],
+        ],
         race: "human",
         notoriety: "No one really knows him, he could be any Convoy official to most people.",    
         page: 2,
@@ -321,6 +341,9 @@ export const characters: Character[] = [
     {
         code: CC.crap,
         age: 100,
+        dialogue: [
+            [DT.introduction, "So, you think you can beat crap face?"],
+        ],
         race: "orc",
         notoriety: "Most people know he's the current orc boss, but they know it changes frequently.",    
         page: 1,
@@ -371,6 +394,9 @@ export const characters: Character[] = [
         age: 0,
         race: "human.",
         notoriety: "Only the other flower eaters know what she's doing. About a dozen people suspect she exists, but don't know her exact nature.",    
+        dialogue: [
+            [DT.introduction, "Hmmm, I havn't see you around here. Hehe, what gives you pleasure?"],
+        ],
         page: 1,
         id: 1,
         name: "Lapish",
@@ -418,6 +444,9 @@ export const characters: Character[] = [
         code: CC.artok,
         age: 60,
         race: "human",
+        dialogue: [
+            [DT.introduction, "Hello travellers, no doubt you're here to hear about my single world theory?"],
+        ],
         notoriety: "Considered a local eccentric in the comune who talks a little too much.",    
         page: 1,
         id: 1,
@@ -467,6 +496,9 @@ export const characters: Character[] = [
         age: 45,
         race: "human",
         notoriety: "Has a small group of followers, but she tries to not encourage them.",    
+        dialogue: [
+            [DT.introduction, "Welcome fellow beings. What truths shall we share?"],
+        ],
         page: 1,
         id: 1,
         name: "Ban",
@@ -515,6 +547,9 @@ export const characters: Character[] = [
         age: 25,
         race: "tiefling",
         notoriety: "Everyone who pays attention to the areana knows her as a promoter.",    
+        dialogue: [
+            [DT.introduction, "You seem like a harty bunch, want to have a go in the areana?"],
+        ],
         page: 1,
         id: 1,
         name: "Bospherus",
@@ -564,6 +599,9 @@ export const characters: Character[] = [
         race: "Half Elf",
         notoriety: "Know in all as Freeside as a brilliant merchant and business person.",    
         page: 1,
+        dialogue: [
+            [DT.introduction, "Ah new friends, I am Caspian, a humble merchant."],
+        ],
         id: 1,
         name: "Caspian",
         title: "Brillaint Merchant",
@@ -592,7 +630,6 @@ export const characters: Character[] = [
         dmNotes: "He represents the moderate/middle ground in dealing with the Convoy.",
         characterConnections: [],
         visualDescription: "Short young man, smartly dressed with little adornment.",
-        introduction: "Ah new friends, I am Caspian, a humble merchant.",
         question: "So how do you think the good people of Freeside should handle the Convoy?",
         background: "I was born here.",
         ideal: "There are only 2 ways people interact, trade, and conflict, which one do you think I believe in?",
@@ -611,6 +648,9 @@ export const characters: Character[] = [
         age: 99999,
         race: "",
         notoriety: "",    
+        dialogue: [
+            [DT.introduction, "Come, battle, struggle, and you shall be rewarded."],
+        ],
         page: 1,
         id: 1,
         name: "Chitalogoth",
@@ -658,7 +698,10 @@ export const characters: Character[] = [
         code: CC.dark,
         age: 0,
         race: "human",
-        notoriety: "Only a couple shady people know about him.",    
+        notoriety: "Only a couple shady people know about him.",   
+        dialogue: [
+            [DT.introduction, "I'm Darkblade dispencer of holy vengence"],
+        ], 
         page: 1,
         id: 1,
         name: "Dark Blade",
@@ -707,6 +750,9 @@ export const characters: Character[] = [
         age: 200,
         race: "dargon",
         notoriety: "He's a regular at this bar.",    
+        dialogue: [
+            [DT.introduction, "Ah, are you fellow lovers of the Opera? Tell me, what's you favorite?"],
+        ],
         page: 1,
         id: 1,
         name: "Dargor",
@@ -754,6 +800,9 @@ export const characters: Character[] = [
         code: CC.lobi,
         age: 16,
         race: "halfling",
+        dialogue: [
+            [DT.introduction, "Hi! Did you know Freeside history goes back more thatn 2000 years?"],
+        ],
         notoriety: "People are used to her talking their ears off at the library.",    
         page: 1,
         id: 1,
@@ -803,6 +852,9 @@ export const characters: Character[] = [
         age: 23,
         race: "Half elf",
         notoriety: "One of the most popular and coolest people in freeside.",    
+        dialogue: [
+            [DT.introduction, "What a handsome bunch, what brings you to our fair city?"],
+        ],
         page: 1,
         id: 1,
         name: "Planithir",
@@ -853,6 +905,9 @@ export const characters: Character[] = [
         notoriety: "Known as regulars at the club",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Ah yes, you bunch, come here, we've got a question for you?"],
+        ],
         name: "Pix, Wix, and Dix",
         title: "Arguing scholars",
         strength: 9,        
@@ -901,6 +956,9 @@ export const characters: Character[] = [
         race: "Dwarf",
         notoriety: "Known as the head of the yards",    
         page: 1,
+        dialogue: [
+            [DT.introduction, "Get out of my way! Who are you anyways? What are you doing here!?"],
+        ],
         id: 1,
         name: "Torbin",
         title: "Ship Building master",
@@ -950,6 +1008,9 @@ export const characters: Character[] = [
         notoriety: "Seen as a regular loner eccentric.",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Oh hello, would you be interested in helping a poor old scholar like me out?"],
+        ],
         name: "Trap",
         title: "Obssesed scholar.",
         strength: 9,        
@@ -998,6 +1059,9 @@ export const characters: Character[] = [
         notoriety: "Most people in freeside recognize hime",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Ah friends, so good to see you again, have a drink!"],
+        ],
         name: "Wanwan",
         title: "Exiled party god.",
         strength: 18,        
@@ -1046,6 +1110,9 @@ export const characters: Character[] = [
         notoriety: "She's the most influencial task maker in the Fire district.",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Hm, I haven't seen you before, do you know who I am?"],
+        ],
         name: "Zaza",
         title: "Top play priducer.",
         strength: 11,        
@@ -1094,6 +1161,9 @@ export const characters: Character[] = [
         notoriety: "One more the most popular food stalls.",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Fried, Grilled, or steamed Berry patties?"],
+        ],
         name: "Yondo",
         title: "3 headed chef.",
         strength: 13,        
@@ -1139,6 +1209,9 @@ export const characters: Character[] = [
         code: CC.may,
         age: 150,
         race: "human",
+        dialogue: [
+            [DT.introduction, "Oh, I'm sorry, I must be going."],
+        ],
         notoriety: "Used to be famous, but now no one knows her.",    
         page: 1,
         id: 1,
@@ -1166,7 +1239,7 @@ export const characters: Character[] = [
         alignment: "Lawful Good",
         roleplayInspiration: "Frightened senior, Aunt May, scared victim.",
         motivation: "Wants to stop Lapish, but doesn't know how.",
-        dmNotes: "She'll lay out most of the Flower plot and who Lapish is. She can also be a red hearing for the disentigrator.",
+        dmNotes: "She'll reluctantly reveal the Flower Plot",
         characterConnections: [],
         visualDescription: "Unassuming, but attrative 25 year old lady in a purple cloak.",
         introduction: "Oh, I'm sorry, I'm not able to talk.",
@@ -1189,6 +1262,9 @@ export const characters: Character[] = [
         race: "human",
         notoriety: "Everyone knows the current queen of the fools court, but they don't last more than a year or two.",    
         page: 1,
+        dialogue: [
+            [DT.introduction, "I am the Queen of all who enter this court, and just who are you!?"],
+        ],
         id: 1,
         name: "The Queen",
         title: "Fools Court Monarch",
@@ -1214,7 +1290,7 @@ export const characters: Character[] = [
         alignment: "Chaotic Nuetral/Evil",
         roleplayInspiration: "The Red Queen, Bloody Mary, Ru Paul",
         motivation: "Wants to rule the court with an iron fist.",
-        dmNotes: "Main character of the fools court. If she can be convinced of something, it will have a real life political effect on Freeside.",
+        dmNotes: "Main character of the fools court.",
         characterConnections: [],
         visualDescription: "An extremely huge and elaborate dress that's hard for her to mvoe around in.",
         introduction: "Your queen has arrived!",
@@ -1238,6 +1314,9 @@ export const characters: Character[] = [
         notoriety: "Possibly recognizable gods to the PC's",    
         page: 1,
         id: 1,
+        dialogue: [
+            [DT.introduction, "Welcome mortals, we've had such fun watching you."],
+        ],
         name: "The 3 Gods",
         title: "Watching Freeside",
         strength: 99,        
@@ -1283,6 +1362,9 @@ export const characters: Character[] = [
         code: CC.master,
         age: 25,
         race: "human",
+        dialogue: [
+            [DT.introduction, "What do you want, I'm sure I've got something more important to be doing than talking to you lot."],
+        ],
         notoriety: "No one really knows him, he could be any Convoy official to most people.",    
         page: 2,
         id: 2,
@@ -1310,7 +1392,7 @@ export const characters: Character[] = [
         alignment: "Lawful Evil",
         roleplayInspiration: "Tech Bro, Wealthy Snobby Brat, King Joffery",
         motivation: "Wants to be known for great things himself.",
-        dmNotes: "The main villain of the Convoy. He can show up before the Fleet arrives, or come to Freeside with the Fleet.",
+        dmNotes: "The main villain of the Convoy.",
         characterConnections: [],
         visualDescription: "An arrogant young man in a convoy uniform lined with gold thread on the seems.",
         introduction: "Get out of my way, I have business to attend to.",
@@ -1341,7 +1423,7 @@ export interface Location {
     detailTwo: string;
     crowd: string;
     connectedAreas: LC[];
-    namedNpcs: CC[];
+    namedNpcs: [CC, string][];
     dmNotes: string;
     events: string[];
     randomNpcs: RandomNpc[];
@@ -1364,8 +1446,8 @@ export const locations: Location[] = [
     connectedAreas: [LC.pcafe, LC.convoy],
     namedNpcs: [],
     events: [
-        "Palyers will get handed a discount to the Grand Galleria, and a free drink coupon to the Merchants plaza",
-        "The players will get caught in the middle of a fight between Convoy sailors and a group od pirates.",    
+        "When first getting off the boat, the playrs will be handed 3 different flyers. 1. A free entrance to The Eternal Ball. 2. A Free drink coupon to Yondos. 3. A 10% off coupn at the Grand Gallery.",
+        "After getting aclimentaed, a fight between 3 Convoy Sailors and 3 Pirates will break out, catching the players in the middle. Both sides will attack the players, thinking they're with the other side.",    
     ],
     randomNpcs: [
         {
@@ -1400,7 +1482,7 @@ export const locations: Location[] = [
     detailOne: "When ever someone passes out, they\"re dragged into a big nap room in the back.",
     detailTwo: "People are betting on 2 crabs fighting with little fencing swords",
     connectedAreas: [LC.land, LC.orc],
-    namedNpcs: [CC.boz],
+    namedNpcs: [[CC.boz, 'An extremely handsome pirate pointing at a map with a group of fawning pirates.']],
     crowd: "2/3 Pirates of all kinds, and 1/3 a big variery of people.",
     dmNotes: "Meet organize anti-Convoy forces.",
     events: ["If the players approach Bozfiled, he\"ll try and recruit them to help fight the Convoy"],
@@ -1440,7 +1522,7 @@ export const locations: Location[] = [
     detailTwo: "The door to the barracks is locked",
     dmNotes: "Meet the Convoy, and entrance to the Secret Wharf.",
     connectedAreas: [LC.land],
-    namedNpcs: [CC.conrad],
+    namedNpcs: [[CC.conrad, 'A busy middle aged man sorting through papers. He puts on a smile for the PCs']],
     events: [
         "Conrad will try to recuit the Convoy. His first assigment is to do a pro-Convoy story at the Fools Court.",        
     ],
@@ -1466,7 +1548,7 @@ export const locations: Location[] = [
     detailTwo: "After fights have stopped, the orcs go back to being friendly.",
     dmNotes: "Meet the Orcs.",
     connectedAreas: [LC.pcafe],
-    namedNpcs: [],
+    namedNpcs: [[CC.crap, 'A large Orc sitting on throne.']],
     events: [
         "Crap Face will challenge the players to unarmed combat.",        
     ],
@@ -1504,7 +1586,11 @@ export const locations: Location[] = [
     detailTwo: "There's a trio of giants playing huge drums in a big dance hall.",
     dmNotes: "Worldbuilding about how fun Freeside is. Meet Zaza.",
     connectedAreas: [LC.opera, LC.gate],
-    namedNpcs: [CC.ban, CC.zaza, CC.chit],
+    namedNpcs: [
+        [CC.ban, 'In a small corner, a monk and a half dozen followers sit praying.'], 
+        [CC.zaza, 'A sharply dressed woman goes between tables, chatting and introducing people.'], 
+        [CC.chit, 'People line of in front of an tenticle monster that connects to their foreheads.']
+    ],
     events: [],
     randomNpcs: [
         {
@@ -1540,7 +1626,7 @@ export const locations: Location[] = [
     detailTwo: "The bankers activate a zone of truth when around their desk when they start talking to you.",
     dmNotes: "Get loans for anything.",
     connectedAreas: [LC.merchant],
-    namedNpcs: [CC.planithr],
+    namedNpcs: [[CC.planithr, 'A slieght well dressed man in line at the bank scribbles in a notebook.']],
     events: [],
     randomNpcs: [
         {
@@ -1562,7 +1648,10 @@ export const locations: Location[] = [
     detailTwo: "",
     dmNotes: "Meet the most powerful people in Freeside. Discuss poltics with them, and possibly convince them.",
     connectedAreas: [LC.bank],
-    namedNpcs: [CC.zaza, CC.torbin, CC.caspian],
+    namedNpcs: [
+        [CC.zaza, 'She argues that the Convoy is so profit driven they\'ll stop supporting the arts.'], 
+        [CC.torbin, 'He argues that the yards do all the real work that keep freeside going, and they should heavily involve the Convoy.'], 
+        [CC.caspian, 'He argues that the Convoy can\'t be fully stopped, but can be contained in a way to keep them happy.']],
     events: [],
     randomNpcs: [
         {
@@ -1634,7 +1723,7 @@ export const locations: Location[] = [
     detailTwo: "There's a baquete table laid out in front of a throne.",
     dmNotes: "It's a LARP the players can roleplay through to influence Freeside.",
     connectedAreas: [LC.opera, LC.ball],
-    namedNpcs: [],
+    namedNpcs: [[CC.queen, 'An extremely elaboeratly dressed queen sites on an ornate throne.']],
     // dmNotes: "It's a LARP. Players can come here to try and exert political influence over Freeside. Whatever's happening in Freeside, should be mirrored here, but in a silly way. If any fights happen, players must do perforamce and acrobatics checks.",
     events: ["When they arrive they're challenged to a dance fight as a duel."
         , "When the players first arrive, there's a drama being played out of the queen wanting to invade a small, sacred island to set up a new beauty salon.", 
@@ -1731,7 +1820,7 @@ export const locations: Location[] = [
     detailTwo: "There seems to be a compettion around what gravesite can be made the most elaborate.",
     dmNotes: "Meet Patricia, and Mood.",
     connectedAreas: [LC.gallery, LC.ball],
-    namedNpcs: [], // make sure to add patricia.
+    namedNpcs: [[CC.may, 'A shy woman leaves flowers on a grave from 150 years ago.']],
     events: ["The players can go examine the Tomb of empires.", "They players can see someone laying a flower on the grave of someone who's marked as dying 200 years ago."],
     randomNpcs: [
         {
@@ -1760,7 +1849,7 @@ export const locations: Location[] = [
     detailTwo: "During fights the audeince will throw potions to the combatants. Healers save people from getting killed.",
     dmNotes: "If thr players joing the fights, they'll gain money and fame.",
     connectedAreas: [LC.pcafe, LC.land, LC.convoy],
-    namedNpcs: [CC.bosph],
+    namedNpcs: [[CC.bosph, 'A woman host at the entrance greets and drirects people into the Arena.']],
     events: ["THe first time the players come, they'll try to be recuited as fighters."],
     randomNpcs: [
         {
@@ -1797,7 +1886,10 @@ export const locations: Location[] = [
     dmNotes: "Meet Dr. Trap. Mood.",
     // No one knows when the library was built or where the dogs came from. Let players get creative with the books they might ask for.",
     connectedAreas: [LC.merchant],
-    namedNpcs: [CC.lobi, CC.trap],
+    namedNpcs: [
+        [CC.lobi, 'A young student looks up occasioanlly from a pile of books, trying to engage passersby.'], 
+        [CC.trap, 'A haggered looking Academic carefully eyes the PCs.']
+    ],
     events: ['Trap will approach the players and try to get them to retrieve the lost book.'],
     randomNpcs: [
         {
@@ -1814,12 +1906,16 @@ export const locations: Location[] = [
     code: LC.merchant,    
     exterior: "A large plaza with food stalls all around the edges.",
     interior: "Merchants are walking around making deals and signing contracts. Lots of foot traffic around the food stalls.",
-    crowd: "All variety of merchants and sailors making deals. A larger variety of people are here for the food stalls.",
+    crowd: "All variety of merchants and sailors making deals. The more jewerlly people wear, the more attention they get.",
     detailOne: "All deals are public and a crowd watches the negotiants. When a deal is completed, a cheer goes up.",
     detailTwo: "There's a giant talking chicken making omletes from her own eggs.",
-    dmNotes: "Players meet Ann or Caspian",
+    dmNotes: "Players meet Ann or Caspian.",
     connectedAreas: [LC.glad, LC.gate, LC.bank, LC.library],
-    namedNpcs: [CC.caspian], // Need to add Ann and 3 headed cook.
+    namedNpcs: [
+        [CC.caspian, 'A young man, covered in jewels, stands at the center of a group of merchants, trying to make deals.'],
+        [CC.ann, 'A confident, but unadorned female captain is failing to get anyones attention.'],
+        [CC.yondo, 'One of the post popular food stalls being serviced by a 3 headed, 6 armed human.']
+    ],
     events: ["Caspian will try to talk to the PC's"],
     randomNpcs: [
         {
@@ -1855,7 +1951,10 @@ export const locations: Location[] = [
     detailTwo: "Workers wear different colors of uniform based on their role.",
     dmNotes: "Players meet Torbin, or Head Convoy guy.",
     connectedAreas: [LC.gate, LC.gallery],
-    namedNpcs: [CC.torbin],
+    namedNpcs: [
+        [CC.torbin,'A surly dwarf is walking around the yards barking orders at people. They all obey.' ],
+        [CC.master, 'A high ranking Convoy officer loojs around, somewhat aloof and snearing.']
+    ],
     events: ["When the players first arrive, Torbin can bump into them and he'll ne annoyed ny them."],
     randomNpcs: [
         {
@@ -1891,7 +1990,11 @@ export const locations: Location[] = [
     detailTwo: "A group of bards are compising songs together at a table in the corner.",
     dmNotes: "Meet one of the 3 NPCs. Mood.",
     connectedAreas: [LC.ball, LC.gate],
-    namedNpcs: [CC.scholars, CC.dragon, CC.cloaked],
+    namedNpcs: [
+        [CC.scholars, '3 academics shout and argue, sometimes polling other patrons in.'], 
+        [CC.dragon, 'A dragon sites alone, drinking from a barrel of wine, looking melancholy'], 
+        [CC.cloaked, 'A woman in a purple cloak, talking to herself and laughing.']
+    ],
     events: [],
     randomNpcs: [
         {
