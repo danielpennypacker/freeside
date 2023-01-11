@@ -43,6 +43,18 @@ function Location(props: LocationProps) {
             <th colSpan={2}>Descriptions</th>
           </thead>
           <tbody>
+            <tr>
+              <td>Inspiration</td>
+              <td className="boldText bigText flexEven">
+                {location.inspiration
+                  .split(",")
+                  .slice(0, 2)
+                  .map((name) => {
+                    return <div>{name}</div>;
+                  })}
+              </td>
+            </tr>
+
             {["exterior", "interior", "crowd", "detailOne", "detailTwo"].map(
               (stat) => {
                 return (

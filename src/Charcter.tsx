@@ -281,11 +281,13 @@ function Character(props: CharacterProps) {
           <th colSpan={2}>Quests</th>
         </thead>
         <tbody>
-          {character.dialogue.map((line, i) => {
+          {character.quests.map((line, i) => {
             return (
               <tr>
                 <td>{i + 1}.</td>
-                <td>"{line}"</td>
+                <td>
+                  {line[0]} <br />- {line[1]}
+                </td>
               </tr>
             );
           })}
@@ -294,46 +296,25 @@ function Character(props: CharacterProps) {
         </tbody>
       </table>
 
-      {/* === Rewards === */}
-      <table className="greyBlock">
-        <thead>
-          <th colSpan={2}>Rewards</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1.</td>
-            <td>
-              <span>
-                He'll offer you a share of the bounty from the incoming Convoy
-                Fleet.
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      {/* ==== Plot Information ==== */}
+      {/* ==== Misc ==== */}
       <table className="blueBlock">
         <thead>
-          <th colSpan={2}>Plot Connections</th>
+          <th colSpan={2}>Miscellaneous</th>
         </thead>
         <tbody>
-          {["plotFlower", "plotConvoy", "plotParty"].map((stat) => {
-            if (!anyCharacter[stat]) {
-              return null;
-            }
-
+          {anyCharacter.misc.map(([title, desc]: any) => {
             return (
               <tr>
                 <td className="plotInfoTitle">
-                  <span>{data.toTitle(stat)}</span>
+                  <span>{data.toTitle(title)}</span>
                 </td>
                 <td>
-                  <span>{anyCharacter[stat]}</span>
+                  <span>{desc}</span>
                 </td>
               </tr>
             );
           })}
+          {character.misc.length === 0 && noneRow}
         </tbody>
       </table>
     </div>

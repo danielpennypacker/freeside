@@ -153,6 +153,7 @@ table.brownBlock td {
   border-bottom: 1px dotted white;
   padding: 3px;
   font-size: 8pt;
+  vertical-align: top;
 }
 
 

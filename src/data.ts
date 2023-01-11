@@ -1,4 +1,5 @@
 import { CLIENT_RENEG_LIMIT } from "tls";
+import { Tracing } from "trace_events";
 
 export const getNpc = (id: number) => {
     return characters.filter((npc) => {
@@ -48,15 +49,19 @@ export enum CC {
 // Dialogue Type.
 export enum DT {
     introduction='introduction',
+    lore="lore",    
+    clue="clue",
+    quest="quest",    
+    loreClue="loreClue", 
+    character="character",
+    utility="utility" ,
     question="question",
     line="line",
     background="background",
     ideal="ideal",
     bond="bond",
-    flaw="flaw",
-    clue="clue",
-    lore="lore",
-    quest="quest",
+    flaw="flaw",    
+    favor="favor",
 }
 
 // Location Code.
@@ -128,6 +133,11 @@ export enum Skills {
     Survival = "Survival",
   }
 
+  export enum Miscs {
+    FlowerPlot = "FlowerPlot",    
+    Utility = "Utility",
+  }  
+
 
 export type Character =  {    
     code: CC;
@@ -167,12 +177,13 @@ export type Character =  {
     flaw?: string;
     skills: Skills[]
     rewards: string;
-    quests: string[];
+    quests: [string, string][];
     plotFlower: string;
     plotConvoy: string;
     plotParty: string;
     plotArena: string;
     plotKaiju: string;
+    misc: [Miscs, string][]
 }
 
 // ===== Characters ======================
@@ -182,7 +193,11 @@ export const characters: Character[] = [
     {
         code: CC.ann,        
         age: 19,
-        quests: [],
+        misc: [],
+        quests: [
+            ["Her potion will make peoples skin have a swirl of colors for a couple hours and then stop. You can use to plan a party, or just sell it to an interested party.", 
+            "A cut of whatever money you're able to ear"]
+        ],
         race: "human",
         notoriety: "None, totally new, and a bit too timid to earn attention",    
         page: 1,
@@ -238,9 +253,16 @@ export const characters: Character[] = [
     // ++++  C1 - Bozfield, Pirate Captain ++++
     {
         code: CC.boz,
-        quests: [],
+        misc: [],
+        quests: [[`Help attack the Convoy Fleet when it arrives. This isn't very 
+        good plan, and he'll fail on his own unless you help him.`, 
+        `He'll give you a percentage of the spoiles you get from the Convoy Fleet.`]],
         dialogue: [
             [DT.introduction, "Hello, have you come here to help my destroy the Convoy?"],
+            [DT.ideal, "Us pirates hate empires of all forms! By attacking the ships of the powerful, we keep the real criminals in check!"],
+            [DT.clue, "We know a Convoy fleet will be arriving in everal days, and we plan to protect Freeside at all costs!"],
+            [DT.quest, "Join us! we're concocting a plan right now!"],
+
         ],
         age: 28,
         race: "human",
@@ -291,10 +313,18 @@ export const characters: Character[] = [
     },
     {
         code: CC.conrad,
-        quests: [],
+        misc: [],
+        quests: [
+            [`Make Freeside have a more positive impression of the Convoy. Go to the Fool's court and 
+            make people like the convoy.`, `100 Gold.`],
+        ],
         age: 45,
         dialogue: [
             [DT.introduction, "Well, aren't you a fins bunch, what would you like to know about the Convy?"],
+            [DT.lore, `The Convoy started 100 years ago as an aliance of cities.`],
+            [DT.lore, `They ran groups of ships together in order to protext against pirates, but became more organized over time.`],
+            [DT.quest, `Freeside needs to understand how beneficial the Convoy will be. 
+                Go to the Fool's court and put in a good word for us.`]
         ],
         race: "human",
         notoriety: "No one really knows him, he could be any Convoy official to most people.",    
@@ -344,10 +374,14 @@ export const characters: Character[] = [
     },
     {
         code: CC.crap,
-        quests: [],
+        misc: [],
+        quests: [[`Beat him in hand to hand combat.`, `Become leader of the Orc gang, and have 6-12 orcs available to do your bidding.`]],
         age: 100,
         dialogue: [
-            [DT.introduction, "So, you think you can beat crap face?"],
+            [DT.introduction, "Me Crap Face, the strongest Orc in the world!"],
+            [DT.ideal, `We don't fight for kings or for gold, only for strength!`],
+            [DT.bond, "We're living a perfect life here, I'll do anything to protect that."],
+            [DT.quest, "You think you're tough? Fight me bare handed!"],
         ],
         race: "orc",
         notoriety: "Most people know he's the current orc boss, but they know it changes frequently.",    
@@ -396,12 +430,23 @@ export const characters: Character[] = [
     },
     {
         code: CC.cloaked,
-        quests: [],
+        misc: [],
+        quests: [
+            [`Kill May and the 2-4 other current Flower Eaters`, 
+        `She'll let you joing the Flower Eater immortality club.`],
+        [`Destroy the Convoy base, or attack the Convoy when they come to the Freeeside, 
+        or prevent them from staying on Freeside at all.`, 
+        `If you don't, she'll try to kill you.`]
+    ],
         age: 0,
         race: "human.",
         notoriety: "Only the other flower eaters know what she's doing. About a dozen people suspect she exists, but don't know her exact nature.",    
         dialogue: [
-            [DT.introduction, "Hmmm, I havn't see you around here. Hehe, what gives you pleasure?"],
+            [DT.introduction, "Hmmm, I havn't see you around here."],
+            [DT.clue, `I've lived in a Freeside for a long time, I hope it never changes.`],
+            [DT.question, `What gives you pleasure? What would you do anything for?`],
+            [DT.quest, `I've got some people I need dealt with, perhaps you'd like to help me? 
+                Your reward will be... imense.`],
         ],
         page: 1,
         id: 1,
@@ -448,11 +493,23 @@ export const characters: Character[] = [
     },
     {
         code: CC.artok,
-        quests: [],
+        misc: [],
+        quests: [[`Bring him a block of marbel from the Yards.`, 
+        `Entrance into Club Deluxe`]],
         age: 60,
         race: "human",
         dialogue: [
             [DT.introduction, "Hello travellers, no doubt you're here to hear about my single world theory?"],
+            [DT.background, "I was working on a sculpture one day, and I realized something!"],
+            [DT.ideal, `All this talk about multiple universes, it's just a fantasy! 
+                Everyone wants to believe there's some better world out there, but it's just a trick!
+                A trick the powerful use to manipulate us!`],
+            [DT.ideal, `Our villiage commune already is the ideal society! 
+                It's not perfect but it's as good as it gets. Everyone in the districts thinks
+                they're working towards something great, but we've already found it!`],
+            [DT.clue, `Marbles been awfully hard to come by recently. 
+                Someone's building something big, but I haven't seen any new buildings recently?`],
+            [DT.background, "I was working on scultures one day, and I realized something!"],
         ],
         notoriety: "Considered a local eccentric in the comune who talks a little too much.",    
         page: 1,
@@ -500,12 +557,21 @@ export const characters: Character[] = [
     },
     {
         code: CC.ban,
-        quests: [],
+        misc: [],
+        quests: [['Roleplay and share a truth', 
+            `She'll tell the PC's the true alignemnt of an NPC they've met. 
+            If there's a monk in the party, she'll tell 2 NPCs.`]],
         age: 45,
         race: "human",
         notoriety: "Has a small group of followers, but she tries to not encourage them.",    
         dialogue: [
-            [DT.introduction, "Welcome fellow beings. What truths shall we share?"],
+            [DT.introduction, "Welcome fellow beings."],
+            [DT.lore, `Freeside has been a place of struggle for man generations.`],
+            [DT.lore, `We live in an age of strife, there is nothing to do but watch it,
+                and not let ourselves be consumed by the storm.`],
+            [DT.question, `What truths do you wish to share?`],
+            [DT.utility, `Hold my hand and think of someone you've met here. 
+                I will tell you their true nature.`],
         ],
         page: 1,
         id: 1,
@@ -552,12 +618,17 @@ export const characters: Character[] = [
     },
     {
         code: CC.bosph,
-        quests: [],
+        misc: [],
+        quests: [[`Become fighters in the Areana`, 
+        `A cut of the winnings, along with fame an influence.`]],
         age: 25,
         race: "tiefling",
         notoriety: "Everyone who pays attention to the areana knows her as a promoter.",    
         dialogue: [
-            [DT.introduction, "You seem like a harty bunch, want to have a go in the areana?"],
+            [DT.introduction, "Welcome welcome! Come see the greatest warriors battle for fame and glory!"],
+            [DT.lore, "Don't worry, we've got got healers all around the areana, no one gets hurt... perminetly."],
+            [DT.loreClue, "Winning in the areana will lead to fame and influence throughout Freeside!"],
+            [DT.quest, "You seen like a hearty bunch, why not sign up for a fight?"],
         ],
         page: 1,
         id: 1,
@@ -604,13 +675,18 @@ export const characters: Character[] = [
     },
     {
         code: CC.caspian,
-        quests: [],
+        misc: [],
+        quests: [[`See which of the PC's can make the monst money in a week.`, 
+        `Become his new assistant. This will give alot of money, and a lot of wealthy.`]],
         age: 19,
         race: "Half Elf",
         notoriety: "Know in all as Freeside as a brilliant merchant and business person.",    
         page: 1,
         dialogue: [
             [DT.introduction, "Ah new friends, I am Caspian, a humble merchant."],
+            [DT.ideal, "There are only 2 activities being engage in, trade, and war. And only trade brings peace."],
+            [DT.lore, "The Convoy has become a powerful force. I doubt we could prevent them having a foothold in Freeside, but if we work with them, we may be able to contain them."],
+            [DT.quest, "Come back to me in 5 days, whichever of you has the most money, I'll employ as my new advisor."],
         ],
         id: 1,
         name: "Caspian",
@@ -655,12 +731,17 @@ export const characters: Character[] = [
     },
     {
         code: CC.chit,
-        quests: [],
+        misc: [],
+        quests: [[`Fight in his Pyschic VR encounter.`, 
+        `A keychain that shows the strongest monster you fought.`]],
         age: 99999,
         race: "",
         notoriety: "",    
         dialogue: [
-            [DT.introduction, "Come, battle, struggle, and you shall be rewarded."],
+            [DT.quest, "Come, battle, struggle, and you shall be rewarded."],
+            [DT.lore, "When the Void Heretic returns to consume the stars, the energy of your violent struggle shall sustain me at the infinite-infinitesimal-battle"],
+            [DT.lore, "Feel blessed that your minute existence will aid me during the collapse of the helix dimension."],
+            [DT.loreClue, "You would be driven mad if you lived for an ioata of my lifespan."],                        
         ],
         page: 1,
         id: 1,
@@ -693,10 +774,10 @@ export const characters: Character[] = [
         visualDescription: "A blob of shifting colors and dimensions with tenticles that suction onto people's heads.",
         introduction: "Come, battle, and you shall be rewarded.",
         question: "What do you struggle for?",
-        background: "When the Void Heretic returns to consume the stars, the energy of your violent struggle shall sustain me at the infinite-infinitesimal-battle",
-        ideal: "Feel blessed that your minute existence will aid me during the collapse of the helix dimension.",
+        background: "",
+        ideal: "",
         bond: "",
-        flaw: "The time it would take you to tire of immortality is but a moment of my existence.",
+        flaw: "",
         skills: [],
         rewards: "A small pedant for each player based on the toughest monster they fought.",
         plotFlower: "",
@@ -707,12 +788,16 @@ export const characters: Character[] = [
     },
     {
         code: CC.dark,
+        misc: [],
         quests: [],
         age: 0,
         race: "human",
         notoriety: "Only a couple shady people know about him.",   
         dialogue: [
             [DT.introduction, "I'm Darkblade dispencer of holy vengence"],
+            [DT.lore, "I'm the Revenger on Freeside. We used to be employed to kill for revenge. But our clients have dried up, and I'm the only one left."],
+            [DT.loreClue, "Freeside used to be much more excited. Now there's just a disentigration every couple years."],
+            [DT.utility, `Bring me 10,000 gold and someone who needs to be killed, and I'll do it.`],
         ], 
         page: 1,
         id: 1,
@@ -759,12 +844,18 @@ export const characters: Character[] = [
     },
     {
         code: CC.dragon,
-        quests: [],
+        misc: [],
+        quests: [
+            [`Find out what happened to his old Co-star May.`, 
+            `1000 Gold.`]],
         age: 200,
         race: "dargon",
         notoriety: "He's a regular at this bar.",    
         dialogue: [
             [DT.introduction, "Ah, are you fellow lovers of the Opera? Tell me, what's you favorite?"],
+            [DT.loreClue, `I was once a popular Opera performer, but about 100 years ago my co-star May disapeared. She always played the maiden while I played, well, the dragon!`],
+            [DT.loreClue, `I suppose she's passed by now, but I wish I was able to say goodbye. It's weighed heavy on my heart the last 100 years, and I haven't been able to perform.`],
+            [DT.quest, `Here's an old painting of her. If you could find out what happened to her, I would reward you greatly.`],
         ],
         page: 1,
         id: 1,
@@ -811,11 +902,25 @@ export const characters: Character[] = [
     },
     {
         code: CC.lobi,
+        misc: [],
         quests: [],
         age: 16,
         race: "halfling",
         dialogue: [
             [DT.introduction, "Hi! Did you know Freeside history goes back more thatn 2000 years?"],
+            [DT.lore, `Feeside has never had a king, or any ruling body! For the last 
+                200 years it's been roughly split into 3 districts, Fire for Entertainment,  Water for Commerce, and Earth for shipbuilding.`],
+            [DT.loreClue, `Even though Freeside has never had it's own King or Queen, it's been conqured by 27 empires in 
+                over it's history. If you haven't seen the Tomb of Empires at the Dead Gate, it tells you all the empires.
+                Although if you want, I can tell you all of them!`],
+            [DT.loreClue, `So the founders of Freeside are mostly mythical, there's no real record of who they were. 
+                There is a story about a 'Guardian' they had to protect something valuable on the isalnd. 
+                I'm sure it's true, but it was a so long ago, it could have been anything.`],
+            [DT.loreClue, `Honestly I'm more interested in recording contempry Freeside history, 
+            not many people care about preserving history here. I'm really interested in the 
+            disentigrations that seem to happen every couple years. They've been going on for about 300
+            years, but there haven't been any good clues about what happens. Since the body is destroyed, 
+            there's no way to resurect the victim! Some people have confessed to them, but they're always shown to be lying.`],
         ],
         notoriety: "People are used to her talking their ears off at the library.",    
         page: 1,
@@ -863,12 +968,21 @@ export const characters: Character[] = [
     },
     {
         code: CC.planithr,
-        quests: [],
+        misc: [],
+        quests: [[`Help throw a party that out does the Eternal Ball for 1 night.`, 
+        `A cut of the profits.`]],
         age: 23,
         race: "Half elf",
         notoriety: "One of the most popular and coolest people in freeside.",    
         dialogue: [
-            [DT.introduction, "What a handsome bunch, what brings you to our fair city?"],
+            [DT.introduction, "I'm putting together a new party, what brings you to the bank?"],
+            [DT.lore, `The Eternal Ball has been going contiuously for 100 years, 
+                and it's been the largest party for the last 50. I Just think we could use something new.`],
+            [DT.loreClue, `It just feels like things haven't been changing here as much 
+            as they used to. Like someones keeping things the same. I almost WANT the convoy 
+            to come here just to shake things up a litte`],
+            [DT.quest, `Well if you're ever interested in shaking things up, feel free to look me up. 
+                I'd love to have some help planning my party.`],
         ],
         page: 1,
         id: 1,
@@ -915,14 +1029,20 @@ export const characters: Character[] = [
     },
     {
         code: CC.scholars,
-        quests: [],
+        misc: [],
+        quests: [[`Just engage with them and answer their questions.`, 
+        `A free pass to the library.`]],
         age: 75,
         race: "mixed",
         notoriety: "Known as regulars at the club",    
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Ah yes, you bunch, come here, we've got a question for you?"],
+            [DT.introduction, "Ah yes, you bunch, come here, we've got a question for you. What is wrong with the world today?"],
+            [DT.lore, "(First Scholar) Well see, I think people don't work hard enough, it's just have fun with this and that, but at the end of the day, what have they got!?"],
+            [DT.lore, "(Second Scholar) No, no, no! The Problem is people work too hard! They're so focised on their goal, they miss out on life's small joys!"],
+            [DT.lore, "(Thrid Scholar) You're both wrong! The problem is people have too many choices! They never feel confident if they're doing the right thing!"],
+            [DT.lore, "Well, what do you think?"],
         ],
         name: "Pix, Wix, and Dix",
         title: "Arguing scholars",
@@ -968,13 +1088,23 @@ export const characters: Character[] = [
  
     {
         code: CC.torbin,
-        quests: [],
+        misc: [],
+        quests: [[`Try to get the Orcs to move their bar and community.`, `1000 Gold.`]],
         age: 50,
         race: "Dwarf",
         notoriety: "Known as the head of the yards",    
         page: 1,
         dialogue: [
-            [DT.introduction, "Get out of my way! Who are you anyways? What are you doing here!?"],
+            [DT.introduction, "Get out of my way! Who are you anyways? you look like an enterprising bunch?"],
+            [DT.lore, `I'm the head of the Yards, and all the ship building here. 
+                They don't like leaders much in Freeside, but we're the ones who get things done!`],
+            [DT.loreClue, `Ah, but the Convoy, they know how to get things done! They're organized,
+            they promote trade, peace, and they keep those freeloading Pirates in check!`],
+            [DT.loreClue, `I think people in Freeside could learn a lot from the Convoy, I hope 
+            we get to work with them more and more.`],
+            [DT.quest, `In fact, I could use a favor. There's this Orc bar that's right on some 
+            prime real estate for where the Convoy might want to build a wharf. How about you
+            go there, beat their chief in a fight, and then see if you can get them to move.`],
         ],
         id: 1,
         name: "Torbin",
@@ -1020,7 +1150,8 @@ export const characters: Character[] = [
     },
     {
         code: CC.trap,
-        quests: [],
+        misc: [],
+        quests: [[`Find the book that controls the guardian.`, `300 Gold.`]],
         age: 45,
         race: "Human",
         notoriety: "Seen as a regular loner eccentric.",    
@@ -1028,6 +1159,12 @@ export const characters: Character[] = [
         id: 1,
         dialogue: [
             [DT.introduction, "Oh hello, would you be interested in helping a poor old scholar like me out?"],
+            [DT.loreClue, "No one believes me, the fools! But I've found evidance, the Guardian of Freeside is real!"],
+            [DT.lore, `The original founders of Freeside were an exiled cult from a forgotten empire. 
+            They summoned the Guardian to protect them, but something happened to the cult, and the knowledge was forgotten.`],
+            [DT.quest, `I've found a clue hard to evidence of the Guardian. There's a secret entrance nearby. 
+            I can show you where. I've looked myself, but there were some kinda of creatures down there, and I'm far too frail 
+            to go myself. Please, won't you help me?`],
         ],
         name: "Trap",
         title: "Obssesed scholar.",
@@ -1072,6 +1209,7 @@ export const characters: Character[] = [
     },
     {
         code: CC.wanwan,
+        misc: [],
         quests: [],
         age: 99999,
         race: "Diety",
@@ -1080,6 +1218,12 @@ export const characters: Character[] = [
         id: 1,
         dialogue: [
             [DT.introduction, "Ah friends, so good to see you again, have a drink!"],
+            [DT.lore, `Yes well if you didn't know, I'm actually an immortal god, hic. 
+            I got kicked out of the heavenly kingdom 10,000 (?) years ago. I just ruined one too mnay baquets in the Heavenly Kingdom, and I was cast out!`],
+            [DT.lore, "I've been all over, but I call Freeside home. It really does have the best parties in the world!"],
+            [DT.loreClue, `Just watch out for a lady in a purple robe. They've been around a while, and they've never had a drink with me! I don't trust anyone who doesn't drink!`],
+            [DT.loreClue, `Ah yes, I actually came here before the whole city was built, 
+            there was some kind of flower everyone was so worried about? It wasn't something that interested me though!`],
         ],
         name: "Wanwan",
         title: "Exiled party god.",
@@ -1103,7 +1247,7 @@ export const characters: Character[] = [
         },
         spells: [],
         alignment: "Chaotic Neutral",
-        roleplayInspiration: "Bachus, Mad Hatter.",
+        roleplayInspiration: "Bachus, Mad Hatter, Monkey King",
         motivation: "Is contrantly drunk and just wants to have fun.",
         dmNotes: "A vague clue giver that can show up anywhere, anytime.",
         characterConnections: [],
@@ -1124,14 +1268,25 @@ export const characters: Character[] = [
     },
     {
         code: CC.zaza,
+        misc: [],
         age: 40,
-        quests: [],
+        quests: [
+            [`Investigate who's desitigrating people.`, `1000 Gold.`],
+            [`Sneak into the Convoy office.`, `1000 Gold.`]
+        ],
         race: "Human",
         notoriety: "She's the most influencial task maker in the Fire district.",    
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Hm, I haven't seen you before, do you know who I am?"],
+            [DT.introduction, "Hm, I haven't seen you before, do you know who I am? I'm one of Freesides biggest entertainment"],
+            [DT.lore, `The Convoy claims they're not an empire, but that's what makes them so insidious.`],
+            [DT.lore, `I've seen how the Convoy operates. First they set up a small base, then a port, 
+            then they slowly expand until they control an entire city.`],
+            [DT.ideal, `Freeside is uterly unique in the world, and is a center of art and creativity. I want to preserve that at all costs.`],
+            [DT.quest, `I think we can find evidence that the Convoy has deeper plans. I want you to break into their office and see what you can find.`],
+            [DT.quest, `I'm worried about these disentigrations. I've been investigating for sometime, and i'll 
+            I've heard is there's someone in a purple cloak sometimes seen nearby. Please search around Freeside and tell me what you can find.`],
         ],
         name: "Zaza",
         title: "Top play priducer.",
@@ -1176,7 +1331,8 @@ export const characters: Character[] = [
     },
     {
         code: CC.yondo,
-        quests: [],
+        misc: [],
+        quests: [["Bring him a petal from The Flower, although he doesn't really think it exists.", '']],
         age: 120,
         race: "3 headed person",
         notoriety: "One more the most popular food stalls.",    
@@ -1184,6 +1340,10 @@ export const characters: Character[] = [
         id: 1,
         dialogue: [
             [DT.introduction, "Fried, Grilled, or steamed Berry patties?"],
+            [DT.lore, "So, we've been argugin about the best way to prepare our dishes?"],
+            [DT.lore, "(First head) I saw you plan everything out from the begining, then don't change anything, and see how it turns out."],
+            [DT.lore, "(Second head) Well I say, you don't measure anything at all! Just taste and and adjust until you get it right!"],
+            [DT.lore, "(Third head) I don't care either way! What do you all think?"],
         ],
         name: "Yondo",
         title: "3 headed chef.",
@@ -1228,7 +1388,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.may,
-        quests: [],
+        misc: [],
+        quests: [[`Kill Lapish. If you corner her, she'll still the beans 
+        about the Flower, but she warns you how dangerous they are.`, 
+        `None.`]],
         age: 150,
         race: "human",
         dialogue: [
@@ -1280,13 +1443,17 @@ export const characters: Character[] = [
     },
     {
         code: CC.queen,
-        quests: [],
+        misc: [],
+        quests: [[`Do a good job roleplaying with her.`,
+         `She'll let you speak to the court and support you ideas.`]],
         age: 60,
         race: "human",
         notoriety: "Everyone knows the current queen of the fools court, but they don't last more than a year or two.",    
         page: 1,
         dialogue: [
             [DT.introduction, "I am the Queen of all who enter this court, and just who are you!?"],
+            [DT.lore, "I wish to occupy the island of Flib Flab, so that my makeup ships may tranfer supplies. They have no way of resisting my fleets!"],
+            [DT.quest, "You seem to be from a small Kingdom too. What would you have me do with makeup factory? Would you deny me BEAUTY!"],
         ],
         id: 1,
         name: "The Queen",
@@ -1332,7 +1499,8 @@ export const characters: Character[] = [
     },
     {
         code: CC.gods,
-        quests: [],
+        misc: [],
+        quests: [[`Roleplay and engage with them.`, `A Wish Scroll.`]],
         age: 99999,
         race: "gods",
         notoriety: "Possibly recognizable gods to the PC's",    
@@ -1340,6 +1508,11 @@ export const characters: Character[] = [
         id: 1,
         dialogue: [
             [DT.introduction, "Welcome mortals, we've had such fun watching you."],
+            [DT.quest, "Let me ask you? How do we react to watching you mortals live your lives?"],
+            [DT.lore, "(First God) It makes me weep."],
+            [DT.lore, "(Second God) It makes me smile."],
+            [DT.lore, "(Third God) It makes me laugh."],
+            [DT.quest, "Ah, very insightful. Here, take this gift for your troubles."],
         ],
         name: "The 3 Gods",
         title: "Watching Freeside",
@@ -1384,11 +1557,16 @@ export const characters: Character[] = [
     },
     {
         code: CC.master,
+        misc: [],
         age: 25,
-        quests: [],
+        quests: [[`Burn down the pirate Base.`, `Conrads position and a cut of the trade.`]],
         race: "human",
         dialogue: [
-            [DT.introduction, "What do you want, I'm sure I've got something more important to be doing than talking to you lot."],
+            [DT.introduction, "What do you want. Do you know how valuable my time is?"],
+            [DT.lore, "I'm from the 8 famlies of the foudning captains of the convoy."],
+            [DT.lore, "Let's get things straight, when you're at the top like me, there's only one thing that matters, and that's money."],
+            [DT.loreClue, "The Convoy has some big plans with Freeside, but that idiot Conrad sure is taking his sweet time."],
+            [DT.quest, "You know that toilet all the Pirates get together at, you'd think some kind of accident might cause a fire there sooner or later?"],
         ],
         notoriety: "No one really knows him, he could be any Convoy official to most people.",    
         page: 2,
@@ -1452,6 +1630,7 @@ export interface Location {
     dmNotes: string;
     events: string[];
     randomNpcs: RandomNpc[];
+    inspiration: string;
 }
 
 // ===== Locations ======================
@@ -1459,6 +1638,7 @@ export const locations: Location[] = [
 {
     // ++++  L1 - Landing Area ++++
     name: "Theives Port",
+    inspiration: 'Disorganized port, busy crowds, carts coliding',
     code: LC.land,
     page: 1,
     id: 1,
@@ -1502,6 +1682,7 @@ export const locations: Location[] = [
     // ++++  L2 - Pirate Cafe ++++
     code: LC.pcafe,
     name: "Pirate Cafe",
+    inspiration: 'pirate hideout, raucus tavern, plans laid',
     exterior: "A ramshackle building with an ruckus party going on outside.",
     interior: "A large tavern and meeting hall with hundreds of flags on all the walls.",
     detailOne: "When ever someone passes out, they\"re dragged into a big nap room in the back.",
@@ -1540,6 +1721,7 @@ export const locations: Location[] = [
     // ++++  L3 - Convoy Building ++++
     name: "Convoy Office",
     code: LC.convoy,    
+    inspiration: "Small and boring, too boring..., What's really behind the door?",
     exterior: "A small 1 floor, freshly painted building with a Convoy flag.",
     interior: "A single room with a door to a barracks and a desk with a man sitting at it.",
     crowd: "Only one person politely waiting at the desk.",
@@ -1550,6 +1732,7 @@ export const locations: Location[] = [
     namedNpcs: [[CC.conrad, 'A busy middle aged man sorting through papers. He puts on a smile for the PCs']],
     events: [
         "Conrad will try to recuit the Convoy. His first assigment is to do a pro-Convoy story at the Fools Court.",        
+        "While talking to Conrad, 6 or Convoy guys come out from behind the door, but it seems like a lot for the size of the building.",        
     ],
     randomNpcs: 
         [
@@ -1566,6 +1749,7 @@ export const locations: Location[] = [
     // ++++  L4 - Orc Tavern ++++
     name: "Orc Tavern",
     code: LC.orc,    
+    inspiration: "Dothraki camp, 40k orks, This is kinda fun!",
     exterior: " huge yurt with crude paintings on the exterior and orcs mullings around.",
     interior: "Orcs and a couple non orcs mull around. Orcs ocasinially get in fist fights.",
     crowd: "Mostly orcs, but a couple non orcs are socializing. The fighs all end without deaths.",
@@ -1604,6 +1788,7 @@ export const locations: Location[] = [
 {
     name: "The Eternal Ball",
     code: LC.ball,    
+    inspiration: "Fantasy Rave, best party ever, everyone loves it",
     exterior: "A block size orantely decorated warehouse.",
     interior: "A series of large rooms with differnt kinds of party activities going on.",
     crowd: "A huge variety of people, dancing, socializing, eating, listening to performaces.",
@@ -1643,6 +1828,7 @@ export const locations: Location[] = [
 },
 {
     name: "The Bank",
+    inspiration: "1920's bank, Friendly but firm, Imposing",
     code: LC.bank,    
     exterior: "An almost perfectly square building with a fewer windows and high ceilings, about the size of a city block.",
     interior: "A small seating area with a queue to let people in. Then dozens of desks wil bankers and clients talking.",
@@ -1650,7 +1836,7 @@ export const locations: Location[] = [
     detailOne: "After shaking, the customers get a ring put on their finger.",
     detailTwo: "The bankers activate a zone of truth when around their desk when they start talking to you.",
     dmNotes: "Get loans for anything.",
-    connectedAreas: [LC.merchant],
+    connectedAreas: [LC.merchant, LC.library],
     namedNpcs: [[CC.planithr, 'A slieght well dressed man in line at the bank scribbles in a notebook.']],
     events: [],
     randomNpcs: [
@@ -1665,6 +1851,7 @@ export const locations: Location[] = [
 },
 {
     name: "Club Deluxe",
+    inspiration: "Elite club, great food, Guards are down",
     code: LC.club,    
     exterior: "A3 story building totally covered in gold.",
     interior: "The nicest spa/resort/restuaunt/bar you've ever been in. There's a 1000 gold 1 year membership fee for the party.",
@@ -1704,6 +1891,7 @@ export const locations: Location[] = [
 },
 {
     name: "Hinterland Commune",
+    inspiration: "Egalitarian, idylic villiage, slightly uncool",
     code: LC.comune,    
     exterior: "A cozy looking villaige",
     interior: "Not much decoration, but very well laid out villaige",
@@ -1741,6 +1929,7 @@ export const locations: Location[] = [
 {
     name: "Fools Court",
     code: LC.court,    
+    inspiration: "Fair tale LARP, gossip and drama, silly and serious",
     exterior: "A tiny fantasy castle, like disney land.",
     interior: "A huge count with high ceilings looking out over a fantasy landscape.",
     crowd: "Everys dressed crazy and overacting, pretending they're from fantasy kingdoms.",
@@ -1778,7 +1967,8 @@ export const locations: Location[] = [
     ]
 },
 {
-    name: "Ghost House",
+    name: "Ghost Caves",
+    inspiration: "Spooky entrace, abandoned hideout, cobwebs",
     code: LC.ghost,    
     exterior: "A large decaying mansion blcoking a mountain pass. ",
     interior: "Rotting walls, cobwebs, damaged paintings and artifacts.",
@@ -1802,11 +1992,12 @@ export const locations: Location[] = [
 {
     name: "The Grand Gallery",
     code: LC.gallery,    
+    inspiration: "Fantasy mall, everything's here, Guards are down",
     exterior: "A building built around the street with a glass sealing covering it.",
-    interior: "3 stories of shopws of all kinds ",
-    crowd: "",
-    detailOne: "",
-    detailTwo: "",
+    interior: "3 stories of shops of all kinds ",
+    crowd: "Well to do small groups of shoppers examining goods.",
+    detailOne: "A large demon with 3 gremils carrying boxes for him",
+    detailTwo: "A couple haggling over a talking sword, and the sword is also haggling over how much it's worth.",
     dmNotes: "THe players can purchase any official magic item here.",
     connectedAreas: [LC.yards, LC.gate, LC.merchant],
     namedNpcs: [],
@@ -1837,6 +2028,7 @@ export const locations: Location[] = [
 },
 {
     name: "The Dead Gate",
+    inspiration: "Sleepy ruins, sunny cemetary, relection",
     code: LC.gate,    
     exterior: "A crumbling wall and ruins around a crumbling doorless gate on the main road to the hinterlands.",
     interior: "Around the ruins is a huge old cemetary filled with statues and tombs.",
@@ -1866,6 +2058,7 @@ export const locations: Location[] = [
 },
 {
     name: "Gladiator Areana",
+    inspiration: "Roman Coliseum, WWF show, excitment",
     code: LC.glad,    
     exterior: "A huge areana like the Coliseum. Magic made illusions and fireworks play outside.",
     interior: "A colorful crowd with vendors walking around. It's like one big party.",
@@ -1903,6 +2096,7 @@ export const locations: Location[] = [
 {
     name: "Dog Library",
     code: LC.library,    
+    inspiration: "Old library, dog librarians, nervous ecitment",
     exterior: "A large library with a statue of a sitting dog with a book in it's mouth.",
     interior: "A reading area with people reading books. Next to it is a roped off area of endless seeming stacks of books. Visitors walk up to the ropes with offerings of food and a dog comes up to take. The dog then runs to fetch the book and bring it back. Books cannot be taken out of the library.",
     crowd: "A mix of scholars and students from all over.",
@@ -1910,7 +2104,7 @@ export const locations: Location[] = [
     detailTwo: "The dogs will snarl at anyone that gets too close to crossing the rope, but are otherwise very friendly.",
     dmNotes: "Meet Dr. Trap. Mood.",
     // No one knows when the library was built or where the dogs came from. Let players get creative with the books they might ask for.",
-    connectedAreas: [LC.merchant],
+    connectedAreas: [LC.bank],
     namedNpcs: [
         [CC.lobi, 'A young student looks up occasioanlly from a pile of books, trying to engage passersby.'], 
         [CC.trap, 'A haggered looking Academic carefully eyes the PCs.']
@@ -1929,13 +2123,14 @@ export const locations: Location[] = [
 {
     name: "Merchant Plaza.",
     code: LC.merchant,    
+    inspiration: "Renesance Plaza, Fantasy food court, Deals made",
     exterior: "A large plaza with food stalls all around the edges.",
     interior: "Merchants are walking around making deals and signing contracts. Lots of foot traffic around the food stalls.",
     crowd: "All variety of merchants and sailors making deals. The more jewerlly people wear, the more attention they get.",
     detailOne: "All deals are public and a crowd watches the negotiants. When a deal is completed, a cheer goes up.",
     detailTwo: "There's a giant talking chicken making omletes from her own eggs.",
     dmNotes: "Players meet Ann or Caspian.",
-    connectedAreas: [LC.glad, LC.gate, LC.bank, LC.library],
+    connectedAreas: [LC.glad, LC.gate, LC.bank],
     namedNpcs: [
         [CC.caspian, 'A young man, covered in jewels, stands at the center of a group of merchants, trying to make deals.'],
         [CC.ann, 'A confident, but unadorned female captain is failing to get anyones attention.'],
@@ -1968,6 +2163,7 @@ export const locations: Location[] = [
 },
 {
     name: "The Yards",
+    inspiration: "Steampunk, Fantasy workshop, Busy workers",
     code: LC.yards,    
     exterior: "A buisey ship building aread full or warehouses and ports.",
     interior: "Hustling and busling, unloading ships, building new ones, and repairing them.",
@@ -2007,6 +2203,7 @@ export const locations: Location[] = [
 },
 {
     name: "Opera Caberte",
+    inspiration: "Speakeasy, Weimar Cabaret, Smokey lounge.",
     code: LC.opera,    
     exterior: "A bar you have to walk downstairs to.",
     interior: "A smokey lounge a caberete with opera being performed on a small stage.",
@@ -2047,6 +2244,7 @@ export const locations: Location[] = [
 },
 {
     name: "Mound",
+    inspiration: "Empty pasture, small stonhendge, quite",
     code: LC.mound,    
     exterior: "A small hill with a stone piller on it.",
     interior: "There's writting on the stone pillar",
