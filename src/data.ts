@@ -143,7 +143,7 @@ export type Character =  {
     code: CC;
     age: number;
     race: string;
-    notoriety: string;
+    detailOne: string;
     page: number;
     id?: number;
     dialogue: [DT, string][],
@@ -159,7 +159,6 @@ export type Character =  {
     armorClass: number;
     hitPoints: number;
     speed: number;
-    background: string;
     passivePerception: number;
     proficiencyBonus: number;
     attack?: Attack;
@@ -168,21 +167,9 @@ export type Character =  {
     roleplayInspiration: string;
     motivation: string;
     dmNotes: string;
-    characterConnections: CharacterConnection[];
-    visualDescription: string;
-    introduction?: string;
-    question?: string;
-    ideal?: string;
-    bond?: string;
-    flaw?: string;
-    skills: Skills[]
-    rewards: string;
-    quests: [string, string][];
-    plotFlower: string;
-    plotConvoy: string;
-    plotParty: string;
-    plotArena: string;
-    plotKaiju: string;
+    visualDescription: string;    
+    skills: Skills[]    
+    quests: [string, string][];    
     misc: [Miscs, string][]
 }
 
@@ -199,7 +186,7 @@ export const characters: Character[] = [
             "A cut of whatever money you're able to ear"]
         ],
         race: "human",
-        notoriety: "None, totally new, and a bit too timid to earn attention",    
+        detailOne: "None, totally new, and a bit too timid to earn attention",    
         page: 1,
         id: 1,
         dialogue: [
@@ -233,21 +220,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Newvous Starlet, Princess Leia, Mulan",
         motivation: "Wants to command her own fleet one day",
         dmNotes: "She's looking to sell a ship full of a fun new potion",
-        characterConnections: [],
         visualDescription: "A plainly dressed young woman, standing on her own and being ignored.",
-        question: "How much do you think my potion is worth?",
-        background: "I don't want to be a nobody like the people from my villiage, so I came here.",
-        ideal: "I've got a dream to be a big merchant one day.",
-        bond: "Once I've become something, I can return to my villiage and make them proud.",
-        flaw: "I know what I want, and don't think you can change my mind.",
-        skills: [Skills.AnimalHandling, Skills.Athletics, Skills.Nature],
-        rewards: "She has access to a potion what makes the drinkers flowing tie-dye colors for a couple hours, and harmlessly wears off.",
-        plotFlower: "If she finds out about she'll be tempted to try and sell it, but won't betray the party.",
-        plotConvoy: "She doesn't want to join the Convoy, but admires them.",
-        plotParty: "Her potion will be a big boon to the party.",
-        plotArena: "",
-        plotKaiju: ""
-    
+        skills: [Skills.AnimalHandling, Skills.Athletics, Skills.Nature],    
     },
 
     // ++++  C1 - Bozfield, Pirate Captain ++++
@@ -266,7 +240,7 @@ export const characters: Character[] = [
         ],
         age: 28,
         race: "human",
-        notoriety: "All Freeside",    
+        detailOne: "All Freeside",    
         page: 1,
         id: 1,
         name: "Bozfield",
@@ -294,22 +268,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Gaston, Che Guevara, Han Solo.",
         motivation: "Wants to recruit people to fight the Convoy.",
         dmNotes: "This is the most anti-Convoy NPC.",
-        characterConnections: [],
         visualDescription: "The most attractive person any of the players have ever seen. A group of people swoon around him, doing whatever he wants.",
-        introduction: "I am Bozfield, the most famous pirate of the seas!",
-        question: "What do you think of the Convoy",
-        background: "I lived my whole life with the pirates",
-        ideal: "My people fight all empires, shinning a beacon of freedom to the world.",
-        bond: "I will gladly give my life for my people",
-        flaw: "Im not used to people saying no to me.",
-        skills: [Skills.Performance, Skills.Persuasion, Skills.Athletics],
-        rewards: "We think there\"s a fleet of Convoy ships arriving soon.",
-        plotFlower: "None. He would destory the flower if he found out about it.",
-        plotConvoy: "He's the main anti-Convoy NPC/Leader.",
-        plotParty: "will attend and try to be a big deal",
-        plotArena: "Will meet the players after they get into club delux",
-        plotKaiju: "hell try and fight"
-    
+        skills: [Skills.Performance, Skills.Persuasion, Skills.Athletics],    
     },
     {
         code: CC.conrad,
@@ -327,7 +287,7 @@ export const characters: Character[] = [
                 Go to the Fool's court and put in a good word for us.`]
         ],
         race: "human",
-        notoriety: "No one really knows him, he could be any Convoy official to most people.",    
+        detailOne: "No one really knows him, he could be any Convoy official to most people.",    
         page: 2,
         id: 2,
         name: "Conrad",
@@ -355,22 +315,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Used Car Salesman, Convoy Fanboy, Chip on his Shoulder",
         motivation: "Want's to establish a new Convoy Port in Freeside, and be to promoted it's manager.",
         dmNotes: "He's a pro-Convoy mission giver. He's leading the building of the secert wharf.",
-        characterConnections: [],
         visualDescription: "An aging but healthy sailor. Well kept, but lightly decorated uniform.",
-        introduction: "Hello, I'm Conrad, Chief of this outpost. How can the Convoy help you?",
-        question: "How much do you know about the Convoy?",
-        background: "I've been sailing merchant ships since I was a boy, and with the Convoy for the last 20 years.",
-        ideal: "Adventure and Trade are the meaning of life.",
-        bond: "The Convoy helps those who believe in peace and freedom.",
-        flaw: "There have been certain cities where the Convoy became a dominant force, but you can't blame us for having the best system.",
-        skills: [Skills.Insight, Skills.Survival, Skills.Stealth],
-        rewards: "We think there\"s a fleet of Convoy ships arriving soon.",
-        plotFlower: "If he finds out about it, he'll use it to get promoted.",
-        plotConvoy: "He wants the secret port to sucede and becomes it's new chief.",
-        plotParty: "Won't go, he works at night.",
-        plotArena: "Thinks it's a waste of time.",
-        plotKaiju: "He'll help organize to fight it. Even teaming up with enemies."
-    
+        skills: [Skills.Insight, Skills.Survival, Skills.Stealth],    
     },
     {
         code: CC.crap,
@@ -384,7 +330,7 @@ export const characters: Character[] = [
             [DT.quest, "You think you're tough? Fight me bare handed!"],
         ],
         race: "orc",
-        notoriety: "Most people know he's the current orc boss, but they know it changes frequently.",    
+        detailOne: "Most people know he's the current orc boss, but they know it changes frequently.",    
         page: 1,
         id: 1,
         name: "Crap Face",
@@ -412,21 +358,8 @@ export const characters: Character[] = [
         roleplayInspiration: "40k Orks, Cockny gang leader, boxing champ",
         motivation: "Wants to be the strongest, but also preserve the orc lifestyle.",
         dmNotes: "If the players beat him in hand-to-hand combat, they can lead an Orc gang.",
-        characterConnections: [],
         visualDescription: "A huge orc with only a fewer tatters of clothes and no weapons.",
-        introduction: "I'm Crap face, I'm the toughest orc in the world.",
-        question: "You looking for a fight?",
-        background: "Orcs from all over come here for the true purpose of life, fighting!",
-        ideal: "We don't fight for kings or for gold, only for strength!",
-        bond: "We're living a perfect life here, I'll do anything to protect that.",
-        flaw: "I don't care what happens on the rest of the island as long as we're left alone.",
         skills: [Skills.Intimidation, Skills.Athletics, Skills.Survival],
-        rewards: "If you beat him in a fist fight, you'll become the new Orc boss.",
-        plotFlower: "He doesn't care about it at all, but thinks immortality is for weaklings.",
-        plotConvoy: "He won't care about it unless he feels the orc neighborhood is threatened.",
-        plotParty: "The orcs can be used to provide security.",
-        plotArena: "He thinks fighting for prizes is stupid.",
-        plotKaiju: "They'll rally to help defend the city."    
     },
     {
         code: CC.cloaked,
@@ -440,7 +373,7 @@ export const characters: Character[] = [
     ],
         age: 0,
         race: "human.",
-        notoriety: "Only the other flower eaters know what she's doing. About a dozen people suspect she exists, but don't know her exact nature.",    
+        detailOne: "Only the other flower eaters know what she's doing. About a dozen people suspect she exists, but don't know her exact nature.",    
         dialogue: [
             [DT.introduction, "Hmmm, I havn't see you around here."],
             [DT.clue, `I've lived in a Freeside for a long time, I hope it never changes.`],
@@ -475,21 +408,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Joker, Serial Killer, Golum",
         motivation: "Wants to protect the flower at all costs, but has gone crazy from living so long and changing identities.",
         dmNotes: "Main Flower villian. They've been manipulating and disintigrating people for 300 years.",
-        characterConnections: [],
         visualDescription: "Very innocuious in a purple cloak.",
-        introduction: "Hello there, don't worry about my name.",
-        question: "I'm looking for some new friends, what brings you to Freeside?",
-        background: "I've lived in Freeside a long time. I hope it never changes.",
-        ideal: "I will live forever, and preserve the memories of those chosen to find the flower!",
-        bond: "All that matters is that me and my memories continue.",
-        flaw: "I was chosen to be the caretaker of the flower.",
         skills: [Skills.Insight, Skills.Perception, Skills.Persuasion],
-        rewards: "",
-        plotFlower: "She's gone crazy from eating the flower petals, and thinks she's been chosen as it's protector.",
-        plotConvoy: "She doesn't want the Convoy moving",
-        plotParty: "She'll show up, but keep to herself. She might try to sabotage it just to maintain the status quo of the Eternal Ball.",
-        plotArena: "None.",
-        plotKaiju: "she'll be happy that it gets summoned since it prevents people from coming to the island."    
     },
     {
         code: CC.artok,
@@ -511,7 +431,7 @@ export const characters: Character[] = [
                 Someone's building something big, but I haven't seen any new buildings recently?`],
             [DT.background, "I was working on scultures one day, and I realized something!"],
         ],
-        notoriety: "Considered a local eccentric in the comune who talks a little too much.",    
+        detailOne: "Considered a local eccentric in the comune who talks a little too much.",    
         page: 1,
         id: 1,
         name: "Artok",
@@ -538,22 +458,9 @@ export const characters: Character[] = [
         alignment: "Chaotic Good",
         roleplayInspiration: "Ranty guy at a cafe.",
         motivation: "",
-        dmNotes: "Gives clues about the Secret Wharf, Ghost House, and the politics of Freeside.",
-        characterConnections: [],
+        dmNotes: "Gives clues about the Secret Wharf, Ghost House, and the politics of Freeside.",        
         visualDescription: "Burly and wearing workshop clothes and covered in dust and dirt.",
-        introduction: "Well hello, what brings you travllers to our community.",
-        question: "Do you really think anyone in Freeside actually cares about each other?",
-        background: "I came to Freeside as a refugee, and look at the community I've become a part of. ",
-        ideal: "Everyone thinks there's other worlds out there, I don't believe it, there's just this one!",
-        bond: "I'll do anything to protect our commnue. It's my whole life.",
-        flaw: "No one in the districts has any morales, they're a bunch of self centered adult children!",
         skills: [Skills.Nature, Skills.History, Skills.Survival],
-        rewards: "",
-        plotFlower: "He can point people towards the ghost house.",
-        plotConvoy: "He doesn't actually care if the convoy moves in, he's not worried if the districts come or go.",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.ban,
@@ -563,7 +470,7 @@ export const characters: Character[] = [
             If there's a monk in the party, she'll tell 2 NPCs.`]],
         age: 45,
         race: "human",
-        notoriety: "Has a small group of followers, but she tries to not encourage them.",    
+        detailOne: "Has a small group of followers, but she tries to not encourage them.",    
         dialogue: [
             [DT.introduction, "Welcome fellow beings."],
             [DT.lore, `Freeside has been a place of struggle for man generations.`],
@@ -600,21 +507,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Aang, Splinter, Gainan",
         motivation: "",
         dmNotes: "She's a tool to reveal NPC alignments, and provide mood.",
-        characterConnections: [],
         visualDescription: "A plain grey robbed woman mediating on a cushion.",
-        introduction: "Hello seekers, I am Ban.",
-        question: "Who's true nature do you seek?",
-        background: "I am only a witness to the comings and goings of the world.",
-        ideal: "We live in an age of strife, bound to last another 10,00 years. All seek gain and conflict. What can we do but endure?",
-        bond: "I must bare witness to the truth of the world, and spread compassion.",
-        flaw: "None?",
         skills: [],
-        rewards: "She'll tell players the alignment of one NPC. Players just have to hold her hand and think of the NPC.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "If the players throw a good party, she'll show up and complement then on spreading joy.",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.bosph,
@@ -623,7 +517,7 @@ export const characters: Character[] = [
         `A cut of the winnings, along with fame an influence.`]],
         age: 25,
         race: "tiefling",
-        notoriety: "Everyone who pays attention to the areana knows her as a promoter.",    
+        detailOne: "Everyone who pays attention to the areana knows her as a promoter.",    
         dialogue: [
             [DT.introduction, "Welcome welcome! Come see the greatest warriors battle for fame and glory!"],
             [DT.lore, "Don't worry, we've got got healers all around the areana, no one gets hurt... perminetly."],
@@ -657,21 +551,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Don King, Circus ring leader, Street magician.",
         motivation: "Wants to find hidden gem fighters and make money off them.",
         dmNotes: "She'll get the players fighting in the Gladiator Areana.",
-        characterConnections: [],
         visualDescription: "A bousterous tiefling with exotic robes and causally casts cantrips while talking.",
-        introduction: "You look like a tough bunch, how about you take a swing in the areana?",
-        question: "Don't you wanna make some money, maybe get some fame while you're at it?",
-        background: "I've always been a bit flamboyant, this work suits me perfectly.",
-        ideal: "Well it never hurts to make a bit of gold while you're having some fun.",
-        bond: "Well, we've all got to look out for ourselves first.",
-        flaw: "Perhaps you could lose a match, just this once.",
         skills: [],
-        rewards: "",
-        plotFlower: "If she finds out about it she might try to make a buck off it.",
-        plotConvoy: "She can be swayed to whichever side makes more money, including rallying galdiators to fight for one side.",
-        plotParty: "She'll try to make money off it one way or another.",
-        plotArena: "She's the main entry to this plot.",
-        plotKaiju: ""    
     },
     {
         code: CC.caspian,
@@ -680,7 +561,7 @@ export const characters: Character[] = [
         `Become his new assistant. This will give alot of money, and a lot of wealthy.`]],
         age: 19,
         race: "Half Elf",
-        notoriety: "Know in all as Freeside as a brilliant merchant and business person.",    
+        detailOne: "Know in all as Freeside as a brilliant merchant and business person.",    
         page: 1,
         dialogue: [
             [DT.introduction, "Ah new friends, I am Caspian, a humble merchant."],
@@ -714,20 +595,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Business Sherlock Holms, Boy Genius, literally smarter than everyone else.",
         motivation: "Maintain trade, peace and the open exchange of ideas.",
         dmNotes: "He represents the moderate/middle ground in dealing with the Convoy.",
-        characterConnections: [],
         visualDescription: "Short young man, smartly dressed with little adornment.",
-        question: "So how do you think the good people of Freeside should handle the Convoy?",
-        background: "I was born here.",
-        ideal: "There are only 2 ways people interact, trade, and conflict, which one do you think I believe in?",
-        bond: "Freeside must continue no matter what. Just because it's survied many empires doesn't mean it'll go on forever.",
-        flaw: "Sometimes we must be willing to give things up in order to keep what really matters.",
         skills: [Skills.Insight, Skills.History, Skills.Investigation],
-        rewards: "",
-        plotFlower: "Will want to use it as a bargaining chip to maintain Freeside's Autonomy.",
-        plotConvoy: "Believes in letting them have some territory, but not too much.",
-        plotParty: "Will invest if he thinks it's a good idea.",
-        plotArena: "",
-        plotKaiju: "Will help rally people to fight it."    
     },
     {
         code: CC.chit,
@@ -736,7 +605,7 @@ export const characters: Character[] = [
         `A keychain that shows the strongest monster you fought.`]],
         age: 99999,
         race: "",
-        notoriety: "",    
+        detailOne: "",    
         dialogue: [
             [DT.quest, "Come, battle, struggle, and you shall be rewarded."],
             [DT.lore, "When the Void Heretic returns to consume the stars, the energy of your violent struggle shall sustain me at the infinite-infinitesimal-battle"],
@@ -770,21 +639,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Cthulu, Hellraiser, Dracula",
         motivation: "Gains power through the struggles of people in his VR simulation.",
         dmNotes: "A no stakes combat play area, and gives a token that will earn the PC's rcognition. Also mood.",
-        characterConnections: [],
         visualDescription: "A blob of shifting colors and dimensions with tenticles that suction onto people's heads.",
-        introduction: "Come, battle, and you shall be rewarded.",
-        question: "What do you struggle for?",
-        background: "",
-        ideal: "",
-        bond: "",
-        flaw: "",
         skills: [],
-        rewards: "A small pedant for each player based on the toughest monster they fought.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.dark,
@@ -792,7 +648,7 @@ export const characters: Character[] = [
         quests: [],
         age: 0,
         race: "human",
-        notoriety: "Only a couple shady people know about him.",   
+        detailOne: "Only a couple shady people know about him.",   
         dialogue: [
             [DT.introduction, "I'm Darkblade dispencer of holy vengence"],
             [DT.lore, "I'm the Revenger on Freeside. We used to be employed to kill for revenge. But our clients have dried up, and I'm the only one left."],
@@ -826,21 +682,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Killer Batman, Faceless man, edgelord.",
         motivation: "Killer for hire, but only for revenge",
         dmNotes: "Players can pay him to kill other NPCs.",
-        characterConnections: [],
         visualDescription: "A cloacked figure with a black bandana covering their lower face.",
-        introduction: "I'm Darkblade, the last assasin on Freeside.",
-        question: "Do you ",
-        background: "I worship the gods of revenge.",
-        ideal: "I'll kill anyone for 1000 as long as you can tell me why the deserve vengence.",
-        bond: "When I pass my god will judge me by the balance I've brought to the world.",
-        flaw: "I don't care who my target is, as long as long as someone wants revenge on them.",
         skills: [],
-        rewards: "He'll kill another NPC in a couple days after contracted. They can't be revived.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.dragon,
@@ -850,7 +693,7 @@ export const characters: Character[] = [
             `1000 Gold.`]],
         age: 200,
         race: "dargon",
-        notoriety: "He's a regular at this bar.",    
+        detailOne: "He's a regular at this bar.",    
         dialogue: [
             [DT.introduction, "Ah, are you fellow lovers of the Opera? Tell me, what's you favorite?"],
             [DT.loreClue, `I was once a popular Opera performer, but about 100 years ago my co-star May disapeared. She always played the maiden while I played, well, the dragon!`],
@@ -884,21 +727,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Retired Actor, Dramitc Performer, Tragic Diva",
         motivation: "Want's to know what happened to his old co-star",
         dmNotes: "Gives clues about the Flower plot.",
-        characterConnections: [],
         visualDescription: "A medium sized dragon wearing old, but well kept formal wear.",
-        introduction: "Hello, I am the great fading star of the old opera, Dragor.",
-        question: "So, what's the plot of your favorite opera?",
-        background: "Decades ago me and my co-star thrilled audiences. She played the maiden, and I the villianous dragon!",
-        ideal: "Nothings better than helping people believe good can triumph over evil.",
-        bond: "Clarissa disapeared 50 years ago, and I still think of her to this day.",
-        flaw: "I haven't been able to move on after her disapearance.",
         skills: [],
-        rewards: "He'll give the players 1000 gold if they can find out what happened to Clarissa.",
-        plotFlower: "Clarissa is one of the 5 people Lapith is currently keeping alive with the flower. Trying to track her down is an entry point to the flower plot.",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.lobi,
@@ -922,7 +752,7 @@ export const characters: Character[] = [
             years, but there haven't been any good clues about what happens. Since the body is destroyed, 
             there's no way to resurect the victim! Some people have confessed to them, but they're always shown to be lying.`],
         ],
-        notoriety: "People are used to her talking their ears off at the library.",    
+        detailOne: "People are used to her talking their ears off at the library.",    
         page: 1,
         id: 1,
         name: "Lobi",
@@ -950,21 +780,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Sheldon, Fanboy, History Nerd.",
         motivation: "She wants to tell everything about all the amazing history she knows.",
         dmNotes: "Used as a lore mouthpiece, and to answer other questions about Freeside.",
-        characterConnections: [],
         visualDescription: "You student with a pile of books occasanliy looking up and trying to say hi to people.",
-        introduction: "Hi, I'm Lobi, do you know that Freeside has actually been occupied by people for more than 6000 years?",
-        question: "Have you been to the Tomb of Empires yet? There you can see every Empire that's ever had control of Freeside!",
-        background: "I grew up here, did you know only 1 and 5 inhabitants of Freeside were born here?",
-        ideal: "Learning about history honors the lives and struggles of all those who came before us! Did you know that the districts only were solidified in the last 200 years?",
-        bond: "Oh, I'll be happy to just keep writting history books. We actually don't know who built the library or where the dogs came from. But the oldest stories of Freeside talk about 2 cults fighting over an object of immense value.",
-        flaw: "I could keep going all day! What else do you want to know about?",
         skills: [],
-        rewards: "",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.planithr,
@@ -973,7 +790,7 @@ export const characters: Character[] = [
         `A cut of the profits.`]],
         age: 23,
         race: "Half elf",
-        notoriety: "One of the most popular and coolest people in freeside.",    
+        detailOne: "One of the most popular and coolest people in freeside.",    
         dialogue: [
             [DT.introduction, "I'm putting together a new party, what brings you to the bank?"],
             [DT.lore, `The Eternal Ball has been going contiuously for 100 years, 
@@ -1011,21 +828,8 @@ export const characters: Character[] = [
         roleplayInspiration: "",
         motivation: "Want's to throw a party bigger than then Eternal Ball.",
         dmNotes: "Quest giver of the party planning sub-plot.",
-        characterConnections: [],
         visualDescription: "A thing attrative man in a fashionable white suit.",
-        introduction: "Well hello there, look at this handsome bunch. I'm Planithir. If you clearly weren't new, you'd know that.",
-        question: "What fun things bring you to Freeside?",
-        background: "I've been here for quite some time, I'm on the list for every party.",
-        ideal: "Fun and friends, what more is ther to life?",
-        bond: "Freeside is a place where people can be truely free. I want to keep it like that.",
-        flaw: "I will go down in history as the greatest host Freeside has ever known.",
         skills: [],
-        rewards: "",
-        plotFlower: "",
-        plotConvoy: "He doesn't like the Convoy and thinks they're boring, but tolerates them.",
-        plotParty: "He's the main entry point for planning a big party.",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.scholars,
@@ -1034,7 +838,7 @@ export const characters: Character[] = [
         `A free pass to the library.`]],
         age: 75,
         race: "mixed",
-        notoriety: "Known as regulars at the club",    
+        detailOne: "Known as regulars at the club",    
         page: 1,
         id: 1,
         dialogue: [
@@ -1069,21 +873,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Three old coots at a bar, Quarlsome academics",
         motivation: "They love asking strangers about life's biggest questions.",
         dmNotes: "Roleplaying, mood, and give a free pass to the Dog Library.",
-        characterConnections: [],
         visualDescription: "The scholars shouting and interupting each other.",
-        introduction: "Ah, we haven't heard from you before!",
-        question: "What would you say is the problem with the world? ",
-        background: "I say it's the people work too much, they don't appreciate their lives!",
-        ideal: "No, I say it's people don't work hard enough, what is your life other than your accomplisments!?",
-        bond: "No no no, it's that there are too many ideas these days, people just can't ever settle on any one thing!? ",
-        flaw: "Wait, let these fine people speak! So, what do you think the problem with the work is?",
         skills: [Skills.History, Skills.Insight, Skills.Arcana],
-        rewards: "If players even try to answer at all they'll be delighted and give them a free pass to the library.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
  
     {
@@ -1092,7 +883,7 @@ export const characters: Character[] = [
         quests: [[`Try to get the Orcs to move their bar and community.`, `1000 Gold.`]],
         age: 50,
         race: "Dwarf",
-        notoriety: "Known as the head of the yards",    
+        detailOne: "Known as the head of the yards",    
         page: 1,
         dialogue: [
             [DT.introduction, "Get out of my way! Who are you anyways? you look like an enterprising bunch?"],
@@ -1132,21 +923,8 @@ export const characters: Character[] = [
         roleplayInspiration: "J. Jona Jameson, Thomas Edison, Gimli",
         motivation: "Wants the Yards to run Freeside",
         dmNotes: "He's the most Pro convoy Freesider.",
-        characterConnections: [],
         visualDescription: "An overly serious dwarf wearing workers clothes but with an extra decorative hat.",
-        introduction: "Get out of my way!",
-        question: "Why am I wasting my time talking to you?",
-        background: "I'm the Chief builder in the yards, and we're the ones that do all the work!",
-        ideal: "What's there to do in life but work, and build!",
-        bond: "We do all the work, we should be in charge of Freeside. Now the Convoy, they know how to run things!",
-        flaw: "All these frivoulus fools in the Fire and Water district just play silly games, but do we get any thanks, never!",
         skills: [],
-        rewards: "He'll try and get you to go beat up Bosworth.",
-        plotFlower: "",
-        plotConvoy: "He's pro convoy and is helping them setup their secret base. He wants them to move in and gain power for the yards that way.",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.trap,
@@ -1154,7 +932,7 @@ export const characters: Character[] = [
         quests: [[`Find the book that controls the guardian.`, `300 Gold.`]],
         age: 45,
         race: "Human",
-        notoriety: "Seen as a regular loner eccentric.",    
+        detailOne: "Seen as a regular loner eccentric.",    
         page: 1,
         id: 1,
         dialogue: [
@@ -1191,21 +969,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Snape, Dr. Frankenstien, Evil genius.",
         motivation: "He want's to open the book Kaiju book and control it.",
         dmNotes: "Main quest giver for getting into the Square Dungeon, and the Kaiju subplot.",
-        characterConnections: [],
         visualDescription: "A crazy looking scholar with tattered robes, unkept hair and a wild look in his eyes.",
-        introduction: "Oh hello fine travellers, you look like a hearty bunch.",
-        question: "Would you be interested in some work? I need a rare item retrieved, but I'm much to frail myself.",
-        background: "It's a tome of ancient secretes, and I believe i've unravelled the key",
-        ideal: "I seek the ancient truths others are afraid to believe in.",
-        bond: "I keep to myself.",
-        flaw: "I believe the book could benfit everyone on the island.",
         skills: [],
-        rewards: "He'll give you 1000 gold for the book. If he finds you took the book, he'll try and hunt you down.",
-        plotFlower: "The Kaiju was originally made by the flower cult to protect the island and the flower.",
-        plotConvoy: "If players are able to conrol the Kaiju, they can use it to attack the Convoy Fleet.",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: "He's the main entry point for summoning the Kaiju."    
     },
     {
         code: CC.wanwan,
@@ -1213,7 +978,7 @@ export const characters: Character[] = [
         quests: [],
         age: 99999,
         race: "Diety",
-        notoriety: "Most people in freeside recognize hime",    
+        detailOne: "Most people in freeside recognize hime",    
         page: 1,
         id: 1,
         dialogue: [
@@ -1250,21 +1015,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Bachus, Mad Hatter, Monkey King",
         motivation: "Is contrantly drunk and just wants to have fun.",
         dmNotes: "A vague clue giver that can show up anywhere, anytime.",
-        characterConnections: [],
         visualDescription: "A hearty 7 ft tall bearded man laughing with a cup in his hand.",
-        introduction: "Ah, friends, have a drink with me!",
-        question: "What is your favorite way to relax.",
-        background: "Yes, well I was kicked out of the heavenly palace some time ago. I took one too many sacred plums from the garden, or was it a pear?",
-        ideal: "Yes, well we have all the time in the workd don't we! Have fun! Or, well, maybe you don't? But you know, there's that one woman in the purple cloak, I've seen her for quite  while!?",
-        bond: "Of all the places in the material plane, Freeside is the most fun! Why even when those cultists were fussing about that flower it was still exciting!",
-        flaw: "Yes well I've forgetten many things, but I don't think this Vazerith Empire will be taking over Freeside anytime soon!",
         skills: [],
-        rewards: "As long as players act joyus with him he'll give vague clues.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.zaza,
@@ -1275,7 +1027,7 @@ export const characters: Character[] = [
             [`Sneak into the Convoy office.`, `1000 Gold.`]
         ],
         race: "Human",
-        notoriety: "She's the most influencial task maker in the Fire district.",    
+        detailOne: "She's the most influencial task maker in the Fire district.",    
         page: 1,
         id: 1,
         dialogue: [
@@ -1313,21 +1065,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Oprah, Jackie O, Film Producer",
         motivation: "Wants to maintain the Fire district as a creative hub.",
         dmNotes: "Quest giver to investigate the disentigrations. She's a non-violent anti-Convoy Freesider.",
-        characterConnections: [],
         visualDescription: "Smartly dressed business woman, is always drinking potions.",
-        introduction: "I'm Zaza, you'll learn about me sooner or later.",
-        question: "You seem like a clever bunch. I could use some strangers to do a little detective work for me.",
-        background: "I'm one of the top backers of theater in Freeside.",
-        ideal: "Creativity and expression is the most important thing we do.",
-        bond: "I want Freeside to remain a creative center as long as possible.",
-        flaw: "",
         skills: [],
-        rewards: "",
-        plotFlower: "She'll give you clues about the disentigrations.",
-        plotConvoy: "She doesn't want the convoy on Freeside at all.",
-        plotParty: "She can help rally people.",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.yondo,
@@ -1335,7 +1074,7 @@ export const characters: Character[] = [
         quests: [["Bring him a petal from The Flower, although he doesn't really think it exists.", '']],
         age: 120,
         race: "3 headed person",
-        notoriety: "One more the most popular food stalls.",    
+        detailOne: "One more the most popular food stalls.",    
         page: 1,
         id: 1,
         dialogue: [
@@ -1370,21 +1109,8 @@ export const characters: Character[] = [
         roleplayInspiration: "TV Chef, but different personality per head.",
         motivation: "Wants to serve as many customers as possible.",
         dmNotes: "Roleplaying, party director, and vague Flower clue.",
-        characterConnections: [],
         visualDescription: "3 heads and 6 arms, rotating cooking and serving customers.",
-        introduction: "Welcome. We've been having a discusion...",
-        question: "If you're making a dish, what's the best way to do it?",
-        background: "Head 1: You should plan it out, and not deviate, otherwise you'll never learn how to improve it!",
-        ideal: "Head 2: No, you should only spice as you, always tasting be adjusting!",
-        bond: "Head 3: No, No, it's all wrong, don't trust yourself so much, you should be asking the customers!",
-        flaw: "What do you think?",
         skills: [],
-        rewards: "They'll mention they've heard a legend about a flower petal that's tastes amazing, and they if you bring it to them you'll get a reward. Depending on your answers, they'll point you different locations.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.may,
@@ -1397,7 +1123,7 @@ export const characters: Character[] = [
         dialogue: [
             [DT.introduction, "Oh, I'm sorry, I must be going."],
         ],
-        notoriety: "Used to be famous, but now no one knows her.",    
+        detailOne: "Used to be famous, but now no one knows her.",    
         page: 1,
         id: 1,
         name: "May",
@@ -1425,21 +1151,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Frightened senior, Aunt May, scared victim.",
         motivation: "Wants to stop Lapish, but doesn't know how.",
         dmNotes: "She'll reluctantly reveal the Flower Plot",
-        characterConnections: [],
         visualDescription: "Unassuming, but attrative 25 year old lady in a purple cloak.",
-        introduction: "Oh, I'm sorry, I'm not able to talk.",
-        question: "Why, why do you want to talk to me.",
-        background: "I used to be in the theater, and my husband was a wealthy man. When he passed, he set me up a fund, and bought me into a circle of people.",
-        ideal: "I've already been alive longer thatn I should have, there's only so many memories I can have, I don't need to keep going.",
-        bond: "I've seen Lapish kill dozens of people, whenever anyone goes against her will in the slightest, she'll disentigrate them. I just want her stopped.",
-        flaw: "I'm too weak to fight her myself, she has rings that let her cast spells, and she has a huge amount of money.",
         skills: [Skills.Performance, Skills.Acrobatics, Skills.Insight],
-        rewards: "She'll help you find and battle Lapish.",
-        plotFlower: "You can identify her from a picture of Dragor. She'll be able to lay out the whole immortality plot if needed.",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.queen,
@@ -1448,7 +1161,7 @@ export const characters: Character[] = [
          `She'll let you speak to the court and support you ideas.`]],
         age: 60,
         race: "human",
-        notoriety: "Everyone knows the current queen of the fools court, but they don't last more than a year or two.",    
+        detailOne: "Everyone knows the current queen of the fools court, but they don't last more than a year or two.",    
         page: 1,
         dialogue: [
             [DT.introduction, "I am the Queen of all who enter this court, and just who are you!?"],
@@ -1481,21 +1194,8 @@ export const characters: Character[] = [
         roleplayInspiration: "The Red Queen, Bloody Mary, Ru Paul",
         motivation: "Wants to rule the court with an iron fist.",
         dmNotes: "Main character of the fools court.",
-        characterConnections: [],
         visualDescription: "An extremely huge and elaborate dress that's hard for her to mvoe around in.",
-        introduction: "Your queen has arrived!",
-        question: "What is the punishment for such insolence, I say DEATH!",
-        background: "These amabassadors from the small island of flipflap are refusing to let me build my makeup cosmetics facotry.",
-        ideal: "The entire purpose of this court is to celebrate my beatury! These scum dare challenge that!?",
-        bond: "Through my legacy, you sad courtiers will be known forever, I do all of this for my people.",
-        flaw: "No one would ever dare challenge my reign.",
         skills: [Skills.Performance, Skills.Intimidation, Skills.Insight],
-        rewards: "Having influence over the Fools Court can translate into shapping the current beliefes of people on Freeside. If the players can successfully influnce the court, it'll have real life repurcussions.",
-        plotFlower: "",
-        plotConvoy: "Freeside's general feelings about The Convoy can be shaped here.",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: ""    
     },
     {
         code: CC.gods,
@@ -1503,7 +1203,7 @@ export const characters: Character[] = [
         quests: [[`Roleplay and engage with them.`, `A Wish Scroll.`]],
         age: 99999,
         race: "gods",
-        notoriety: "Possibly recognizable gods to the PC's",    
+        detailOne: "Possibly recognizable gods to the PC's",    
         page: 1,
         id: 1,
         dialogue: [
@@ -1539,21 +1239,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Greek, Hindu or Norse Gods with different qualities.",
         motivation: "Are gambling on the outcomes of Freeside.",
         dmNotes: "Roleplaying, Mood, and give a Wish scroll.",
-        characterConnections: [],
         visualDescription: "3 20 ft dieties sitting around a large puddle that they're watching humans through.",
-        introduction: "Hello mortals. We've been watching you.",
-        question: "How do you think it makes us feel to watch you mortals?",
-        background: "God 1: It makes me weep.",
-        ideal: "God 2: It makes us smile.",
-        bond: "God 3: It makes us laugh.",
-        flaw: "See, even we cannot agree. So what do we do to pass the time? We gamble.",
         skills: [Skills.Performance, Skills.Intimidation, Skills.Insight],
-        rewards: "If the players answer any reasonable response, they gods give them a wish scroll.",
-        plotFlower: "",
-        plotConvoy: "",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: "They appear in a cave that was formed outside of where the Kaiju was buried."    
     },
     {
         code: CC.master,
@@ -1568,7 +1255,7 @@ export const characters: Character[] = [
             [DT.loreClue, "The Convoy has some big plans with Freeside, but that idiot Conrad sure is taking his sweet time."],
             [DT.quest, "You know that toilet all the Pirates get together at, you'd think some kind of accident might cause a fire there sooner or later?"],
         ],
-        notoriety: "No one really knows him, he could be any Convoy official to most people.",    
+        detailOne: "No one really knows him, he could be any Convoy official to most people.",    
         page: 2,
         id: 2,
         name: "Manlintine",
@@ -1596,21 +1283,8 @@ export const characters: Character[] = [
         roleplayInspiration: "Tech Bro, Wealthy Snobby Brat, King Joffery",
         motivation: "Wants to be known for great things himself.",
         dmNotes: "The main villain of the Convoy.",
-        characterConnections: [],
         visualDescription: "An arrogant young man in a convoy uniform lined with gold thread on the seems.",
-        introduction: "Get out of my way, I have business to attend to.",
-        question: "Why should I even ",
-        background: "I'm from the greatest Convoy family, we can trace our line back to the first captains.",
-        ideal: "The Convoy is the strongest institution that ever has existed, or will exist, and I'm it's most important leader.",
-        bond: "Me and my family were born to lead.",
-        flaw: "Everyone listens to what I say, or else.",
         skills: [Skills.Intimidation, Skills.Performance, Skills.Persuasion],
-        rewards: "If the players side with the Convoy, and help the fleet setup at the base, he'll give them a huge amount of money.",
-        plotFlower: "If he finds out about the flower, he'll stop at nothing to get his hands on it for himself.",
-        plotConvoy: "He just recently found out about the secret harbor and fleet, and he swooped in to lead it and take all the credit.",
-        plotParty: "",
-        plotArena: "",
-        plotKaiju: "He'll pretend like he's leading troops to fight, but will behind the lines."    
     },
 ]
 

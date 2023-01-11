@@ -252,7 +252,7 @@ function Character(props: CharacterProps) {
 
           <tr>
             <td>Detail</td>
-            <td>{character.notoriety}</td>
+            <td>{character.detailOne}</td>
           </tr>
         </tbody>
       </table>
