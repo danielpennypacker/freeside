@@ -296,10 +296,10 @@ function Character(props: CharacterProps) {
         </tbody>
       </table>
 
-      {/* ==== Misc ==== */}
+      {/* ==== Plot + Misc ==== */}
       <table className="blueBlock">
         <thead>
-          <th colSpan={2}>Miscellaneous</th>
+          <th colSpan={2}>Plot and Utility</th>
         </thead>
         <tbody>
           {anyCharacter.misc.map(([title, desc]: any) => {

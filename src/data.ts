@@ -170,7 +170,7 @@ export type Character =  {
     visualDescription: string;    
     skills: Skills[]    
     quests: [string, string][];    
-    misc: [Miscs, string][]
+    misc: [string, string][]
 }
 
 // ===== Characters ======================
@@ -180,7 +180,9 @@ export const characters: Character[] = [
     {
         code: CC.ann,        
         age: 19,
-        misc: [],
+        misc: [
+            ['Party Plot', `Her potion has a fun skin changing affect that could be fun at the party`],
+        ],
         quests: [
             ["Her potion will make peoples skin have a swirl of colors for a couple hours and then stop. You can use to plan a party, or just sell it to an interested party.", 
             "A cut of whatever money you're able to ear"]
@@ -227,7 +229,10 @@ export const characters: Character[] = [
     // ++++  C1 - Bozfield, Pirate Captain ++++
     {
         code: CC.boz,
-        misc: [],
+        misc: [
+            ['Convoy Plot', `He'll be an ally in attacking the convoy.`],
+            ['Utility', `He'll mostly do what the players want as long as is anti-Convoy.`],
+        ],
         quests: [[`Help attack the Convoy Fleet when it arrives. This isn't very 
         good plan, and he'll fail on his own unless you help him.`, 
         `He'll give you a percentage of the spoiles you get from the Convoy Fleet.`]],
@@ -273,7 +278,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.conrad,
-        misc: [],
+        misc: [
+            ['Convoy Plot', `He despertly wants to get promoted to Chief of a base, and has a chip on his shoulder.`],
+            ['NPC', `He Hates Malinal`],
+        ],
         quests: [
             [`Make Freeside have a more positive impression of the Convoy. Go to the Fool's court and 
             make people like the convoy.`, `100 Gold.`],
@@ -320,7 +328,9 @@ export const characters: Character[] = [
     },
     {
         code: CC.crap,
-        misc: [],
+        misc: [
+            ['Convoy Plot', `He'll fight to proect the Orc utopia, but he could be swayed to relocate.`],
+        ],
         quests: [[`Beat him in hand to hand combat.`, `Become leader of the Orc gang, and have 6-12 orcs available to do your bidding.`]],
         age: 100,
         dialogue: [
@@ -363,7 +373,12 @@ export const characters: Character[] = [
     },
     {
         code: CC.cloaked,
-        misc: [],
+        misc: [
+            ['Flower Plot', `He's the main vilian of the flower plot, however she has little direct political influence`],
+            ['Flower Plot', `She's also responsible for the disentigration incidents of the last 100 years.`],
+            ['Flower Plot', `If the players kill her, they still may not know where the Flower is.`],
+            ['Convoy Plot', `She doesn't like the convoy simply because she wants to maintain the status quo at all costs.`],
+        ],
         quests: [
             [`Kill May and the 2-4 other current Flower Eaters`, 
         `She'll let you joing the Flower Eater immortality club.`],
@@ -413,7 +428,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.artok,
-        misc: [],
+        misc: [
+            ['Lore', `He's meant to give a counter perspective on Freeside as being generally 
+            dumb and seld aggrendizing`],
+        ],
         quests: [[`Bring him a block of marbel from the Yards.`, 
         `Entrance into Club Deluxe`]],
         age: 60,
@@ -464,7 +482,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.ban,
-        misc: [],
+        misc: [
+            ['Utility', `She'll give players the exact accurate aligment of any character they've encountered.`],
+            ['Utility', `Depending on how well the players RP with her, she may do several times.`],
+        ],
         quests: [['Roleplay and share a truth', 
             `She'll tell the PC's the true alignemnt of an NPC they've met. 
             If there's a monk in the party, she'll tell 2 NPCs.`]],
@@ -512,9 +533,16 @@ export const characters: Character[] = [
     },
     {
         code: CC.bosph,
-        misc: [],
+        misc: [
+            ['Areana Plot', `She's the entry point to PC's fighting in the Areana.`],
+            ['Areana Plot', `If the players are clever, they may learn information about future fights.`],
+            ['Areana Plot', `She might get the fighters involved in gambling, and ask them to throw fights.`],
+        ],
         quests: [[`Become fighters in the Areana`, 
-        `A cut of the winnings, along with fame an influence.`]],
+        `A cut of the winnings, along with fame an influence.`],
+        [`Win 3 or more Fightf`, 
+        `Free entrance to Club Deluxe`]
+    ],
         age: 25,
         race: "tiefling",
         detailOne: "Everyone who pays attention to the areana knows her as a promoter.",    
@@ -556,7 +584,11 @@ export const characters: Character[] = [
     },
     {
         code: CC.caspian,
-        misc: [],
+        misc: [
+            ['Convoy Plot', `He doesn't want war, and believes the merchants of Freeside can contain the Convoy`],
+            ['Flower Plot', `If he finds out about the Flower, he'll try to keep it a secret, and possibly destroy it. 
+                He'll see it as a threat to Freeside.`],
+        ],
         quests: [[`See which of the PC's can make the monst money in a week.`, 
         `Become his new assistant. This will give alot of money, and a lot of wealthy.`]],
         age: 19,
@@ -600,7 +632,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.chit,
-        misc: [],
+        misc: [
+            ['Utility', `If the players do well, they can show their token to immeditely impress people.`],
+            ['Utility', `If the players try ask it a question, he might give an answer`],
+        ],
         quests: [[`Fight in his Pyschic VR encounter.`, 
         `A keychain that shows the strongest monster you fought.`]],
         age: 99999,
@@ -615,7 +650,7 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         name: "Chitalogoth",
-        title: "Eldar Being",
+        title: "Elder Being",
         strength: 20,        
         dexterity: 20,
         constitution: 20,                
@@ -644,7 +679,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.dark,
-        misc: [],
+        misc: [
+            ['Utility', `If the players hire him, he will kill his target withing a couple days, guarenteed.`],
+            ['Utility', `He'll only kill someone if there's a reason for revenge.`],
+        ],
         quests: [],
         age: 0,
         race: "human",
@@ -687,7 +725,12 @@ export const characters: Character[] = [
     },
     {
         code: CC.dragon,
-        misc: [],
+        misc: [
+            ['Plot Flower', `He's an entry point to the through May. The picture he shows 
+                them will help the players recognize her at the Dead Gate.`],
+            ['Plot Kaiju', `He'll help defend Freeside from the Kaiju, but won't risk his life.`],
+            ['Plot Convoy', `He could be convinced to fight the Convoy if he things the Fire district is threatened.`],
+        ],
         quests: [
             [`Find out what happened to his old Co-star May.`, 
             `1000 Gold.`]],
@@ -732,7 +775,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.lobi,
-        misc: [],
+        misc: [
+            ['Utility', `Use her for lore dumps and answer PC's questions about Freeside`],
+            ['Utility', `She can give lore related clues if needed.`],
+        ],
         quests: [],
         age: 16,
         race: "halfling",
@@ -785,7 +831,11 @@ export const characters: Character[] = [
     },
     {
         code: CC.planithr,
-        misc: [],
+        misc: [
+            ['Plot Party', `He'll never commit to working with the players right away. 
+                He'll always give them his card and leave at the first meeting, and ask to meet them later.`],
+            ['Appeaance', `He can show up anywhere.`],
+        ],
         quests: [[`Help throw a party that out does the Eternal Ball for 1 night.`, 
         `A cut of the profits.`]],
         age: 23,
@@ -833,7 +883,9 @@ export const characters: Character[] = [
     },
     {
         code: CC.scholars,
-        misc: [],
+        misc: [
+            ['Utility', `They're mostly here to give a roleplaying break.`],
+        ],
         quests: [[`Just engage with them and answer their questions.`, 
         `A free pass to the library.`]],
         age: 75,
@@ -879,7 +931,12 @@ export const characters: Character[] = [
  
     {
         code: CC.torbin,
-        misc: [],
+        misc: [
+            ['Plot Convoy', `He loves the Convoy and is secretly helping them build their secret base.`],
+            ['Plot Convoy', `He's the most influcial person in the Earth district.`],
+            ['Plot Convoy', `He wants to be King of Freeside, even though that's against the cities Ethos.`],
+            ['Plot Flower', `If he discovers the flower he'll use it to gain power and wealth.`],
+        ],
         quests: [[`Try to get the Orcs to move their bar and community.`, `1000 Gold.`]],
         age: 50,
         race: "Dwarf",
@@ -928,7 +985,11 @@ export const characters: Character[] = [
     },
     {
         code: CC.trap,
-        misc: [],
+        misc: [
+            ['Plot Kaiju', `He's the entry point finding the book that summons the Kaiju.`],
+            ['Plot Flower', `In going to the square dungeon, the PC's will learn about the Flower and the cult.`],
+            ['Plot Flower', `He doesn't know about the Flower itself, he just likes the monster.`],
+        ],
         quests: [[`Find the book that controls the guardian.`, `300 Gold.`]],
         age: 45,
         race: "Human",
@@ -974,7 +1035,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.wanwan,
-        misc: [],
+        misc: [
+            ['Utility', `He can give vague clues, especially about the past.`],
+            ['Utility', `He can show up anywhere.`],
+        ],
         quests: [],
         age: 99999,
         race: "Diety",
@@ -1020,7 +1084,14 @@ export const characters: Character[] = [
     },
     {
         code: CC.zaza,
-        misc: [],
+        misc: [
+            ['Plot Flower', `She's an entry point to the disentigrations by way of the disentigrations.`],
+            ['Plot Convoy', `She doesn't want the Convoy on Freeside at all, as she believes they'll take over the whole island eventually.`],
+            ['Plot Convoy', `She will resist them, but doesn't believe in violence.`],
+            ['Utility', `She's the most influencial person in the Fire district.`],
+            ['Utility', `She knows almost everyone and everything in Freeside. 
+                She can direct the players, or introduce them to other NPCs, and shape public opinion.`],
+        ],
         age: 40,
         quests: [
             [`Investigate who's desitigrating people.`, `1000 Gold.`],
@@ -1070,7 +1141,9 @@ export const characters: Character[] = [
     },
     {
         code: CC.yondo,
-        misc: [],
+        misc: [
+            ['Utility', `Mostly for fun roleplaying, but has one clue about the Flower.`],
+        ],
         quests: [["Bring him a petal from The Flower, although he doesn't really think it exists.", '']],
         age: 120,
         race: "3 headed person",
@@ -1114,7 +1187,13 @@ export const characters: Character[] = [
     },
     {
         code: CC.may,
-        misc: [],
+        misc: [
+            ['Plot Flower', `If pressed, she'll explain how she's 150 years old, 
+                and how Lapish keeps people hostage with the Flower.`],
+            ['Plot Flower', `She'll explain how it can only support about 5 people at a time.`],
+            ['Plot Flower', `She doesn't know where the flower grows.`],
+            ['Plot Flower', `She afraid of innocent people getting hurt if they try to stop Lapish.`],
+        ],
         quests: [[`Kill Lapish. If you corner her, she'll still the beans 
         about the Flower, but she warns you how dangerous they are.`, 
         `None.`]],
@@ -1156,7 +1235,10 @@ export const characters: Character[] = [
     },
     {
         code: CC.queen,
-        misc: [],
+        misc: [
+            ['Utility', `Convincing here of something will affect the real life public opinion of Freeside.`],
+            ['Utility', `She only appears in the Fools Court, and no one knows her true identiy.`],
+        ],
         quests: [[`Do a good job roleplaying with her.`,
          `She'll let you speak to the court and support you ideas.`]],
         age: 60,
@@ -1199,7 +1281,11 @@ export const characters: Character[] = [
     },
     {
         code: CC.gods,
-        misc: [],
+        misc: [
+            ['Utility', `Mostly fun roleplaying, mood, and giving a wish spell for fun.`],
+            ['Utility', `They're meant to appear in a cave by the mound after the Kaiju emerges.`],
+            ['Utility', `They can also appear anywhere after the PC's have entered a room and are in private.`],
+        ],
         quests: [[`Roleplay and engage with them.`, `A Wish Scroll.`]],
         age: 99999,
         race: "gods",
@@ -1244,7 +1330,12 @@ export const characters: Character[] = [
     },
     {
         code: CC.master,
-        misc: [],
+        misc: [
+            ['Plot Convoy', `He's meant to be the main Convoy Villian. Conrad is a good person on the wrong side, but not this guy.`],
+            ['Plot Convoy', `After the larger Fleet has arrived, he'll become acting head of the Convoy on Freeside.`],
+            ['Plot Convoy', `Conrad could side with the PC's out of resentment against him.`],
+            ['Plot Flower', `If he finds out about the Flower, he'll try to use it to his own advantage, and make it public.`],
+        ],
         age: 25,
         quests: [[`Burn down the pirate Base.`, `Conrads position and a cut of the trade.`]],
         race: "human",
