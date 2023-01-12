@@ -4,6 +4,7 @@ import "./App.css";
 import * as data from "./data";
 import Character from "./Charcter";
 import Location from "./Location";
+import Dungeon from "./Dungeon";
 import Info from "./Info";
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
       {data.pages.map((page: any) => {
         if (page.crowd || page.crowd === "") {
           return <Location location={page} />;
-        } else {
+        } else if (page.dialogue) {
           return <Character character={page} />;
+        } else {
+          return <Dungeon dungeon={page} />;
         }
       })}
     </div>

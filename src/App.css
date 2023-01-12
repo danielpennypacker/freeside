@@ -18,6 +18,7 @@ body, body * {
 }
 
 .Character th,
+.Dungeon th,
 .Location th {
   text-align: left;
   font-weight: normal;
@@ -44,6 +45,7 @@ body, body * {
 
 .TextPage,
 .Location,
+.Dungeon,
 .Character {  
   height: 8.477in;
   width: 13cm; 
@@ -64,18 +66,21 @@ body, body * {
   margin-top: 5px;
 }
 
-
+.Dungeon td:first-child, 
 .Character td:first-child, 
 .Location td:first-child {  
   text-transform: capitalize;  
 }  
 
 @media screen and (max-device-width: 640px) {
-  .Character, .Location {    
+  .Character, .Location, .Dungeon {    
     height: inherit;    
   }
 }
 
+.Dungeon .mapImage {
+  width: 100%;
+}
 
 body {
   -webkit-print-color-adjust: exact !important;

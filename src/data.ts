@@ -18,6 +18,34 @@ export const toTitle = (val: string) => {
     return val.replace(/([a-z])([A-Z])/g, "$1 $2");
   };
 
+export enum DC {
+    square="square", 
+}      
+
+export type Dungeon =  {    
+    code: DC;    
+    rooms: [];
+    id?: string | number;
+    page?: number;
+    title: string;
+    dmNotes: string;
+}
+
+export type Room = {    
+    title: string;
+    num: number;
+}    
+
+export const dungeons: Dungeon[] = [
+    {
+        code: DC.square,
+        rooms: [],
+        title: 'Square Dungeon',
+        dmNotes: 'Find the Kaiju book.'
+    }
+]
+
+
 // Chracter Code.
 export enum CC {
     ann="ann", 
@@ -2046,20 +2074,33 @@ export const c = (code: CC) => {
     })[0] as Character    
 }
 
+export const d = (code: DC) => {   
+    const x = dungeons.filter((dungeon) => {
+        console.log('========')
+        console.log(dungeon.code, dungeon, code)
+        return code === dungeon.code.toString();
+    })[0] as Dungeon    
+    return x;
+}
+
 
 const addId  = (arr: any[]) => {
     let lCount = 1;
     let cCount = 1; 
+    let dCount = 1; 
     let newArr = [...arr];
     newArr.forEach((item, pageNumber) => {
         // it's a location.
         if(item.exterior || item.exterior === '') {
             item.id = lCount;
             lCount += 1;
-        } else if(item.ideal || item.ideal === '') {
+        } else if(item.dialogue) {
             item.id = cCount;
             cCount += 1;
-        }
+        } else if(item.rooms) {
+        item.id = dCount;
+        dCount += 2;
+    }
         item.page = pageNumber + 1;
     });
     return newArr;
@@ -2083,6 +2124,7 @@ export const pages: any[] = addId([
     l(LC.library),
     c(CC.trap),
     c(CC.lobi),
+    d(DC.square),
     l(LC.bank),
     c(CC.planithr),    
     l(LC.yards),
