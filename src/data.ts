@@ -13,35 +13,116 @@ export const getNpc = (id: number) => {
     })[0] as Location
   };
 
+  export const getAttrBonus = (value: number) => {
+    const bonus = Math.floor((value - 10) / 2);
+    if (bonus > 0) {
+      return `+${bonus}`;
+    }
+    return bonus;
+  };
+
+
 
 export const toTitle = (val: string) => {
     return val.replace(/([a-z])([A-Z])/g, "$1 $2");
   };
 
+  export enum Skills {
+    Acrobatics = "Acrobatics",
+    AnimalHandling = "Animal Handling",
+    Arcana = "Arcana",
+    Athletics = "Athletics",
+    Deception = "Deception",
+    History = "History",
+    Insight = "Insight",
+    Intimidation = "Intimidation",
+    Investigation = "Investigation",
+    Medicine = "Medicine",
+    Nature = "Nature",
+    Perception = "Perception",
+    Performance = "Performance",
+    Persuasion = "Persuasion",
+    Religion = "Religion",
+    SlieghtofHand = "Slieght of Hand",
+    Stealth = "Stealth",
+    Survival = "Survival",
+  }
+
 export enum DC {
     square="square", 
 }      
 
+export type Monster =  { 
+    armorClass: number;    
+    hitPoints: number;
+    speed: number;
+    passivePerception: number;
+    attack: Attack;
+    proficiencyBonus: number;
+    name: string; 
+    strength: number;
+    dexterity: number;
+    constitution: number;    
+    intelligence: number;    
+    wisdom: number;    
+    charisma: number;
+    skills: Skills[];
+}    
+
 export type Dungeon =  {    
     code: DC;    
-    rooms: [];
+    rooms: Room[];
     id?: string | number;
     page?: number;
     title: string;
     dmNotes: string;
+    misc: [string, string][];
+    monsters: Monster[];
 }
 
 export type Room = {    
     title: string;
     num: number;
+    desc: string;
+    events: string[];
 }    
 
 export const dungeons: Dungeon[] = [
     {
         code: DC.square,
-        rooms: [],
+        rooms: [
+            {
+                num: 1,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            }
+        ],
         title: 'Square Dungeon',
-        dmNotes: 'Find the Kaiju book.'
+        dmNotes: 'Find the Kaiju book.',
+        misc: [],
+        monsters: [ {
+            name: 'Evil Elf Fighter',
+            armorClass: 14,    
+            hitPoints: 20,
+            speed: 30,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Bow',
+                damage: '1d8',
+                bonus: 5,
+                range: 30,
+                multi: 1,
+            },            
+            strength: 9,
+            dexterity: 14,
+            constitution: 9,
+            intelligence: 12,
+            wisdom: 12,
+            charisma: 13,
+            skills: [Skills.Deception, Skills.AnimalHandling]
+        }],
     }
 ]
 
@@ -140,26 +221,7 @@ export interface CharacterConnection {
     description: string;
 }
 
-export enum Skills {
-    Acrobatics = "Acrobatics",
-    AnimalHandling = "Animal Handling",
-    Arcana = "Arcana",
-    Athletics = "Athletics",
-    Deception = "Deception",
-    History = "History",
-    Insight = "Insight",
-    Intimidation = "Intimidation",
-    Investigation = "Investigation",
-    Medicine = "Medicine",
-    Nature = "Nature",
-    Perception = "Perception",
-    Performance = "Performance",
-    Persuasion = "Persuasion",
-    Religion = "Religion",
-    SlieghtofHand = "Slieght of Hand",
-    Stealth = "Stealth",
-    Survival = "Survival",
-  }
+
 
   export enum Miscs {
     FlowerPlot = "FlowerPlot",    
@@ -1122,7 +1184,6 @@ export const characters: Character[] = [
         ],
         age: 40,
         quests: [
-            [`Investigate who's desitigrating people.`, `1000 Gold.`],
             [`Sneak into the Convoy office.`, `1000 Gold.`]
         ],
         race: "Human",
@@ -1136,8 +1197,6 @@ export const characters: Character[] = [
             then they slowly expand until they control an entire city.`],
             [DT.ideal, `Freeside is uterly unique in the world, and is a center of art and creativity. I want to preserve that at all costs.`],
             [DT.quest, `I think we can find evidence that the Convoy has deeper plans. I want you to break into their office and see what you can find.`],
-            [DT.quest, `I'm worried about these disentigrations. I've been investigating for sometime, and i'll 
-            I've heard is there's someone in a purple cloak sometimes seen nearby. Please search around Freeside and tell me what you can find.`],
         ],
         name: "Zaza",
         title: "Top play priducer.",
@@ -2107,6 +2166,7 @@ const addId  = (arr: any[]) => {
 };
 
 export const pages: any[] = addId([
+    d(DC.square),
     l(LC.land),
     l(LC.pcafe),
     c(CC.boz),
@@ -2123,8 +2183,7 @@ export const pages: any[] = addId([
     c(CC.ann),        
     l(LC.library),
     c(CC.trap),
-    c(CC.lobi),
-    d(DC.square),
+    c(CC.lobi),    
     l(LC.bank),
     c(CC.planithr),    
     l(LC.yards),

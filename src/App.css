@@ -17,6 +17,11 @@ body, body * {
   font-weight: normal;  
 }
 
+th.right,
+td.right {
+  text-align: right !important;
+}
+
 .Character th,
 .Dungeon th,
 .Location th {
@@ -121,6 +126,7 @@ body table {
   background-color: #E7E7E7;
 }
 
+
 .Character .normalTable td:first-child,
 .Character .brownBlock td:first-child,
 .Character .blueBlock td:first-child {
@@ -192,3 +198,50 @@ table.brownBlock td {
   /* font-size: 10pt !important; */
 }
 
+
+/* Dungeons  */
+
+.Dungeon .roomItemHeader {
+  display: flex;
+}
+
+.Dungeon .rooms {
+  padding: 10px;
+}
+
+
+.Dungeon .blueBlock {
+  margin-bottom: 15px;
+}
+
+.flex {
+  display: flex;
+}
+
+.Dungeon .monsterBlock {
+  display: flex;
+}
+
+.StatBlock table {
+  margin-right: 25px;
+}  
+
+.basicStats {
+  
+}
+
+.combatStatstats {
+  width: 80px;
+}
+
+.skills {
+  width: 100px;
+}
+
+.p-r-10 {
+  padding-right: 10px;
+}
+
+.p-r-5 {
+  padding-right: 5px;
+}

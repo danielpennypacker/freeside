@@ -10,7 +10,7 @@ import Info from "./Info";
 function App() {
   return (
     <div className="App">
-      <Info />
+      {/* <Info /> */}
 
       {data.pages.map((page: any) => {
         if (page.crowd || page.crowd === "") {
