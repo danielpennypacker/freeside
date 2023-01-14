@@ -1,5 +1,6 @@
 import React from "react";
 import "./Character.css";
+import CombatActions from "./CombatActions";
 
 import * as data from "./data";
 import StatBlock from "./StatBlock";
@@ -41,44 +42,10 @@ function Character(props: CharacterProps) {
       </div>
       <div className="notesCallout">{character.dmNotes}</div>
 
-      {/* ==== Top of page ==== */}
-
-      <div className="pageTop">
-        {/* ==== Basic attributes ==== */}
-
-        <div>
-          <img
-            className="portrait portraitSmall"
-            src={
-              process.env.PUBLIC_URL + `/img/characters/${character.code}.png`
-            }
-          />
-        </div>
-
-        {/* ==== Basic Stats ==== */}
-        <table className="basicInfo">
-          <thead>
-            <tr>
-              <th colSpan={2}>Basic Info</th>
-            </tr>
-          </thead>
-          <tbody>
-            {["age", "race", "alignment"].map((stat) => {
-              return (
-                <tr>
-                  <td className="basicStatTitle">{data.toTitle(stat)}</td>
-                  <td className="basicStatTitle">{anyCharacter[stat]}</td>
-                </tr>
-              );
-            })}
-
-            <td>Chal. Rating</td>
-            <td>{character.challengeRating}</td>
-          </tbody>
-        </table>
-      </div>
-
       <StatBlock item={character} />
+
+      {/* === Combat Actions  === */}
+      <CombatActions item={character} />
 
       {/* ==== Roleplaying Information ==== */}
       <table className="brownBlock">
@@ -92,6 +59,16 @@ function Character(props: CharacterProps) {
               {character.roleplayInspiration.split(",").map((name) => {
                 return <div>{name}</div>;
               })}
+            </td>
+          </tr>
+
+          <tr>
+            <td>Basic Info</td>
+            <td className="flexEven">
+              <span>
+                {character.alignment}, {character.race}, {character.age} years
+                old.
+              </span>
             </td>
           </tr>
 

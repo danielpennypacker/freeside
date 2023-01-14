@@ -9,13 +9,13 @@
    */
 
    .Character .pageTop {
-    grid-template-columns: 1fr 1fr 0.75fr;
+    /* grid-template-columns: 1fr 1fr 0.75fr;
 
     display: grid;
     grid-column: 3;
     grid-row: 2;
     grid-gap: 10px;
-    width: 100%;
+    width: 100%; */
   }  
 
 
@@ -44,15 +44,7 @@
     width: 35%;
     margin-right: 0;    
   }
-    
-  .Character thead {
-    font-size: 8pt;
-  }
-    
-  .Character .skills tbody {
-    font-size: 8pt;
-  }
-  
+      
   .Character td.right, .Character th.right {
     text-align: right;  
   }  

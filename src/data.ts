@@ -67,6 +67,8 @@ export type Monster =  {
     wisdom: number;    
     charisma: number;
     skills: Skills[];
+    challengeRating: number;
+    code: string;
 }    
 
 export type Dungeon =  {    
@@ -102,6 +104,7 @@ export const dungeons: Dungeon[] = [
         dmNotes: 'Find the Kaiju book.',
         misc: [],
         monsters: [ {
+            code: 'evil_elf',
             name: 'Evil Elf Fighter',
             armorClass: 14,    
             hitPoints: 20,
@@ -114,7 +117,8 @@ export const dungeons: Dungeon[] = [
                 bonus: 5,
                 range: 30,
                 multi: 1,
-            },            
+            },         
+            challengeRating: 2,   
             strength: 9,
             dexterity: 14,
             constitution: 9,

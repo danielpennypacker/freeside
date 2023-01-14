@@ -11,8 +11,71 @@ function StackBlock(props: StatBlockProps) {
 
   const anyItem: any = item;
 
+  const isCharacter = !!anyItem.dialogue;
+
+  let avatarUrl = process.env.PUBLIC_URL + `/img/`;
+  if (isCharacter) {
+    avatarUrl += "characters";
+  } else {
+    avatarUrl += "monsters";
+  }
+  avatarUrl += `/${item.code}.png`;
+
   return (
     <div className="StatBlock flex">
+      {/* === Image ===   */}
+      <div>
+        <img className="portrait portraitSmall" src={avatarUrl} />
+      </div>
+
+      {/* ==== Combat ==== */}
+      <table className="combatStatstats combatStatstats1">
+        <thead>
+          <tr>
+            <th colSpan={2}>Combat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Armor Class</strong>
+            </td>
+            <td className="right">
+              <strong>{item.armorClass}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Hit Points</td>
+            <td className="right">{item.hitPoints}</td>
+          </tr>
+          <tr>
+            <td>Move</td>
+            <td className="right">{item.speed}</td>
+          </tr>
+          <tr>
+            <td>Initiative</td>
+            <td className="right">{data.getAttrBonus(item.dexterity)}</td>
+          </tr>
+
+          <tr>
+            <td
+              className={`combatStatTitle combatStatTitle-${"passivePerception"}`}
+            >
+              Pass. Pers.
+            </td>
+            <td
+              className={`combatStatValue right combatStatValue-${"passivePerception"}`}
+            >
+              {item.passivePerception}
+            </td>
+          </tr>
+          <tr>
+            <td>Chal. Rating</td>
+            <td className="right">{item.challengeRating}</td>
+          </tr>
+        </tbody>
+      </table>
+
       <table className="basicStats">
         <thead>
           <tr>
@@ -88,52 +151,8 @@ function StackBlock(props: StatBlockProps) {
         </tbody>
       </table>
 
-      {/* ==== Combat ==== */}
-      <table className="combatStatstats combatStatstats1">
-        <thead>
-          <tr>
-            <th colSpan={2}>Combat</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Armor Class</strong>
-            </td>
-            <td className="right">
-              <strong>{item.armorClass}</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>Hit Points</td>
-            <td className="right">{item.hitPoints}</td>
-          </tr>
-          <tr>
-            <td>Move</td>
-            <td className="right">{item.speed}</td>
-          </tr>
-          <tr>
-            <td
-              className={`combatStatTitle combatStatTitle-${"passivePerception"}`}
-            >
-              Pass. Pers.
-            </td>
-            <td
-              className={`combatStatValue right combatStatValue-${"passivePerception"}`}
-            >
-              {item.passivePerception}
-            </td>
-          </tr>
-          <tr>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>-</td>
-          </tr>
-        </tbody>
-      </table>
       {/* ==== Attack ==== */}
-      <table className="combatStatstats combatStatstats2">
+      {/* <table className="combatStatstats combatStatstats2">
         <thead>
           <tr>
             <th colSpan={2}>Main Attack</th>
@@ -167,7 +186,7 @@ function StackBlock(props: StatBlockProps) {
             <td>-</td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }

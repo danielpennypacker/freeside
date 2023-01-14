@@ -14,7 +14,7 @@ function Location(props: LocationProps) {
 
   const noneRow = (
     <tr>
-      <td colSpan={2}>None.</td>
+      <td colSpan={20}>None.</td>
     </tr>
   );
 
@@ -40,7 +40,7 @@ function Location(props: LocationProps) {
       <div className="descriptions">
         <table className="brownBlock">
           <thead>
-            <th colSpan={2}>Descriptions</th>
+            <th colSpan={20}>Descriptions</th>
           </thead>
           <tbody>
             <tr>
@@ -76,7 +76,7 @@ function Location(props: LocationProps) {
       {/* ==== Events ==== */}
       <table className="greyBlock">
         <thead>
-          <th colSpan={2}>Events</th>
+          <th colSpan={20}>Events</th>
         </thead>
         <tbody>
           {location.events.map((evDesc, i) => {
@@ -97,7 +97,7 @@ function Location(props: LocationProps) {
       {/* ==== Named NPC's ==== */}
       <table className="greyBlock">
         <thead>
-          <th colSpan={2}>Named NPC's</th>
+          <th colSpan={20}>Named NPC's</th>
         </thead>
         <tbody>
           {location.namedNpcs.map((code: [data.CC, string], i) => {
@@ -121,7 +121,7 @@ function Location(props: LocationProps) {
       {/* ==== Random NPC ==== */}
       <table className="greyBlock">
         <thead>
-          <th colSpan={2}>Random NPCs</th>
+          <th colSpan={20}>Random NPCs</th>
         </thead>
         <tbody>
           {location.randomNpcs.slice(0, 2).map((npc) => {
@@ -141,7 +141,7 @@ function Location(props: LocationProps) {
       {/* ==== Connected Locations ==== */}
       <table className="blueBlock">
         <thead>
-          <th colSpan={2}>Connected Locations</th>
+          <th colSpan={20}>Connected Locations</th>
         </thead>
         <tbody>
           {/* ==== Events ==== */}

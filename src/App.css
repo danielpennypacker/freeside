@@ -12,11 +12,6 @@ body, body * {
   background-color: gray;
 }
 
-.pageNumber {
-  font-size: 8pt;
-  font-weight: normal;  
-}
-
 th.right,
 td.right {
   text-align: right !important;
@@ -31,7 +26,6 @@ td.right {
 }
 
 .notesCallout {
-  font-weight: bold;
   background-color: lightgray;
   padding: 5px;
   text-align: center;
@@ -56,7 +50,6 @@ td.right {
   width: 13cm; 
   background-color: white;
   margin: 10px 10px;
-  font-size: 10px;
   overflow: hidden;
 }
 
@@ -102,7 +95,6 @@ body table {
   justify-content: space-between;
   padding: 5px;
   object-fit: cover;
-  font-weight: bold;  
 }  
 
 .idContainer { 
@@ -163,7 +155,6 @@ table.blueBlock td,
 table.brownBlock td {
   border-bottom: 1px dotted white;
   padding: 3px;
-  font-size: 8pt;
   vertical-align: top;
 }
 
@@ -216,26 +207,23 @@ table.brownBlock td {
 
 .flex {
   display: flex;
+  justify-content: space-around;
 }
 
 .Dungeon .monsterBlock {
   display: flex;
 }
 
-.StatBlock table {
-  margin-right: 25px;
-}  
-
 .basicStats {
   
 }
 
 .combatStatstats {
-  width: 80px;
+  width: 90px;
 }
 
 .skills {
-  width: 100px;
+  width: 110px;
 }
 
 .p-r-10 {
@@ -245,3 +233,19 @@ table.brownBlock td {
 .p-r-5 {
   padding-right: 5px;
 }
+
+.Monster thead,
+.Location thead,
+.Character thead {
+  font-size: 10pt;
+}
+  
+.pageNumber {
+  font-size: 8pt;
+}
+
+.Monster ,
+.Location ,
+.Character {
+  font-size: 11px;
+} 
