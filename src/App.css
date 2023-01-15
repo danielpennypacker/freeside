@@ -210,8 +210,8 @@ table.brownBlock td {
   justify-content: space-around;
 }
 
-.Dungeon .monsterBlock {
-  display: flex;
+.Dungeon .monsterBlock .StatBlock {
+  width: 100%
 }
 
 .basicStats {
@@ -244,8 +244,15 @@ table.brownBlock td {
   font-size: 8pt;
 }
 
-.Monster ,
+.Dungeon,
+.Monster,
 .Location ,
 .Character {
   font-size: 11px;
 } 
+
+.portrait {  
+  width: 75px;
+  height: 100px;
+  background-color: lightgray;
+}  

@@ -3,6 +3,7 @@ import "./Character.css";
 import StatBlock from "./StatBlock";
 
 import * as data from "./data";
+import CombatActions from "./CombatActions";
 
 type DungeonProps = {
   dungeon: data.Dungeon;
@@ -112,6 +113,7 @@ function Character(props: DungeonProps) {
                   {/* ==== Stats ==== */}
 
                   <StatBlock item={monster} />
+                  <CombatActions item={monster} />
                 </div>
               </div>
             );

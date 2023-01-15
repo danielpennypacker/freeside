@@ -124,7 +124,6 @@ function StackBlock(props: StatBlockProps) {
         </thead>
 
         <tbody>
-          {/* ==== Skills ==== */}
           <tr>
             <td className="skillTitle">Prof. Bonus</td>
             <td className="attrBonus right">+{item.proficiencyBonus}</td>
@@ -150,43 +149,6 @@ function StackBlock(props: StatBlockProps) {
             })}
         </tbody>
       </table>
-
-      {/* ==== Attack ==== */}
-      {/* <table className="combatStatstats combatStatstats2">
-        <thead>
-          <tr>
-            <th colSpan={2}>Main Attack</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Bonus</strong>
-            </td>
-            <td className="right">
-              <strong>+{item.attack?.bonus}</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>Damage</td>
-            <td className="right">{item.attack?.damage}</td>
-          </tr>
-          <tr>
-            <td>Range</td>
-            <td className="right">{item.attack?.range}</td>
-          </tr>
-          <tr>
-            <td>Num. Atk.</td>
-            <td className="right">{item.attack?.multi}</td>
-          </tr>
-          <tr>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>-</td>
-          </tr>
-        </tbody>
-      </table> */}
     </div>
   );
 }

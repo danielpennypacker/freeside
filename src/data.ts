@@ -98,7 +98,55 @@ export const dungeons: Dungeon[] = [
                 title: "Total Dark Room, Kaiju Book Location",
                 desc: `A room that is magicall totally dark, and nothing will light it.`,
                 events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
-            }
+            },
+            {
+                num: 2,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 3,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 4,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 5,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 6,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 7,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 8,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
+            {
+                num: 9,
+                title: "Total Dark Room, Kaiju Book Location",
+                desc: `A room that is magicall totally dark, and nothing will light it.`,
+                events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+            },
         ],
         title: 'Square Dungeon',
         dmNotes: 'Find the Kaiju book.',
@@ -126,7 +174,32 @@ export const dungeons: Dungeon[] = [
             wisdom: 12,
             charisma: 13,
             skills: [Skills.Deception, Skills.AnimalHandling]
-        }],
+        },
+        {
+            code: 'evil_dwarf',
+            name: 'Evil Dwarf Fighter',
+            armorClass: 13,    
+            hitPoints: 25,
+            speed: 20,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Axe',
+                damage: '1d10',
+                bonus: 4,
+                range: 5,
+                multi: 1,
+            },         
+            challengeRating: 2,   
+            strength: 13,
+            dexterity: 9,
+            constitution: 12,
+            intelligence: 9,
+            wisdom: 12,
+            charisma: 10,
+            skills: [Skills.Survival, Skills.History]
+        }
+    ],
     }
 ]
 

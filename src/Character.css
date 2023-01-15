@@ -91,12 +91,7 @@
   .Character .rewards {
     width: 100%;
   }
-  
-  .Character .portrait {  
-    width: 75px;
-    height: 100px;
-    background-color: lightgray;
-  }  
+    
   .Character .id { 
     color: green;
     
