@@ -51,21 +51,6 @@ function Character(props: DungeonProps) {
 
       {/* ==== Text Page ==== */}
       <div className="Dungeon" id={dungeon?.id?.toString()}>
-        <div className="header">
-          <div className="idContainer">
-            <div className="id"></div>
-            <div className="pageNumber"></div>
-          </div>
-          <div className="name">{dungeon.title}</div>
-          <div className="idContainer">
-            <div className="pageNumber">
-              p. {dungeon.page ? dungeon.page + 1 : ""}
-            </div>
-            <div className="id">D{dungeon.id}</div>
-          </div>
-        </div>
-        <div className="notesCallout">{dungeon.dmNotes}</div>
-
         {/* ==== Rooms ==== */}
         <div className="rooms">
           {dungeon.rooms.map((room) => {

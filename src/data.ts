@@ -49,7 +49,14 @@ export const toTitle = (val: string) => {
   }
 
 export enum DC {
-    square="square", 
+    square="square",//- 
+    sewer="sewer",//- 
+    base="base",//-     
+    vr="vr",//- 
+    caves="caves",//- 
+    nature="nature",
+    area="area",//- 
+    fight="fight",// -
 }      
 
 export type Monster =  { 
@@ -90,6 +97,7 @@ export type Room = {
 }    
 
 export const dungeons: Dungeon[] = [
+    // ==== Square Dungeon ==== 
     {
         code: DC.square,
         rooms: [
@@ -200,7 +208,632 @@ export const dungeons: Dungeon[] = [
             skills: [Skills.Survival, Skills.History]
         }
     ],
+    },
+// ==== Sewer Dungeon ==== 
+{
+    code: DC.sewer,
+    rooms: [
+        {
+            num: 1,
+            title: "Hub Room, Cape Trap Monster",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 2,
+            title: "Giant Ape",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 3,
+            title: "Tyrannosaurus Rex",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 4,
+            title: "Total Dark Room, Kaiju Book Location",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+    ],
+    title: 'Sewer Dungeon',
+    dmNotes: 'Fighter the monsters and find secret passages.',
+    misc: [],
+    monsters: [
+        {
+            code: 'evil_tree',
+            name: 'Evil Tree',
+            armorClass: 15,    
+            hitPoints: 90,
+            speed: 20,
+            passivePerception: 10,
+            proficiencyBonus: 3,
+            attack: {
+                description: 'Branch',
+                damage: '4d12 + 7',
+                bonus: 9,
+                range: 15,
+                multi: 1,
+            },         
+            challengeRating: 7,   
+            strength: 23,
+            dexterity: 10,
+            constitution: 20,
+            intelligence: 6,
+            wisdom: 10,
+            charisma: 3,
+            skills: [Skills.Perception]
+        },
+         {
+        code: 't_rex',
+        name: 'T-Rex',
+        armorClass: 13,    
+        hitPoints: 120,
+        speed: 50,
+        passivePerception: 14,
+        proficiencyBonus: 3,
+        attack: {
+            description: 'Bite',
+            damage: '4d12 + 7',
+            bonus: 10,
+            range: 10,
+            multi: 1,
+        },         
+        challengeRating: 8,   
+        strength: 25,
+        dexterity: 10,
+        constitution: 19,
+        intelligence: 2,
+        wisdom: 12,
+        charisma: 9,
+        skills: [Skills.Perception]
+    },
+    {
+        code: 'giant_crab',
+        name: 'Giant Crab',
+        armorClass: 15,    
+        hitPoints: 150,
+        speed: 30,
+        passivePerception: 9,
+        proficiencyBonus: 2,
+        attack: {
+            description: 'Claw',
+            damage: '4d10 + 5',
+            bonus: 9,
+            range: 10,
+            multi: 1,
+        },         
+        challengeRating: 8,   
+        strength: 20,
+        dexterity: 15,
+        constitution: 20,
+        intelligence: 1,
+        wisdom: 9,
+        charisma: 3,
+        skills: [Skills.Stealth]
+    },
+    {
+        code: 'giant_ape',
+        name: 'Giant Ape',
+        armorClass: 12,    
+        hitPoints: 150,
+        speed: 40,
+        passivePerception: 14,
+        proficiencyBonus: 3,
+        attack: {
+            description: 'Fist',
+            damage: '3d10 + 6',
+            bonus: 9,
+            range: 10,
+            multi: 1,
+        },         
+        challengeRating: 7,   
+        strength: 23,
+        dexterity: 14,
+        constitution: 18,
+        intelligence: 7,
+        wisdom: 12,
+        charisma: 7,
+        skills: [Skills.Athletics, Skills.Perception]
     }
+],
+},
+// ==== VR Dungeon ==== 
+{
+    code: DC.vr,
+    rooms: [
+        {
+            num: 1,
+            title: "Owl bear Fight",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 2,
+            title: "Invisible Stalker",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 3,
+            title: "Young Blue Dragon",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 4,
+            title: "Vampire Fight",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+    ],
+    title: 'VR Dungeon',
+    dmNotes: 'All the monsters one after the other.',
+    misc: [],
+    monsters: [
+        {
+            code: 'owl_bear',
+            name: 'Owl Bear',
+            armorClass: 13,    
+            hitPoints: 60,
+            speed: 40,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Beak',
+                damage: '1d10 + 5',
+                bonus: 7,
+                range: 5,
+                multi: 1,
+            },         
+            challengeRating: 3,   
+            strength: 20,
+            dexterity: 12,
+            constitution: 17,
+            intelligence: 3,
+            wisdom: 12,
+            charisma: 7,
+            skills: [Skills.Perception]
+        },
+         {
+        code: 'invisible',
+        name: 'Invisible Monster',
+        armorClass: 14,    
+        hitPoints: 100,
+        speed: 50,
+        passivePerception: 18,
+        proficiencyBonus: 3,
+        attack: {
+            description: 'Slam',
+            damage: '2d6 + 3',
+            bonus: 6,
+            range: 5,
+            multi: 1,
+        },         
+        challengeRating: 6,   
+        strength: 16,
+        dexterity: 19,
+        constitution: 14,
+        intelligence: 10,
+        wisdom: 15,
+        charisma: 11,
+        skills: [Skills.Perception, Skills.Stealth]
+    },
+    {
+        code: 'dragon',
+        name: 'Dragon',
+        armorClass: 18,    
+        hitPoints: 150,
+        speed: 40,
+        passivePerception: 19,
+        proficiencyBonus: 4,
+        attack: {
+            description: 'Claw',
+            damage: '2d6 + 5',
+            bonus: 9,
+            range: 10,
+            multi: 1,
+        },         
+        challengeRating: 9,   
+        strength: 21,
+        dexterity: 10,
+        constitution: 19,
+        intelligence: 14,
+        wisdom: 12,
+        charisma: 13,
+        skills: [Skills.Stealth, Skills.Stealth]
+    },
+    {
+        code: 'vampire',
+        name: 'Vampire',
+        armorClass: 16,    
+        hitPoints: 150,
+        speed: 30,
+        passivePerception: 17,
+        proficiencyBonus: 5,
+        attack: {
+            description: 'Strike',
+            damage: '1d8',
+            bonus: 9,
+            range: 5,
+            multi: 1,
+        },         
+        challengeRating: 13,   
+        strength: 18,
+        dexterity: 18,
+        constitution: 18,
+        intelligence: 17,
+        wisdom: 15,
+        charisma: 18,
+        skills: [Skills.Athletics, Skills.Perception]
+    }
+],
+},
+// ==== Base Dungeon ==== 
+{
+    code: DC.base,
+    rooms: [
+        {
+            num: 1,
+            title: "Fake Barracks",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 2,
+            title: "Hallway 1",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 3,
+            title: "Hallway 2",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 4,
+            title: "Real Barracks",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 5,
+            title: "Main Office",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 6,
+            title: "Secret Docks",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 7,
+            title: "Dinning Hall",
+            desc: `A room that is magicall totally dark, and nothing will light it.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+    ],
+    title: 'Convoy Base Dungeon',
+    dmNotes: 'The Convoys secret warf they are planning to float to the surface.',
+    misc: [],
+    monsters: [
+        {
+            code: 'soldier',
+            name: 'Convoy Knight',
+            armorClass: 18,    
+            hitPoints: 30,
+            speed: 30,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Sword',
+                damage: '2d6 + 5',
+                bonus: 5,
+                range: 5,
+                multi: 1,
+            },         
+            challengeRating: 2,   
+            strength: 16,
+            dexterity: 12,
+            constitution: 17,
+            intelligence: 9,
+            wisdom: 11,
+            charisma: 9,
+            skills: [Skills.Perception]
+        },
+         {
+        code: 'archer',
+        name: 'Convoy Archer',
+        armorClass: 18,    
+        hitPoints: 30,
+        speed: 30,
+        passivePerception: 18,
+        proficiencyBonus: 3,
+        attack: {
+            description: 'Long Bow',
+            damage: '2d6 + 3',
+            bonus: 6,
+            range: 60,
+            multi: 1,
+        },         
+        challengeRating: 2,   
+        strength: 11,
+        dexterity: 18,
+        constitution: 12,
+        intelligence: 11,
+        wisdom: 12,
+        charisma: 11,
+        skills: [Skills.Perception, Skills.Acrobatics]
+    },
+],
+},
+// ==== Ghost Cave Dungeon ==== 
+{
+    code: DC.caves,
+    rooms: [
+        {
+            num: 1,
+            title: "Entrance",
+            desc: `Ghosts attack`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 2,
+            title: "Ritual Room",
+            desc: `Quized about DnD`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 3,
+            title: "Statue Room",
+            desc: `Quized About Profeciencies`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 4,
+            title: "Meeting Hall",
+            desc: `20 Zombies`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 5,
+            title: "Treasuery",
+            desc: `Quized about freeside lore.`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 6,
+            title: "Weapons Room",
+            desc: `Treasure Guarded by something`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },        
+    ],
+    title: 'Cave Base',
+    dmNotes: 'Get through here to get to the Flower',
+    misc: [],
+    monsters: [
+        {
+            code: 'ghost',
+            name: 'Ghost',
+            armorClass: 11,    
+            hitPoints: 45,
+            speed: 30,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Touch',
+                damage: '4d6 + 3',
+                bonus: 5,
+                range: 5,
+                multi: 1,
+            },         
+            challengeRating: 4,   
+            strength: 7,
+            dexterity: 13,
+            constitution: 10,
+            intelligence: 10,
+            wisdom: 12,
+            charisma: 17,
+            skills: [Skills.Perception]
+        },
+         {
+        code: 'zombie',
+        name: 'zombie',
+        armorClass: 8,    
+        hitPoints: 10,
+        speed: 20,
+        passivePerception: 8,
+        proficiencyBonus: 2,
+        attack: {
+            description: 'Slam',
+            damage: '1d6 + 1',
+            bonus: 3,
+            range: 5,
+            multi: 1,
+        },         
+        challengeRating: 1,   
+        strength: 13,
+        dexterity: 6,
+        constitution: 16,
+        intelligence: 3,
+        wisdom: 6,
+        charisma: 5,
+        skills: []
+    },
+],
+},
+{
+    code: DC.area,
+    rooms: [
+        {
+            num: 1,
+            title: "Knight Fight",
+            desc: `Ghosts attack`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 2,
+            title: "Archer Fight",
+            desc: `Quized about DnD`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 3,
+            title: "Gladiator Fight",
+            desc: `Quized About Profeciencies`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 4,
+            title: "Mage Fight",
+            desc: `20 Zombies`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+    ],
+    title: 'Areana',
+    dmNotes: 'Fight for fame and fortune',
+    misc: [],
+    monsters: [
+        {
+            code: 'knight',
+            name: 'Knight',
+            armorClass: 18,    
+            hitPoints: 50,
+            speed: 30,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Sword',
+                damage: '2d6 + 3',
+                bonus: 5,
+                range: 5,
+                multi: 1,
+            },         
+            challengeRating: 3,   
+            strength: 16,
+            dexterity: 11,
+            constitution: 14,
+            intelligence: 11,
+            wisdom: 11,
+            charisma: 15,
+            skills: []
+        },
+         {
+        code: 'gladiator',
+        name: 'Gladiator',
+        armorClass: 16,    
+        hitPoints: 100,
+        speed: 30,
+        passivePerception: 15,
+        proficiencyBonus: 2,
+        attack: {
+            description: 'Spear',
+            damage: '2d6 + 4',
+            bonus: 7,
+            range: 20,
+            multi: 1,
+        },         
+        challengeRating: 5,   
+        strength: 18,
+        dexterity: 15,
+        constitution: 16,
+        intelligence: 10,
+        wisdom: 12,
+        charisma: 15,
+        skills: []
+    },
+    {
+        code: 'mage',
+        name: 'Mage',
+        armorClass: 15,    
+        hitPoints: 40,
+        speed: 30,
+        passivePerception: 15,
+        proficiencyBonus: 2,
+        attack: {
+            description: 'Spells',
+            damage: '2d6 + 4',
+            bonus: 7,
+            range: 20,
+            multi: 1,
+        },         
+        challengeRating: 5,   
+        strength: 9,
+        dexterity: 14,
+        constitution: 11,
+        intelligence: 17,
+        wisdom: 12,
+        charisma: 11,
+        skills: [Skills.Arcana, Skills.History]
+    },
+],
+},           
+{
+    code: DC.fight,
+    rooms: [
+        {
+            num: 1,
+            title: "Pirate fist fight.",
+            desc: `Everyone gets in a fight`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },        
+    ],
+    title: 'Landing Area Fight',
+    dmNotes: 'A fight to open the adventure!',
+    misc: [],
+    monsters: [
+        {
+            code: 'sailor',
+            name: 'Sailor',
+            armorClass: 13,    
+            hitPoints: 30,
+            speed: 30,
+            passivePerception: 10,
+            proficiencyBonus: 2,
+            attack: {
+                description: 'Sword',
+                damage: '1d8 + 2',
+                bonus: 4,
+                range: 5,
+                multi: 1,
+            },         
+            challengeRating: 3,   
+            strength: 16,
+            dexterity: 11,
+            constitution: 14,
+            intelligence: 11,
+            wisdom: 11,
+            charisma: 15,
+            skills: []
+        },        
+],
+},   
+{
+    code: DC.nature,
+    rooms: [
+        {
+            num: 1,
+            title: "Get passed a river",
+            desc: `Everyone gets in a fight`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },
+        {
+            num: 2,
+            title: "Get Up a tall mountain",
+            desc: `Everyone gets in a fight`,
+            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
+        },                
+    ],
+    title: 'Nature Path to get to the flower',
+    dmNotes: 'Get past these obsticles',
+    misc: [],
+    monsters: [],
+},       
 ]
 
 
@@ -342,6 +975,9 @@ export type Character =  {
 
 // ===== Characters ======================
 
+// Add a character that is going to get recruited by professor trap to find the book. 
+// Isn't very smart and talks about it.
+// I'm not sure where they should be.
 
 export const characters: Character[] = [
     {
@@ -2242,31 +2878,39 @@ const addId  = (arr: any[]) => {
     return newArr;
 };
 
-export const pages: any[] = addId([
-    d(DC.square),
+
+export const pages: any[] = addId([    
+
     l(LC.land),
+    d(DC.fight),
     l(LC.pcafe),
     c(CC.boz),
-    l(LC.convoy),
+    l(LC.convoy),      
     c(CC.conrad),
+    d(DC.base), 
     l(LC.orc),
     c(CC.crap),
     c(CC.dark),
+    {},
     l(LC.glad),
     c(CC.bosph),
+    d(DC.area),
     l(LC.merchant),
     c(CC.caspian),
     c(CC.yondo),  
-    c(CC.ann),        
-    l(LC.library),
+    c(CC.ann),     
+    {},   
+    l(LC.library),        
+    c(CC.lobi),   
     c(CC.trap),
-    c(CC.lobi),    
+    d(DC.square), 
     l(LC.bank),
     c(CC.planithr),    
     l(LC.yards),
     c(CC.torbin),
     c(CC.master),    
     l(LC.gallery),
+    d(DC.sewer), 
     c(CC.wanwan),
     l(LC.gate),  
     c(CC.may),          
@@ -2274,8 +2918,10 @@ export const pages: any[] = addId([
     c(CC.dragon),
     c(CC.scholars),
     c(CC.cloaked),
+    {},
     l(LC.ball),
     c(CC.chit),
+    d(DC.vr),    
     c(CC.ban),
     c(CC.zaza),
     l(LC.court),
@@ -2284,6 +2930,8 @@ export const pages: any[] = addId([
     c(CC.artok),
     l(LC.mound),
     l(LC.ghost),
+    d(DC.caves),
+    d(DC.nature),
 ])
 
 
