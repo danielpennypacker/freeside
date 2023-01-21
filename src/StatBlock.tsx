@@ -99,7 +99,7 @@ function StackBlock(props: StatBlockProps) {
             const typedAttr = attr;
             return (
               <tr>
-                <td className={`p-r-5 attrTitle attrTitle-${attr}`}>{attr}</td>
+                <td className="p-r-5">{attr.slice(0, 3)}.</td>
                 <td className="attrValue right p-r-10">{anyItem[attr]}</td>
                 <td className="attrBonus right p-r-10">
                   {data.getAttrBonus(anyItem[typedAttr])}

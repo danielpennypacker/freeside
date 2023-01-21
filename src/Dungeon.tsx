@@ -10,7 +10,8 @@ type DungeonProps = {
 };
 
 function Character(props: DungeonProps) {
-  const { dungeon } = props;
+  const { dungeon
+   } = props;
 
   if (!dungeon.rooms) {
     console.log("=========");
