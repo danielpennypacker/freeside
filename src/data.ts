@@ -59,6 +59,17 @@ export enum DC {
     fight="fight",// -
 }      
 
+export enum Events { 
+    convoy_arrives="convoy_arrives", 
+    mystery_disentigration="mystery_disentigration", 
+    kaiju_summoned="kaiju_summoned", 
+    battle_with_convoy="battle_with_convoy",
+    find_the_flower="find_the_flower",
+    greatest_party="greatest_party",
+    battle_with_lapish="battle_with_lapish",
+}    
+
+
 export type Monster =  { 
     armorClass: number;    
     hitPoints: number;
