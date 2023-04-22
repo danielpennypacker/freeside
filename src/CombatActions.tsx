@@ -12,9 +12,9 @@ function CombatActions(props: CombatActionsProps) {
   const anyItem: any = item;
 
   return (
-    <table className="greyBlock">
+    <table>
       <thead>
-        <th colSpan={3}>Actions + Abilities</th>
+        <th colSpan={3}>Combat Actions + Abilities</th>
       </thead>
       <tbody>
         <tr>

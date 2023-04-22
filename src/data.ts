@@ -76,6 +76,8 @@ export type Monster =  {
     skills: Skills[];
     challengeRating: number;
     code: string;
+    alignment?: string;
+    race?: string;
 }    
 
 export type Dungeon =  {    
@@ -2885,13 +2887,13 @@ export const pages: any[] = addId([
     d(DC.fight),
     l(LC.pcafe),
     c(CC.boz),
+    c(CC.dark),
     l(LC.convoy),      
     c(CC.conrad),
     d(DC.base), 
     l(LC.orc),
     c(CC.crap),
-    c(CC.dark),
-    {},
+    // {},
     l(LC.glad),
     c(CC.bosph),
     d(DC.area),
@@ -2899,7 +2901,7 @@ export const pages: any[] = addId([
     c(CC.caspian),
     c(CC.yondo),  
     c(CC.ann),     
-    {},   
+    // {},   
     l(LC.library),        
     c(CC.lobi),   
     c(CC.trap),
@@ -2909,21 +2911,17 @@ export const pages: any[] = addId([
     l(LC.yards),
     c(CC.torbin),
     c(CC.master),    
-    l(LC.gallery),
-    d(DC.sewer), 
+    l(LC.club),    
     c(CC.wanwan),
-    l(LC.gate),  
-    c(CC.may),          
-    l(LC.opera),    
-    c(CC.dragon),
-    c(CC.scholars),
-    c(CC.cloaked),
-    {},
-    l(LC.ball),
-    c(CC.chit),
-    d(DC.vr),    
+    l(LC.gate),      
+    c(CC.scholars),    
+    d(DC.sewer), 
+    l(LC.ball),      
     c(CC.ban),
     c(CC.zaza),
+    c(CC.dragon),
+    c(CC.chit),
+    d(DC.vr),  
     l(LC.court),
     c(CC.queen),
     l(LC.comune),

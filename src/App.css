@@ -210,6 +210,14 @@ table.brownBlock td {
   justify-content: space-around;
 }
 
+.StatBlock {
+  background-color: #E7E7E7;
+}  
+
+.StatBlock tbody tr:nth-child(odd) {
+  background-color: #f5f2f2;
+}  
+
 .Dungeon .monsterBlock .StatBlock {
   width: 100%
 }

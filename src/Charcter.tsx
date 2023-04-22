@@ -40,17 +40,13 @@ function Character(props: CharacterProps) {
           <div className="id">C{character.id}</div>
         </div>
       </div>
-      <div className="notesCallout">{character.dmNotes}</div>
 
       <StatBlock item={character} />
-
-      {/* === Combat Actions  === */}
-      <CombatActions item={character} />
 
       {/* ==== Roleplaying Information ==== */}
       <table className="brownBlock">
         <thead>
-          <th colSpan={2}>Background</th>
+          <th colSpan={2}>Descriptions</th>
         </thead>
         <tbody>
           <tr>
@@ -59,16 +55,6 @@ function Character(props: CharacterProps) {
               {character.roleplayInspiration.split(",").map((name) => {
                 return <div>{name}</div>;
               })}
-            </td>
-          </tr>
-
-          <tr>
-            <td>Basic Info</td>
-            <td className="flexEven">
-              <span>
-                {character.alignment}, {character.race}, {character.age} years
-                old.
-              </span>
             </td>
           </tr>
 
