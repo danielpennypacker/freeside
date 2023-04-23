@@ -31,7 +31,7 @@ function Location(props: LocationProps) {
           <div className="id">L{location.id}</div>
         </div>
       </div>
-      <div className="notesCallout">{location.dmNotes}</div>
+      {/* <div className="notesCallout">{location.dmNotes}</div> */}
       <img
         className="splash"
         src={process.env.PUBLIC_URL + `/img/locations/${location.code}.png`}
@@ -74,7 +74,7 @@ function Location(props: LocationProps) {
       </div>
 
       {/* ==== Events ==== */}
-      <table className="greyBlock">
+      <table className="blueBlock">
         <thead>
           <th colSpan={20}>Events</th>
         </thead>
@@ -126,20 +126,20 @@ function Location(props: LocationProps) {
         <tbody>
           {location.randomNpcs.slice(0, 2).map((npc) => {
             return (
-              <tr>
-                <td>{npc.name}</td>
-                <td>{npc.race}</td>
-                <td>{npc.job}</td>
-                <td>{npc.description}</td>
-                <td className="randomNpcDialogue">"{npc.dialogue}"</td>
-              </tr>
+              <>
+                <tr>
+                  <td>
+                    {npc.name}, {npc.race}, {npc.job}: "{npc.dialogue}"
+                  </td>
+                </tr>
+              </>
             );
           })}
         </tbody>
       </table>
 
       {/* ==== Connected Locations ==== */}
-      <table className="blueBlock">
+      <table className="greyBlock">
         <thead>
           <th colSpan={20}>Connected Locations</th>
         </thead>

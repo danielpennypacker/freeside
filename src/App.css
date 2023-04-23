@@ -46,7 +46,7 @@ td.right {
 .Location,
 .Dungeon,
 .Character {  
-  height: 8.477in;
+  height: 8.177in;
   width: 13cm; 
   background-color: white;
   margin: 10px 10px;
@@ -122,7 +122,7 @@ body table {
 .Character .normalTable td:first-child,
 .Character .brownBlock td:first-child,
 .Character .blueBlock td:first-child {
-  width: 65px;
+  /* width: 65px; */
 }
 
 .storyValue, 

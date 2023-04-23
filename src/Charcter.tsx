@@ -71,7 +71,7 @@ function Character(props: CharacterProps) {
       </table>
 
       {/* === Dialogue === */}
-      <table className="greyBlock">
+      <table className="blueBlock">
         <thead>
           <th colSpan={2}>Dialogue</th>
         </thead>
@@ -80,7 +80,7 @@ function Character(props: CharacterProps) {
             return (
               <tr>
                 <td>{i + 1}.</td>
-                <td>{data.toTitle(line[0])}</td>
+                {/* <td>{data.toTitle(line[0])}</td> */}
                 <td>"{line[1]}"</td>
               </tr>
             );
@@ -110,23 +110,25 @@ function Character(props: CharacterProps) {
       </table>
 
       {/* ==== Plot + Misc ==== */}
-      <table className="blueBlock">
+      <table className="greyBlock">
         <thead>
-          <th colSpan={2}>Plot and Utility</th>
+          <th colSpan={2}>Utility</th>
         </thead>
         <tbody>
-          {anyCharacter.misc.map(([title, desc]: any) => {
-            return (
-              <tr>
-                <td className="plotInfoTitle">
-                  <span>{data.toTitle(title)}</span>
-                </td>
-                <td>
-                  <span>{desc}</span>
-                </td>
-              </tr>
-            );
-          })}
+          {anyCharacter.misc
+            .filter(([title, desc]: any) => title === "Utility")
+            .map(([title, desc]: any, i: any) => {
+              return (
+                <tr>
+                  <td className="plotInfoTitle">
+                    <td>{i + 1}.</td>
+                  </td>
+                  <td>
+                    <span>{desc}</span>
+                  </td>
+                </tr>
+              );
+            })}
           {character.misc.length === 0 && noneRow}
         </tbody>
       </table>
