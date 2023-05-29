@@ -520,7 +520,7 @@ export const dungeons: Dungeon[] = [
             events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
         },
     ],
-    title: 'Convoy Base Dungeon',
+    title: 'Cult Basement Dungeon',
     dmNotes: 'The Convoys secret warf they are planning to float to the surface.',
     misc: [],
     monsters: [
@@ -1003,7 +1003,7 @@ export const characters: Character[] = [
             [DT.quest, "If you think you can help me, I'll show you what my potion does."],
         ],
         name: "Ann",
-        title: "Newby captain",
+        title: "Recent Cultist",
         strength: 10,        
         dexterity: 14,
         constitution: 10,                
@@ -1104,7 +1104,7 @@ export const characters: Character[] = [
         page: 2,
         id: 2,
         name: "Conrad",
-        title: "Local Convoy Chief",
+        title: "Soul Sucked Cultist",
         strength: 11,        
         dexterity: 11,
         constitution: 11,                
@@ -1124,7 +1124,7 @@ export const characters: Character[] = [
             damage: "1d8",                        
         },
         spells: [],
-        alignment: "Lawful Good",
+        alignment: "Lawful Evil",
         roleplayInspiration: "Used Car Salesman, Convoy Fanboy, Chip on his Shoulder",
         motivation: "Want's to establish a new Convoy Port in Freeside, and be to promoted it's manager.",
         dmNotes: "He's a pro-Convoy mission giver. He's leading the building of the secert wharf.",
@@ -2152,7 +2152,7 @@ export const characters: Character[] = [
         page: 2,
         id: 2,
         name: "Manlintine",
-        title: "Convoy Elite",
+        title: "Cult leader / Litch",
         strength: 13,        
         dexterity: 12,
         constitution: 12,                
@@ -2286,7 +2286,7 @@ export const locations: Location[] = [
 },
 {
     // ++++  L3 - Convoy Building ++++
-    name: "Convoy Office",
+    name: "Cult Compund",
     code: LC.convoy,    
     inspiration: "Small and boring, too boring..., What's really behind the door?",
     exterior: "A small 1 floor, freshly painted building with a Convoy flag.",
@@ -2769,7 +2769,7 @@ export const locations: Location[] = [
     ]
 },
 {
-    name: "Opera Caberte",
+    name: "Casino Caberte",
     inspiration: "Speakeasy, Weimar Cabaret, Smokey lounge.",
     code: LC.opera,    
     exterior: "A bar you have to walk downstairs to.",
@@ -2864,7 +2864,7 @@ const addId  = (arr: any[]) => {
     let dCount = 1; 
     let newArr = [...arr];
     newArr.forEach((item, pageNumber) => {
-        // it's a location.
+        let page_step = 1;
         if(item.exterior || item.exterior === '') {
             item.id = lCount;
             lCount += 1;
@@ -2872,10 +2872,11 @@ const addId  = (arr: any[]) => {
             item.id = cCount;
             cCount += 1;
         } else if(item.rooms) {
-        item.id = dCount;
-        dCount += 2;
-    }
-        item.page = pageNumber + 1;
+            item.id = dCount;
+            dCount += 2;
+            page_step = 2;
+        }
+        item.page = pageNumber + page_step;
     });
     return newArr;
 };
@@ -2883,50 +2884,63 @@ const addId  = (arr: any[]) => {
 
 export const pages: any[] = addId([    
 
+
     l(LC.land),
+    c(CC.wanwan),
     d(DC.fight),
+
     l(LC.pcafe),
     c(CC.boz),
+    c(CC.crap),    
     c(CC.dark),
-    l(LC.convoy),      
+
+    l(LC.convoy),          
     c(CC.conrad),
+    c(CC.master),
     d(DC.base), 
-    l(LC.orc),
-    c(CC.crap),
-    // {},
+    
     l(LC.glad),
     c(CC.bosph),
     d(DC.area),
+
     l(LC.merchant),
     c(CC.caspian),
-    c(CC.yondo),  
-    c(CC.ann),     
-    // {},   
+    c(CC.planithr),    
+    c(CC.yondo),             
+
     l(LC.library),        
     c(CC.lobi),   
     c(CC.trap),
     d(DC.square), 
-    l(LC.bank),
-    c(CC.planithr),    
-    l(LC.yards),
-    c(CC.torbin),
-    c(CC.master),    
-    l(LC.club),    
-    c(CC.wanwan),
-    l(LC.gate),      
-    c(CC.scholars),    
+    
+    l(LC.yards),    
+    c(CC.torbin),        
+    c(CC.ann),
+    
+    l(LC.gate),  
+    // Will of the people. 
+    // Sewer Workers.     
     d(DC.sewer), 
+    
     l(LC.ball),      
     c(CC.ban),
-    c(CC.zaza),
-    c(CC.dragon),
+    c(CC.zaza),    
     c(CC.chit),
     d(DC.vr),  
+
+    l(LC.opera),
+    c(CC.scholars),    // give you a wish spell for interacting with them.
+    c(CC.dragon),
+    // trap too
+
     l(LC.court),
     c(CC.queen),
+
     l(LC.comune),
     c(CC.artok),
+    // commune leader too.
     l(LC.mound),
+
     l(LC.ghost),
     d(DC.caves),
     d(DC.nature),
