@@ -291,73 +291,13 @@ export const dungeons: Dungeon[] = [
         wisdom: 12,
         charisma: 9,
         skills: [Skills.Perception]
-    },
-    {
-        code: 'giant_crab',
-        name: 'Giant Crab',
-        armorClass: 15,    
-        hitPoints: 150,
-        speed: 30,
-        passivePerception: 9,
-        proficiencyBonus: 2,
-        attack: {
-            description: 'Claw',
-            damage: '4d10 + 5',
-            bonus: 9,
-            range: 10,
-            multi: 1,
-        },         
-        challengeRating: 8,   
-        strength: 20,
-        dexterity: 15,
-        constitution: 20,
-        intelligence: 1,
-        wisdom: 9,
-        charisma: 3,
-        skills: [Skills.Stealth]
-    },
-    {
-        code: 'giant_ape',
-        name: 'Giant Ape',
-        armorClass: 12,    
-        hitPoints: 150,
-        speed: 40,
-        passivePerception: 14,
-        proficiencyBonus: 3,
-        attack: {
-            description: 'Fist',
-            damage: '3d10 + 6',
-            bonus: 9,
-            range: 10,
-            multi: 1,
-        },         
-        challengeRating: 7,   
-        strength: 23,
-        dexterity: 14,
-        constitution: 18,
-        intelligence: 7,
-        wisdom: 12,
-        charisma: 7,
-        skills: [Skills.Athletics, Skills.Perception]
-    }
+    },    
 ],
 },
 // ==== VR Dungeon ==== 
 {
     code: DC.vr,
-    rooms: [
-        {
-            num: 1,
-            title: "Owl bear Fight",
-            desc: `A room that is magicall totally dark, and nothing will light it.`,
-            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
-        },
-        {
-            num: 2,
-            title: "Invisible Stalker",
-            desc: `A room that is magicall totally dark, and nothing will light it.`,
-            events: [`When players push the secret brick, a pedistal comes up with the Kaiju Summoning book.`]
-        },
+    rooms: [        
         {
             num: 3,
             title: "Young Blue Dragon",
@@ -374,55 +314,7 @@ export const dungeons: Dungeon[] = [
     title: 'VR Dungeon',
     dmNotes: 'All the monsters one after the other.',
     misc: [],
-    monsters: [
-        {
-            code: 'owl_bear',
-            name: 'Owl Bear',
-            armorClass: 13,    
-            hitPoints: 60,
-            speed: 40,
-            passivePerception: 10,
-            proficiencyBonus: 2,
-            attack: {
-                description: 'Beak',
-                damage: '1d10 + 5',
-                bonus: 7,
-                range: 5,
-                multi: 1,
-            },         
-            challengeRating: 3,   
-            strength: 20,
-            dexterity: 12,
-            constitution: 17,
-            intelligence: 3,
-            wisdom: 12,
-            charisma: 7,
-            skills: [Skills.Perception]
-        },
-         {
-        code: 'invisible',
-        name: 'Invisible Monster',
-        armorClass: 14,    
-        hitPoints: 100,
-        speed: 50,
-        passivePerception: 18,
-        proficiencyBonus: 3,
-        attack: {
-            description: 'Slam',
-            damage: '2d6 + 3',
-            bonus: 6,
-            range: 5,
-            multi: 1,
-        },         
-        challengeRating: 6,   
-        strength: 16,
-        dexterity: 19,
-        constitution: 14,
-        intelligence: 10,
-        wisdom: 15,
-        charisma: 11,
-        skills: [Skills.Perception, Skills.Stealth]
-    },
+    monsters: [       
     {
         code: 'dragon',
         name: 'Dragon',
@@ -618,31 +510,7 @@ export const dungeons: Dungeon[] = [
     title: 'Cave Base',
     dmNotes: 'Get through here to get to the Flower',
     misc: [],
-    monsters: [
-        {
-            code: 'ghost',
-            name: 'Ghost',
-            armorClass: 11,    
-            hitPoints: 45,
-            speed: 30,
-            passivePerception: 10,
-            proficiencyBonus: 2,
-            attack: {
-                description: 'Touch',
-                damage: '4d6 + 3',
-                bonus: 5,
-                range: 5,
-                multi: 1,
-            },         
-            challengeRating: 4,   
-            strength: 7,
-            dexterity: 13,
-            constitution: 10,
-            intelligence: 10,
-            wisdom: 12,
-            charisma: 17,
-            skills: [Skills.Perception]
-        },
+    monsters: [       
          {
         code: 'zombie',
         name: 'zombie',
@@ -856,15 +724,15 @@ export enum CC {
     lobi="lobi",
     gods="gods",
     master="master",
-    may="may",
     planithr="planithr",
+    people="people",
     scholars="scholars",
     torbin="torbin",
     trap="trap",
     queen="queen",
     yondo="yondo",
     wanwan="wanwan",
-    zaza="zaza",
+    zaza="zaza",    
 }    
 
 // Dialogue Type.
@@ -887,9 +755,8 @@ export enum DT {
 
 // Location Code.
 export enum LC {
-    ball="ball",
-    bank="bank",
-    club="club",
+    ball="ball",    
+    
     comune="comune",
     convoy="convoy",
     court="court",
@@ -900,7 +767,6 @@ export enum LC {
     mound="mound",
     library="library",
     merchant="merchant",
-    orc="orc",
     opera="opera",
     pcafe="pcafe",
     yards="yards",
@@ -1733,7 +1599,55 @@ export const characters: Character[] = [
         visualDescription: "The scholars shouting and interupting each other.",
         skills: [Skills.History, Skills.Insight, Skills.Arcana],
     },
- 
+    {
+        code: CC.people,        
+        age: 50,
+        misc: [
+            ['Ally', `If the players can convince the people of Freeside to to agree with the player's plans`],
+        ],
+        quests: [
+            ["Her potion will make peoples skin have a swirl of colors for a couple hours and then stop. You can use to plan a party, or just sell it to an interested party.", 
+            "A cut of whatever money you're able to ear"]
+        ],
+        race: "human",
+        detailOne: "None, totally new, and a bit too timid to earn attention",    
+        page: 1,
+        id: 1,
+        dialogue: [
+            [DT.introduction, "Hello, I'm Ann. I'm looking to sell my cargo of potions"],
+            [DT.lore, "It's been hard getting people's attention, I think they only like talking to people with enough jewlery."],
+            [DT.background, "I came here to make it as a ship Captain."],
+            [DT.quest, "If you think you can help me, I'll show you what my potion does."],
+        ],
+        name: "The People's Will",
+        title: "Archmage",
+        strength: 8,        
+        dexterity: 12,
+        constitution: 10,                
+        intelligence: 18,                
+        wisdom: 18,        
+        charisma: 10,
+        challengeRating: 2,
+        armorClass: 14,
+        hitPoints: 60,
+        speed: 30,
+        passivePerception: 10,
+        proficiencyBonus: 2,        
+        attack:{
+            bonus: 5,
+            range: 5,
+            multi: 2,
+            damage: "2d6",                        
+        },
+        spells: [],
+        alignment: "Lawful Neutral",
+        roleplayInspiration: "Judge, Galedrel, The Watcher",
+        motivation: "Only wants to express the people's desires.",
+        dmNotes: "You can talk to her about the desires of the people, althugh she can't be convinced directly.",
+        visualDescription: "An archmage",
+        skills: [Skills.Arcana, Skills.Insight, Skills.History],    
+        
+    },
     {
         code: CC.torbin,
         misc: [
@@ -1988,54 +1902,6 @@ export const characters: Character[] = [
         skills: [],
     },
     {
-        code: CC.may,
-        misc: [
-            ['Plot Flower', `If pressed, she'll explain how she's 150 years old, 
-                and how Lapish keeps people hostage with the Flower.`],
-            ['Plot Flower', `She'll explain how it can only support about 5 people at a time.`],
-            ['Plot Flower', `She doesn't know where the flower grows.`],
-            ['Plot Flower', `She afraid of innocent people getting hurt if they try to stop Lapish.`],
-        ],
-        quests: [[`Kill Lapish. If you corner her, she'll still the beans 
-        about the Flower, but she warns you how dangerous they are.`, 
-        `None.`]],
-        age: 150,
-        race: "human",
-        dialogue: [
-            [DT.introduction, "Oh, I'm sorry, I must be going."],
-        ],
-        detailOne: "Used to be famous, but now no one knows her.",    
-        page: 1,
-        id: 1,
-        name: "May",
-        title: "Reluctant flower eater",
-        strength: 9,        
-        dexterity: 9,
-        constitution: 9,                
-        intelligence: 12,                
-        wisdom: 13,        
-        charisma: 15,
-        challengeRating: 2,
-        armorClass: 12,
-        hitPoints: 20,
-        speed: 30,
-        passivePerception: 10,
-        proficiencyBonus: 2,        
-        attack:{
-            bonus: 5,
-            range: 5,
-            multi: 1,
-            damage: "1d8",                        
-        },
-        spells: [],
-        alignment: "Lawful Good",
-        roleplayInspiration: "Frightened senior, Aunt May, scared victim.",
-        motivation: "Wants to stop Lapish, but doesn't know how.",
-        dmNotes: "She'll reluctantly reveal the Flower Plot",
-        visualDescription: "Unassuming, but attrative 25 year old lady in a purple cloak.",
-        skills: [Skills.Performance, Skills.Acrobatics, Skills.Insight],
-    },
-    {
         code: CC.queen,
         misc: [
             ['Utility', `Convincing here of something will affect the real life public opinion of Freeside.`],
@@ -2254,7 +2120,7 @@ export const locations: Location[] = [
     interior: "A large tavern and meeting hall with hundreds of flags on all the walls.",
     detailOne: "When ever someone passes out, they\"re dragged into a big nap room in the back.",
     detailTwo: "People are betting on 2 crabs fighting with little fencing swords",
-    connectedAreas: [LC.land, LC.orc],
+    connectedAreas: [LC.land],
     namedNpcs: [[CC.boz, 'An extremely handsome pirate pointing at a map with a group of fawning pirates.']],
     crowd: "2/3 Pirates of all kinds, and 1/3 a big variery of people.",
     dmNotes: "Meet organize anti-Convoy forces.",
@@ -2313,46 +2179,6 @@ export const locations: Location[] = [
     ]
 },
 {
-    // ++++  L4 - Orc Tavern ++++
-    name: "Orc Tavern",
-    code: LC.orc,    
-    inspiration: "Dothraki camp, 40k orks, This is kinda fun!",
-    exterior: " huge yurt with crude paintings on the exterior and orcs mullings around.",
-    interior: "Orcs and a couple non orcs mull around. Orcs ocasinially get in fist fights.",
-    crowd: "Mostly orcs, but a couple non orcs are socializing. The fighs all end without deaths.",
-    detailOne: "The biggest orc sits on a thrown in one end of the yurt.",
-    detailTwo: "After fights have stopped, the orcs go back to being friendly.",
-    dmNotes: "Meet the Orcs.",
-    connectedAreas: [LC.pcafe],
-    namedNpcs: [[CC.crap, 'A large Orc sitting on throne.']],
-    events: [
-        "Crap Face will challenge the players to unarmed combat.",        
-    ],
-    randomNpcs: [
-        {
-            name: "Ug Muck",
-            race: "Orc",
-            job: "Bouncer",
-            description: "Joyful",
-            dialogue: "We jus' got paid, I just spent my money on the tastiest pus beetles I know!",
-        },
-        {
-            name: "Dumb Butt",
-            race: "Orc",
-            job: "Docker Worker",
-            description: "Harty",
-            dialogue: "I don't like those convoy lugs moving in there. Have you seen how big their ships are, where they gonna put 'em!?",
-        },
-        {
-            name: "Blorb Blorb",
-            race: "Orc",
-            job: "Bank Security Guard",
-            description: "Harty",
-        dialogue: "I used to fight in armies, but I didn't know true joy until I came here!",
-        },
-    ]
-},
-{
     name: "The Eternal Ball",
     code: LC.ball,    
     inspiration: "Fantasy Rave, best party ever, everyone loves it",
@@ -2390,69 +2216,6 @@ export const locations: Location[] = [
             job: "Wizard",
             description: "Excited",
             dialogue: "My dream is to become a party mage, know anyone I can talk to?",
-        },        
-    ]
-},
-{
-    name: "The Bank",
-    inspiration: "1920's bank, Friendly but firm, Imposing",
-    code: LC.bank,    
-    exterior: "An almost perfectly square building with a fewer windows and high ceilings, about the size of a city block.",
-    interior: "A small seating area with a queue to let people in. Then dozens of desks wil bankers and clients talking.",
-    crowd: "Not very packed, banks and merchants sitting at desks, making deals.",
-    detailOne: "After shaking, the customers get a ring put on their finger.",
-    detailTwo: "The bankers activate a zone of truth when around their desk when they start talking to you.",
-    dmNotes: "Get loans for anything.",
-    connectedAreas: [LC.merchant, LC.library],
-    namedNpcs: [[CC.planithr, 'A slieght well dressed man in line at the bank scribbles in a notebook.']],
-    events: [],
-    randomNpcs: [
-        {
-            name: "Kol",
-            race: "Halfling",
-            job: "Banker",
-            description: "A professional halfing in a unifrom.",
-            dialogue: "So, what sort of loan are you interested in.",
-        },        
-    ]
-},
-{
-    name: "Club Deluxe",
-    inspiration: "Elite club, great food, Guards are down",
-    code: LC.club,    
-    exterior: "A3 story building totally covered in gold.",
-    interior: "The nicest spa/resort/restuaunt/bar you've ever been in. There's a 1000 gold 1 year membership fee for the party.",
-    crowd: "Not too packed, everyone's ",
-    detailOne: "If someone is rude to the staff, they're escorted out immediately.",
-    detailTwo: "",
-    dmNotes: "Meet the most powerful people in Freeside. Discuss poltics with them, and possibly convince them.",
-    connectedAreas: [LC.bank],
-    namedNpcs: [
-        [CC.zaza, 'She argues that the Convoy is so profit driven they\'ll stop supporting the arts.'], 
-        [CC.torbin, 'He argues that the yards do all the real work that keep freeside going, and they should heavily involve the Convoy.'], 
-        [CC.caspian, 'He argues that the Convoy can\'t be fully stopped, but can be contained in a way to keep them happy.']],
-    events: [],
-    randomNpcs: [
-        {
-            name: "Dorolp",
-            race: "Dwarf",
-            job: "Famous Sculptor",
-            description: "Relaxed",
-            dialogue: "Sorry, I don't want to talk about business while I'm here.",
-        },        
-        {
-            name: "Charles",
-            race: "Human",
-            job: "Waiter",
-            description: "Engaged",
-            dialogue: "Welcome, would you like to be introduced to anyone?",
-        },        
-        {
-            name: "Pippin",
-            race: "Fairy",
-            job: "Merchant",
-            description: "Talkative",
-            dialogue: "Wanna hear about the latest best sellers at the market?",
         },        
     ]
 },
@@ -2557,43 +2320,6 @@ export const locations: Location[] = [
     ]
 },
 {
-    name: "The Grand Gallery",
-    code: LC.gallery,    
-    inspiration: "Fantasy mall, everything's here, Guards are down",
-    exterior: "A building built around the street with a glass sealing covering it.",
-    interior: "3 stories of shops of all kinds ",
-    crowd: "Well to do small groups of shoppers examining goods.",
-    detailOne: "A large demon with 3 gremils carrying boxes for him",
-    detailTwo: "A couple haggling over a talking sword, and the sword is also haggling over how much it's worth.",
-    dmNotes: "THe players can purchase any official magic item here.",
-    connectedAreas: [LC.yards, LC.gate, LC.merchant],
-    namedNpcs: [],
-    events: ['Make sure to call out the entrance to dungeon D2'],
-    randomNpcs: [
-        {
-            name: "Blip",
-            race: "Goblin",
-            job: "Alchemist",
-            description: "Searching",
-            dialogue: "I just need to find the whisker shop, I know it's around here.",
-        },        
-        {
-            name: "Thomas",
-            race: "Elf",
-            job: "Figher",
-            description: "Satisfied",
-            dialogue: "With this magic sword I can finally take on the ghosts plaguing my people.",
-        },        
-        {
-            name: "Crystal",
-            race: "Human",
-            job: "Cleric",
-            description: "Angry",
-            dialogue: "They sold the last icon of my god, and they don't know when the next one is coming in.",
-        },        
-    ]
-},
-{
     name: "The Dead Gate",
     inspiration: "Sleepy ruins, sunny cemetary, relection",
     code: LC.gate,    
@@ -2603,8 +2329,8 @@ export const locations: Location[] = [
     detailOne: "The Tomb of Empires is a large tomb that lists out all the empires that have ruled over freeside, includeing another dozen empty spaces.",
     detailTwo: "There seems to be a compettion around what gravesite can be made the most elaborate.",
     dmNotes: "Meet Patricia, and Mood.",
-    connectedAreas: [LC.gallery, LC.ball],
-    namedNpcs: [[CC.may, 'A shy woman leaves flowers on a grave from 150 years ago.']],
+    connectedAreas: [LC.ball],
+    namedNpcs: [[CC.people, 'An austere woman wondering the graves']],
     events: ["The players can go examine the Tomb of empires.", "They players can see someone laying a flower on the grave of someone who's marked as dying 200 years ago."],
     randomNpcs: [
         {
@@ -2671,7 +2397,7 @@ export const locations: Location[] = [
     detailTwo: "The dogs will snarl at anyone that gets too close to crossing the rope, but are otherwise very friendly.",
     dmNotes: "Meet Dr. Trap. Mood.",
     // No one knows when the library was built or where the dogs came from. Let players get creative with the books they might ask for.",
-    connectedAreas: [LC.bank],
+    connectedAreas: [LC.merchant],
     namedNpcs: [
         [CC.lobi, 'A young student looks up occasioanlly from a pile of books, trying to engage passersby.'], 
         [CC.trap, 'A haggered looking Academic carefully eyes the PCs.']
@@ -2697,7 +2423,7 @@ export const locations: Location[] = [
     detailOne: "All deals are public and a crowd watches the negotiants. When a deal is completed, a cheer goes up.",
     detailTwo: "There's a giant talking chicken making omletes from her own eggs.",
     dmNotes: "Players meet Ann or Caspian.",
-    connectedAreas: [LC.glad, LC.gate, LC.bank],
+    connectedAreas: [LC.glad, LC.gate],
     namedNpcs: [
         [CC.caspian, 'A young man, covered in jewels, stands at the center of a group of merchants, trying to make deals.'],
         [CC.ann, 'A confident, but unadorned female captain is failing to get anyones attention.'],
@@ -2738,7 +2464,7 @@ export const locations: Location[] = [
     detailOne: "Giants and magicians are used for all kinds of physical labor.",
     detailTwo: "Workers wear different colors of uniform based on their role.",
     dmNotes: "Players meet Torbin, or Head Convoy guy.",
-    connectedAreas: [LC.gate, LC.gallery],
+    connectedAreas: [LC.gate],
     namedNpcs: [
         [CC.torbin,'A surly dwarf is walking around the yards barking orders at people. They all obey.' ],
         [CC.master, 'A high ranking Convoy officer loojs around, somewhat aloof and snearing.']
@@ -2920,6 +2646,7 @@ export const pages: any[] = addId([
     l(LC.gate),  
     // Will of the people. 
     // Sewer Workers.     
+    c(CC.people),
     d(DC.sewer), 
     
     l(LC.ball),      
@@ -2940,6 +2667,8 @@ export const pages: any[] = addId([
     c(CC.artok),
     // commune leader too.
     l(LC.mound),
+    c(CC.gods),
+
 
     l(LC.ghost),
     d(DC.caves),

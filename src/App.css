@@ -41,10 +41,36 @@ td.right {
   text-align: center;
 }  
 
+.handoutPage {
+  height: 8.177in;
+  width: 13cm;
+}
+
+.handout {
+  width: 235px;
+  position: relative;
+  float: left;
+  height: 200px;
+  margin: 5px;
+}
+
+.handout h1 {
+  font-size: 15pt;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  margin: 0;
+}
+
+.handout img {
+  width: 100%;
+  height: 100%;
+}  
 
 .TextPage,
 .Location,
 .Dungeon,
+.handoutPage,
 .Character {  
   height: 8.177in;
   width: 13cm; 

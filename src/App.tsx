@@ -5,12 +5,13 @@ import * as data from "./data";
 import Character from "./Charcter";
 import Location from "./Location";
 import Dungeon from "./Dungeon";
+import PlayerInfo from "./PlayerInfo";
 import Info from "./Info";
 
 function App() {
   return (
     <div className="App">
-      {/* <Info /> */}
+      <PlayerInfo />
 
       {data.pages.map((page: any) => {
         if (page.crowd || page.crowd === "") {
