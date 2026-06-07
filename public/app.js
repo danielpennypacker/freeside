@@ -80,9 +80,15 @@ const baseStyles = sheet(`
   .blueBlock td { background: #cce6ff; border-bottom: 1px dotted #fff; }
   .greyBlock td { background: #e7e7e7; border-bottom: 1px dotted #fff; }
   .brownBlock th, .blueBlock th, .greyBlock th { text-decoration: underline; }
+  .dialogue td { vertical-align: top; }
+  .dialogue td.dtype { width: 80px; font-weight: 700; white-space: nowrap; }
+  .dialogue td div { margin-bottom: 4px; }
+  .dialogue .none { color: #9b8a6a; font-style: italic; }
 
   .boldText { font-weight: 700; }
   .greenText { color: #2f7d32; }
+  .xref { cursor: pointer; text-decoration: underline; }
+  .xref:hover { opacity: 0.7; }
   .right { text-align: right; }
   .flexEven { display: flex; width: 100%; }
   .flexEven div { width: 33%; text-align: center; }
@@ -124,6 +130,15 @@ const headerHtml = (idClass, idText, name, page, sub) => {
 };
 
 const noneRow = `<tr><td colspan="20">None.</td></tr>`;
+
+// Fixed-order dialogue categories: [stored type, display label].
+const DIALOGUE_CATS = [
+  ['flavor', 'Flavor'],
+  ['opportunity', 'Quest'],
+  ['lead', 'Lead'],
+  ['perspective', 'Perspective'],
+  ['clue', 'Clue'],
+];
 
 // ---------------------------------------------------------------------------
 // <freeside-statblock> — image + Combat / Stats / Skills tables + Combat Actions
@@ -194,7 +209,6 @@ class CharacterCard extends HTMLElement {
   render() {
     if (!this.shadowRoot || !this._d) return;
     const c = this._d;
-    const utility = (c.misc || []).filter((m) => m.key === 'Utility');
     this.shadowRoot.innerHTML = `
       <div class="page" data-testid="character" data-name="${esc(c.name)}">
         ${headerHtml('char', `C${c.id}`, `${c.name}, ${c.title}`, c.page)}
@@ -207,17 +221,12 @@ class CharacterCard extends HTMLElement {
             <tr><td>Detail</td><td>${esc(c.detailOne)}</td></tr>
           </tbody>
         </table>
-        <table class="blueBlock">
+        <table class="blueBlock dialogue">
           <thead><tr><th colspan="2">Dialogue</th></tr></thead>
-          <tbody>${(c.dialogue || []).map((d, i) => `<tr><td>${i + 1}.</td><td>"${esc(d.text)}"</td></tr>`).join('') || noneRow}</tbody>
-        </table>
-        <table class="greyBlock">
-          <thead><tr><th colspan="2">Quests</th></tr></thead>
-          <tbody>${(c.quests || []).map((q, i) => `<tr><td>${i + 1}.</td><td>${esc(q.prompt)}<br>- ${esc(q.reward)}</td></tr>`).join('') || noneRow}</tbody>
-        </table>
-        <table class="greyBlock">
-          <thead><tr><th colspan="2">Utility</th></tr></thead>
-          <tbody>${utility.map((m, i) => `<tr><td>${i + 1}.</td><td>${esc(m.value)}</td></tr>`).join('') || noneRow}</tbody>
+          <tbody>${DIALOGUE_CATS.map(([key, label]) => {
+            const lines = (c.dialogue || []).filter((d) => d.type === key);
+            return `<tr><td class="dtype">${label}</td><td>${lines.length ? lines.map((d) => `<div>"${esc(d.text)}"</div>`).join('') : '<span class="none">none</span>'}</td></tr>`;
+          }).join('')}</tbody>
         </table>
       </div>`;
     this.shadowRoot.querySelector('freeside-statblock').data = c;
@@ -231,7 +240,17 @@ customElements.define('freeside-character', CharacterCard);
 class LocationCard extends HTMLElement {
   set data(v) { this._d = v; this.render(); }
   set editable(v) { this._editable = v; }
-  connectedCallback() { if (!this.shadowRoot) this.attachShadow({ mode: 'open' }); adopt(this.shadowRoot); this.render(); }
+  connectedCallback() {
+    if (!this.shadowRoot) this.attachShadow({ mode: 'open' });
+    adopt(this.shadowRoot);
+    // Cross-reference clicks (Named NPCs / Connected Locations) → ask the book to scroll.
+    this.shadowRoot.addEventListener('click', (e) => {
+      const x = e.target.closest && e.target.closest('.xref');
+      if (!x) return;
+      this.dispatchEvent(new CustomEvent('book-scroll', { detail: { target: x.dataset.target }, bubbles: true, composed: true }));
+    });
+    this.render();
+  }
   render() {
     if (!this.shadowRoot || !this._d) return;
     const l = this._d;
@@ -254,16 +273,16 @@ class LocationCard extends HTMLElement {
           <tbody>${(l.events || []).map((e, i) => `<tr><td>${i + 1}.</td><td colspan="2">${esc(e)}</td></tr>`).join('') || noneRow}</tbody>
         </table>
         <table class="greyBlock">
-          <thead><tr><th colspan="20">Named NPC's</th></tr></thead>
-          <tbody>${(l.characters || []).map((ch) => `<tr><td class="greenText boldText">C${esc(ch.id)}</td><td>${esc(ch.name)},<br>${esc(ch.title)}</td><td>${esc(ch.description)}</td></tr>`).join('') || noneRow}</tbody>
-        </table>
-        <table class="greyBlock">
           <thead><tr><th colspan="20">Random NPCs</th></tr></thead>
           <tbody>${(l.randomNpcs || []).slice(0, 2).map((n) => `<tr><td colspan="3">${esc(n.name)}, ${esc(n.race)}, ${esc(n.job)}: "${esc(n.dialogue)}"</td></tr>`).join('') || noneRow}</tbody>
         </table>
         <table class="greyBlock">
+          <thead><tr><th colspan="20">Named NPC's</th></tr></thead>
+          <tbody>${(l.characters || []).map((ch) => `<tr><td class="greenText boldText"><span class="xref" data-target="C${esc(ch.id)}">C${esc(ch.id)}</span></td><td>${esc(ch.name)},<br>${esc(ch.title)}</td><td>${esc(ch.description)}</td></tr>`).join('') || noneRow}</tbody>
+        </table>
+        <table class="greyBlock">
           <thead><tr><th colspan="20">Connected Locations</th></tr></thead>
-          <tbody>${(l.connections || []).map((cn) => `<tr><td class="boldText" style="color:#1d4e89">L${esc(cn.id)}</td><td>${esc(cn.name)}</td><td>${esc(cn.exterior)}</td></tr>`).join('') || noneRow}</tbody>
+          <tbody>${(l.connections || []).map((cn) => `<tr><td class="boldText" style="color:#1d4e89"><span class="xref" data-target="L${esc(cn.id)}">L${esc(cn.id)}</span></td><td>${esc(cn.name)}</td><td>${esc(cn.exterior)}</td></tr>`).join('') || noneRow}</tbody>
         </table>
         <div id="editpanel"></div>
       </div>`;
@@ -341,7 +360,7 @@ class Book extends HTMLElement {
   set editable(v) { this._editable = v; }
   connectedCallback() { if (!this.shadowRoot) this.attachShadow({ mode: 'open' }); this.load(); }
   async load() {
-    this.shadowRoot.adoptedStyleSheets = [baseStyles, sheet(`.grid{display:flex;flex-wrap:wrap;justify-content:center}.loading{color:#e9dec2;text-align:center;padding:1rem}`)];
+    this.shadowRoot.adoptedStyleSheets = [baseStyles, sheet(`.grid{display:flex;flex-wrap:wrap;justify-content:center}.grid>*{scroll-margin-top:64px}.loading{color:#e9dec2;text-align:center;padding:1rem}`)];
     this.shadowRoot.innerHTML = `<div class="loading">Opening the adventure…</div><div class="grid"></div>`;
     let data;
     try { data = await api('/adventure'); }
@@ -351,12 +370,19 @@ class Book extends HTMLElement {
     const tag = { location: 'freeside-location', character: 'freeside-character', dungeon: 'freeside-dungeon' };
     const path = { location: 'locations', character: 'characters', dungeon: 'dungeons' };
     const key = { location: 'location', character: 'character', dungeon: 'dungeon' };
+    const prefix = { location: 'L', character: 'C', dungeon: 'D' };
+    // Scroll to a cross-referenced card (Named NPC / Connected Location).
+    this.shadowRoot.addEventListener('book-scroll', (e) => {
+      const t = this.shadowRoot.getElementById(e.detail.target);
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
     const entities = await Promise.all(
       data.pages.map((p) => api(`/${path[p.kind]}/${p.refId}`).then((r) => r[key[p.kind]]).catch(() => null)),
     );
     data.pages.forEach((p, i) => {
       if (!entities[i]) return;
       const el = document.createElement(tag[p.kind]);
+      el.id = `${prefix[p.kind]}${p.refId}`;
       if (p.kind === 'location') el.editable = this._editable;
       grid.appendChild(el);
       el.data = entities[i];

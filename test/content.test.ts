@@ -32,7 +32,7 @@ describe('content API', () => {
     expectStatus(res, 200);
     const { character } = (await res.json()) as any;
     expect(character.name).toBe('Boz');
-    expect(character.dialogue).toEqual([{ type: 'introduction', text: 'Ahoy.' }]);
+    expect(character.dialogue).toEqual([{ type: 'flavor', text: 'Ahoy.' }]);
     // Boz appears at both locations — the inverse side of the join.
     expect(character.locations.map((l: any) => l.id).sort()).toEqual([1, 2]);
   });

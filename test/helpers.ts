@@ -52,7 +52,7 @@ export async function seedAdventure(slug = 'freeside'): Promise<void> {
     `INSERT INTO adventures (id, owner_id, slug, title, overview, created_at) VALUES ('${slug}', NULL, '${slug}', 'Freeside', 'test', 0)`,
     `INSERT INTO characters (id, adventure_id, code, name, title, strength, dexterity, constitution, intelligence, wisdom, charisma, challenge_rating, armor_class, hit_points, speed, passive_perception, proficiency_bonus, image, page) VALUES (1, '${slug}', 'boz', 'Boz', 'Pirate', 16, 12, 14, 10, 10, 14, 2, 14, 30, 30, 11, 2, '/img/characters/boz.png', 2)`,
     `INSERT INTO characters (id, adventure_id, code, name, image, page) VALUES (2, '${slug}', 'ann', 'Ann', '/img/characters/ann.png', 4)`,
-    `INSERT INTO character_dialogue (character_id, type, text, ord) VALUES (1, 'introduction', 'Ahoy.', 0)`,
+    `INSERT INTO character_dialogue (character_id, type, text, ord) VALUES (1, 'flavor', 'Ahoy.', 0)`,
     `INSERT INTO locations (id, adventure_id, code, name, crowd, image, page) VALUES (1, '${slug}', 'land', 'Theives Port', 'shabby', '/img/locations/land.png', 1)`,
     `INSERT INTO locations (id, adventure_id, code, name, image, page) VALUES (2, '${slug}', 'pcafe', 'Pirate Cafe', '/img/locations/pcafe.png', 3)`,
     `INSERT INTO location_events (location_id, text, ord) VALUES (1, 'A fight breaks out.', 0)`,

@@ -735,20 +735,11 @@ export enum CC {
 
 // Dialogue Type.
 export enum DT {
-    introduction='introduction',
-    lore="lore",    
-    clue="clue",
-    quest="quest",    
-    loreClue="loreClue", 
-    character="character",
-    utility="utility" ,
-    question="question",
-    line="line",
-    background="background",
-    ideal="ideal",
-    bond="bond",
-    flaw="flaw",    
-    favor="favor",
+    flavor='flavor',
+    opportunity='opportunity',
+    lead='lead',
+    perspective='perspective',
+    clue='clue',
 }
 
 // Location Code.
@@ -861,10 +852,10 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Hello, I'm Ann. I'm looking to sell my cargo of potions"],
-            [DT.lore, "It's been hard getting people's attention, I think they only like talking to people with enough jewlery."],
-            [DT.background, "I came here to make it as a ship Captain."],
-            [DT.quest, "If you think you can help me, I'll show you what my potion does."],
+            [DT.flavor, "Hello, I'm Ann. I'm looking to sell my cargo of potions"],
+            [DT.flavor, "It's been hard getting people's attention, I think they only like talking to people with enough jewlery."],
+            [DT.perspective, "I came here to make it as a ship Captain."],
+            [DT.opportunity, "If you think you can help me, I'll show you what my potion does."],
         ],
         name: "Ann",
         title: "Recent Cultist",
@@ -906,10 +897,10 @@ export const characters: Character[] = [
         good plan, and he'll fail on his own unless you help him.`, 
         `He'll give you a percentage of the spoiles you get from the Convoy Fleet.`]],
         dialogue: [
-            [DT.introduction, "Hello, have you come here to help my destroy the Convoy?"],
-            [DT.ideal, "Us pirates hate empires of all forms! By attacking the ships of the powerful, we keep the real criminals in check!"],
+            [DT.flavor, "Hello, have you come here to help my destroy the Convoy?"],
+            [DT.perspective, "Us pirates hate empires of all forms! By attacking the ships of the powerful, we keep the real criminals in check!"],
             [DT.clue, "We know a Convoy fleet will be arriving in everal days, and we plan to protect Freeside at all costs!"],
-            [DT.quest, "Join us! we're concocting a plan right now!"],
+            [DT.opportunity, "Join us! we're concocting a plan right now!"],
 
         ],
         age: 28,
@@ -957,10 +948,10 @@ export const characters: Character[] = [
         ],
         age: 45,
         dialogue: [
-            [DT.introduction, "Well, aren't you a fins bunch, what would you like to know about the Convy?"],
-            [DT.lore, `The Convoy started 100 years ago as an aliance of cities.`],
-            [DT.lore, `They ran groups of ships together in order to protext against pirates, but became more organized over time.`],
-            [DT.quest, `Freeside needs to understand how beneficial the Convoy will be. 
+            [DT.flavor, "Well, aren't you a fins bunch, what would you like to know about the Convy?"],
+            [DT.flavor, `The Convoy started 100 years ago as an aliance of cities.`],
+            [DT.perspective, `They ran groups of ships together in order to protext against pirates, but became more organized over time.`],
+            [DT.opportunity, `Freeside needs to understand how beneficial the Convoy will be.
                 Go to the Fool's court and put in a good word for us.`]
         ],
         race: "human",
@@ -1003,10 +994,10 @@ export const characters: Character[] = [
         quests: [[`Beat him in hand to hand combat.`, `Become leader of the Orc gang, and have 6-12 orcs available to do your bidding.`]],
         age: 100,
         dialogue: [
-            [DT.introduction, "Me Crap Face, the strongest Orc in the world!"],
-            [DT.ideal, `We don't fight for kings or for gold, only for strength!`],
-            [DT.bond, "We're living a perfect life here, I'll do anything to protect that."],
-            [DT.quest, "You think you're tough? Fight me bare handed!"],
+            [DT.flavor, "Me Crap Face, the strongest Orc in the world!"],
+            [DT.perspective, `We don't fight for kings or for gold, only for strength!`],
+            [DT.perspective, "We're living a perfect life here, I'll do anything to protect that."],
+            [DT.opportunity, "You think you're tough? Fight me bare handed!"],
         ],
         race: "orc",
         detailOne: "Most people know he's the current orc boss, but they know it changes frequently.",    
@@ -1059,10 +1050,10 @@ export const characters: Character[] = [
         race: "human.",
         detailOne: "Only the other flower eaters know what she's doing. About a dozen people suspect she exists, but don't know her exact nature.",    
         dialogue: [
-            [DT.introduction, "Hmmm, I havn't see you around here."],
+            [DT.flavor, "Hmmm, I havn't see you around here."],
             [DT.clue, `I've lived in a Freeside for a long time, I hope it never changes.`],
-            [DT.question, `What gives you pleasure? What would you do anything for?`],
-            [DT.quest, `I've got some people I need dealt with, perhaps you'd like to help me? 
+            [DT.perspective, `What gives you pleasure? What would you do anything for?`],
+            [DT.opportunity, `I've got some people I need dealt with, perhaps you'd like to help me?
                 Your reward will be... imense.`],
         ],
         page: 1,
@@ -1106,17 +1097,17 @@ export const characters: Character[] = [
         age: 60,
         race: "human",
         dialogue: [
-            [DT.introduction, "Hello travellers, no doubt you're here to hear about my single world theory?"],
-            [DT.background, "I was working on a sculpture one day, and I realized something!"],
-            [DT.ideal, `All this talk about multiple universes, it's just a fantasy! 
+            [DT.flavor, "Hello travellers, no doubt you're here to hear about my single world theory?"],
+            [DT.perspective, "I was working on a sculpture one day, and I realized something!"],
+            [DT.perspective, `All this talk about multiple universes, it's just a fantasy!
                 Everyone wants to believe there's some better world out there, but it's just a trick!
                 A trick the powerful use to manipulate us!`],
-            [DT.ideal, `Our villiage commune already is the ideal society! 
+            [DT.perspective, `Our villiage commune already is the ideal society!
                 It's not perfect but it's as good as it gets. Everyone in the districts thinks
                 they're working towards something great, but we've already found it!`],
-            [DT.clue, `Marbles been awfully hard to come by recently. 
+            [DT.clue, `Marbles been awfully hard to come by recently.
                 Someone's building something big, but I haven't seen any new buildings recently?`],
-            [DT.background, "I was working on scultures one day, and I realized something!"],
+            [DT.perspective, "I was working on scultures one day, and I realized something!"],
         ],
         detailOne: "Considered a local eccentric in the comune who talks a little too much.",    
         page: 1,
@@ -1162,12 +1153,12 @@ export const characters: Character[] = [
         race: "human",
         detailOne: "Has a small group of followers, but she tries to not encourage them.",    
         dialogue: [
-            [DT.introduction, "Welcome fellow beings."],
-            [DT.lore, `Freeside has been a place of struggle for man generations.`],
-            [DT.lore, `We live in an age of strife, there is nothing to do but watch it,
+            [DT.flavor, "Welcome fellow beings."],
+            [DT.flavor, `Freeside has been a place of struggle for man generations.`],
+            [DT.perspective, `We live in an age of strife, there is nothing to do but watch it,
                 and not let ourselves be consumed by the storm.`],
-            [DT.question, `What truths do you wish to share?`],
-            [DT.utility, `Hold my hand and think of someone you've met here. 
+            [DT.flavor, `What truths do you wish to share?`],
+            [DT.opportunity, `Hold my hand and think of someone you've met here.
                 I will tell you their true nature.`],
         ],
         page: 1,
@@ -1216,10 +1207,10 @@ export const characters: Character[] = [
         race: "tiefling",
         detailOne: "Everyone who pays attention to the areana knows her as a promoter.",    
         dialogue: [
-            [DT.introduction, "Welcome welcome! Come see the greatest warriors battle for fame and glory!"],
-            [DT.lore, "Don't worry, we've got got healers all around the areana, no one gets hurt... perminetly."],
-            [DT.loreClue, "Winning in the areana will lead to fame and influence throughout Freeside!"],
-            [DT.quest, "You seen like a hearty bunch, why not sign up for a fight?"],
+            [DT.flavor, "Welcome welcome! Come see the greatest warriors battle for fame and glory!"],
+            [DT.flavor, "Don't worry, we've got got healers all around the areana, no one gets hurt... perminetly."],
+            [DT.perspective, "Winning in the areana will lead to fame and influence throughout Freeside!"],
+            [DT.opportunity, "You seen like a hearty bunch, why not sign up for a fight?"],
         ],
         page: 1,
         id: 1,
@@ -1265,10 +1256,10 @@ export const characters: Character[] = [
         detailOne: "Know in all as Freeside as a brilliant merchant and business person.",    
         page: 1,
         dialogue: [
-            [DT.introduction, "Ah new friends, I am Caspian, a humble merchant."],
-            [DT.ideal, "There are only 2 activities being engage in, trade, and war. And only trade brings peace."],
-            [DT.lore, "The Convoy has become a powerful force. I doubt we could prevent them having a foothold in Freeside, but if we work with them, we may be able to contain them."],
-            [DT.quest, "Come back to me in 5 days, whichever of you has the most money, I'll employ as my new advisor."],
+            [DT.flavor, "Ah new friends, I am Caspian, a humble merchant."],
+            [DT.perspective, "There are only 2 activities being engage in, trade, and war. And only trade brings peace."],
+            [DT.perspective, "The Convoy has become a powerful force. I doubt we could prevent them having a foothold in Freeside, but if we work with them, we may be able to contain them."],
+            [DT.opportunity, "Come back to me in 5 days, whichever of you has the most money, I'll employ as my new advisor."],
         ],
         id: 1,
         name: "Caspian",
@@ -1311,10 +1302,10 @@ export const characters: Character[] = [
         race: "",
         detailOne: "",    
         dialogue: [
-            [DT.quest, "Come, battle, struggle, and you shall be rewarded."],
-            [DT.lore, "When the Void Heretic returns to consume the stars, the energy of your violent struggle shall sustain me at the infinite-infinitesimal-battle"],
-            [DT.lore, "Feel blessed that your minute existence will aid me during the collapse of the helix dimension."],
-            [DT.loreClue, "You would be driven mad if you lived for an ioata of my lifespan."],                        
+            [DT.opportunity, "Come, battle, struggle, and you shall be rewarded."],
+            [DT.perspective, "When the Void Heretic returns to consume the stars, the energy of your violent struggle shall sustain me at the infinite-infinitesimal-battle"],
+            [DT.perspective, "Feel blessed that your minute existence will aid me during the collapse of the helix dimension."],
+            [DT.flavor, "You would be driven mad if you lived for an ioata of my lifespan."],                     
         ],
         page: 1,
         id: 1,
@@ -1357,10 +1348,10 @@ export const characters: Character[] = [
         race: "human",
         detailOne: "Only a couple shady people know about him.",   
         dialogue: [
-            [DT.introduction, "I'm Darkblade dispencer of holy vengence"],
-            [DT.lore, "I'm the Revenger on Freeside. We used to be employed to kill for revenge. But our clients have dried up, and I'm the only one left."],
-            [DT.loreClue, "Freeside used to be much more excited. Now there's just a disentigration every couple years."],
-            [DT.utility, `Bring me 10,000 gold and someone who needs to be killed, and I'll do it.`],
+            [DT.flavor, "I'm Darkblade dispencer of holy vengence"],
+            [DT.perspective, "I'm the Revenger on Freeside. We used to be employed to kill for revenge. But our clients have dried up, and I'm the only one left."],
+            [DT.clue, "Freeside used to be much more excited. Now there's just a disentigration every couple years."],
+            [DT.opportunity, `Bring me 10,000 gold and someone who needs to be killed, and I'll do it.`],
         ], 
         page: 1,
         id: 1,
@@ -1407,10 +1398,10 @@ export const characters: Character[] = [
         race: "dargon",
         detailOne: "He's a regular at this bar.",    
         dialogue: [
-            [DT.introduction, "Ah, are you fellow lovers of the Opera? Tell me, what's you favorite?"],
-            [DT.loreClue, `I was once a popular Opera performer, but about 100 years ago my co-star May disapeared. She always played the maiden while I played, well, the dragon!`],
-            [DT.loreClue, `I suppose she's passed by now, but I wish I was able to say goodbye. It's weighed heavy on my heart the last 100 years, and I haven't been able to perform.`],
-            [DT.quest, `Here's an old painting of her. If you could find out what happened to her, I would reward you greatly.`],
+            [DT.flavor, "Ah, are you fellow lovers of the Opera? Tell me, what's you favorite?"],
+            [DT.clue, `I was once a popular Opera performer, but about 100 years ago my co-star May disapeared. She always played the maiden while I played, well, the dragon!`],
+            [DT.perspective, `I suppose she's passed by now, but I wish I was able to say goodbye. It's weighed heavy on my heart the last 100 years, and I haven't been able to perform.`],
+            [DT.opportunity, `Here's an old painting of her. If you could find out what happened to her, I would reward you greatly.`],
         ],
         page: 1,
         id: 1,
@@ -1452,16 +1443,16 @@ export const characters: Character[] = [
         age: 16,
         race: "halfling",
         dialogue: [
-            [DT.introduction, "Hi! Did you know Freeside history goes back more thatn 2000 years?"],
-            [DT.lore, `Feeside has never had a king, or any ruling body! For the last 
+            [DT.flavor, "Hi! Did you know Freeside history goes back more thatn 2000 years?"],
+            [DT.flavor, `Feeside has never had a king, or any ruling body! For the last
                 200 years it's been roughly split into 3 districts, Fire for Entertainment,  Water for Commerce, and Earth for shipbuilding.`],
-            [DT.loreClue, `Even though Freeside has never had it's own King or Queen, it's been conqured by 27 empires in 
+            [DT.lead, `Even though Freeside has never had it's own King or Queen, it's been conqured by 27 empires in
                 over it's history. If you haven't seen the Tomb of Empires at the Dead Gate, it tells you all the empires.
                 Although if you want, I can tell you all of them!`],
-            [DT.loreClue, `So the founders of Freeside are mostly mythical, there's no real record of who they were. 
-                There is a story about a 'Guardian' they had to protect something valuable on the isalnd. 
+            [DT.clue, `So the founders of Freeside are mostly mythical, there's no real record of who they were.
+                There is a story about a 'Guardian' they had to protect something valuable on the isalnd.
                 I'm sure it's true, but it was a so long ago, it could have been anything.`],
-            [DT.loreClue, `Honestly I'm more interested in recording contempry Freeside history, 
+            [DT.perspective, `Honestly I'm more interested in recording contempry Freeside history,
             not many people care about preserving history here. I'm really interested in the 
             disentigrations that seem to happen every couple years. They've been going on for about 300
             years, but there haven't been any good clues about what happens. Since the body is destroyed, 
@@ -1511,13 +1502,13 @@ export const characters: Character[] = [
         race: "Half elf",
         detailOne: "One of the most popular and coolest people in freeside.",    
         dialogue: [
-            [DT.introduction, "I'm putting together a new party, what brings you to the bank?"],
-            [DT.lore, `The Eternal Ball has been going contiuously for 100 years, 
+            [DT.flavor, "I'm putting together a new party, what brings you to the bank?"],
+            [DT.perspective, `The Eternal Ball has been going contiuously for 100 years,
                 and it's been the largest party for the last 50. I Just think we could use something new.`],
-            [DT.loreClue, `It just feels like things haven't been changing here as much 
-            as they used to. Like someones keeping things the same. I almost WANT the convoy 
+            [DT.clue, `It just feels like things haven't been changing here as much
+            as they used to. Like someones keeping things the same. I almost WANT the convoy
             to come here just to shake things up a litte`],
-            [DT.quest, `Well if you're ever interested in shaking things up, feel free to look me up. 
+            [DT.opportunity, `Well if you're ever interested in shaking things up, feel free to look me up.
                 I'd love to have some help planning my party.`],
         ],
         page: 1,
@@ -1563,11 +1554,11 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Ah yes, you bunch, come here, we've got a question for you. What is wrong with the world today?"],
-            [DT.lore, "(First Scholar) Well see, I think people don't work hard enough, it's just have fun with this and that, but at the end of the day, what have they got!?"],
-            [DT.lore, "(Second Scholar) No, no, no! The Problem is people work too hard! They're so focised on their goal, they miss out on life's small joys!"],
-            [DT.lore, "(Thrid Scholar) You're both wrong! The problem is people have too many choices! They never feel confident if they're doing the right thing!"],
-            [DT.lore, "Well, what do you think?"],
+            [DT.flavor, "Ah yes, you bunch, come here, we've got a question for you. What is wrong with the world today?"],
+            [DT.perspective, "(First Scholar) Well see, I think people don't work hard enough, it's just have fun with this and that, but at the end of the day, what have they got!?"],
+            [DT.perspective, "(Second Scholar) No, no, no! The Problem is people work too hard! They're so focised on their goal, they miss out on life's small joys!"],
+            [DT.perspective, "(Thrid Scholar) You're both wrong! The problem is people have too many choices! They never feel confident if they're doing the right thing!"],
+            [DT.flavor, "Well, what do you think?"],
         ],
         name: "Pix, Wix, and Dix",
         title: "Arguing scholars",
@@ -1612,10 +1603,10 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Hello, I'm Ann. I'm looking to sell my cargo of potions"],
-            [DT.lore, "It's been hard getting people's attention, I think they only like talking to people with enough jewlery."],
-            [DT.background, "I came here to make it as a ship Captain."],
-            [DT.quest, "If you think you can help me, I'll show you what my potion does."],
+            [DT.flavor, "Hello, I'm Ann. I'm looking to sell my cargo of potions"],
+            [DT.flavor, "It's been hard getting people's attention, I think they only like talking to people with enough jewlery."],
+            [DT.perspective, "I came here to make it as a ship Captain."],
+            [DT.opportunity, "If you think you can help me, I'll show you what my potion does."],
         ],
         name: "The People's Will",
         title: "Archmage",
@@ -1660,14 +1651,14 @@ export const characters: Character[] = [
         detailOne: "Known as the head of the yards",    
         page: 1,
         dialogue: [
-            [DT.introduction, "Get out of my way! Who are you anyways? you look like an enterprising bunch?"],
-            [DT.lore, `I'm the head of the Yards, and all the ship building here. 
+            [DT.flavor, "Get out of my way! Who are you anyways? you look like an enterprising bunch?"],
+            [DT.perspective, `I'm the head of the Yards, and all the ship building here.
                 They don't like leaders much in Freeside, but we're the ones who get things done!`],
-            [DT.loreClue, `Ah, but the Convoy, they know how to get things done! They're organized,
+            [DT.perspective, `Ah, but the Convoy, they know how to get things done! They're organized,
             they promote trade, peace, and they keep those freeloading Pirates in check!`],
-            [DT.loreClue, `I think people in Freeside could learn a lot from the Convoy, I hope 
+            [DT.perspective, `I think people in Freeside could learn a lot from the Convoy, I hope
             we get to work with them more and more.`],
-            [DT.quest, `In fact, I could use a favor. There's this Orc bar that's right on some 
+            [DT.opportunity, `In fact, I could use a favor. There's this Orc bar that's right on some
             prime real estate for where the Convoy might want to build a wharf. How about you
             go there, beat their chief in a fight, and then see if you can get them to move.`],
         ],
@@ -1714,11 +1705,11 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Oh hello, would you be interested in helping a poor old scholar like me out?"],
-            [DT.loreClue, "No one believes me, the fools! But I've found evidance, the Guardian of Freeside is real!"],
-            [DT.lore, `The original founders of Freeside were an exiled cult from a forgotten empire. 
+            [DT.flavor, "Oh hello, would you be interested in helping a poor old scholar like me out?"],
+            [DT.perspective, "No one believes me, the fools! But I've found evidance, the Guardian of Freeside is real!"],
+            [DT.clue, `The original founders of Freeside were an exiled cult from a forgotten empire.
             They summoned the Guardian to protect them, but something happened to the cult, and the knowledge was forgotten.`],
-            [DT.quest, `I've found a clue hard to evidence of the Guardian. There's a secret entrance nearby. 
+            [DT.opportunity, `I've found a clue hard to evidence of the Guardian. There's a secret entrance nearby.
             I can show you where. I've looked myself, but there were some kinda of creatures down there, and I'm far too frail 
             to go myself. Please, won't you help me?`],
         ],
@@ -1763,12 +1754,12 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Ah friends, so good to see you again, have a drink!"],
-            [DT.lore, `Yes well if you didn't know, I'm actually an immortal god, hic. 
+            [DT.flavor, "Ah friends, so good to see you again, have a drink!"],
+            [DT.perspective, `Yes well if you didn't know, I'm actually an immortal god, hic.
             I got kicked out of the heavenly kingdom 10,000 (?) years ago. I just ruined one too mnay baquets in the Heavenly Kingdom, and I was cast out!`],
-            [DT.lore, "I've been all over, but I call Freeside home. It really does have the best parties in the world!"],
-            [DT.loreClue, `Just watch out for a lady in a purple robe. They've been around a while, and they've never had a drink with me! I don't trust anyone who doesn't drink!`],
-            [DT.loreClue, `Ah yes, I actually came here before the whole city was built, 
+            [DT.flavor, "I've been all over, but I call Freeside home. It really does have the best parties in the world!"],
+            [DT.clue, `Just watch out for a lady in a purple robe. They've been around a while, and they've never had a drink with me! I don't trust anyone who doesn't drink!`],
+            [DT.clue, `Ah yes, I actually came here before the whole city was built,
             there was some kind of flower everyone was so worried about? It wasn't something that interested me though!`],
         ],
         name: "Wanwan",
@@ -1818,12 +1809,12 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Hm, I haven't seen you before, do you know who I am? I'm one of Freesides biggest entertainment"],
-            [DT.lore, `The Convoy claims they're not an empire, but that's what makes them so insidious.`],
-            [DT.lore, `I've seen how the Convoy operates. First they set up a small base, then a port, 
+            [DT.flavor, "Hm, I haven't seen you before, do you know who I am? I'm one of Freesides biggest entertainment"],
+            [DT.perspective, `The Convoy claims they're not an empire, but that's what makes them so insidious.`],
+            [DT.perspective, `I've seen how the Convoy operates. First they set up a small base, then a port,
             then they slowly expand until they control an entire city.`],
-            [DT.ideal, `Freeside is uterly unique in the world, and is a center of art and creativity. I want to preserve that at all costs.`],
-            [DT.quest, `I think we can find evidence that the Convoy has deeper plans. I want you to break into their office and see what you can find.`],
+            [DT.perspective, `Freeside is uterly unique in the world, and is a center of art and creativity. I want to preserve that at all costs.`],
+            [DT.opportunity, `I think we can find evidence that the Convoy has deeper plans. I want you to break into their office and see what you can find.`],
         ],
         name: "Zaza",
         title: "Top play priducer.",
@@ -1865,11 +1856,11 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Fried, Grilled, or steamed Berry patties?"],
-            [DT.lore, "So, we've been argugin about the best way to prepare our dishes?"],
-            [DT.lore, "(First head) I saw you plan everything out from the begining, then don't change anything, and see how it turns out."],
-            [DT.lore, "(Second head) Well I say, you don't measure anything at all! Just taste and and adjust until you get it right!"],
-            [DT.lore, "(Third head) I don't care either way! What do you all think?"],
+            [DT.flavor, "Fried, Grilled, or steamed Berry patties?"],
+            [DT.flavor, "So, we've been argugin about the best way to prepare our dishes?"],
+            [DT.perspective, "(First head) I saw you plan everything out from the begining, then don't change anything, and see how it turns out."],
+            [DT.perspective, "(Second head) Well I say, you don't measure anything at all! Just taste and and adjust until you get it right!"],
+            [DT.flavor, "(Third head) I don't care either way! What do you all think?"],
         ],
         name: "Yondo",
         title: "3 headed chef.",
@@ -1912,9 +1903,9 @@ export const characters: Character[] = [
         detailOne: "Everyone knows the current queen of the fools court, but they don't last more than a year or two.",    
         page: 1,
         dialogue: [
-            [DT.introduction, "I am the Queen of all who enter this court, and just who are you!?"],
-            [DT.lore, "I wish to occupy the island of Flib Flab, so that my makeup ships may tranfer supplies. They have no way of resisting my fleets!"],
-            [DT.quest, "You seem to be from a small Kingdom too. What would you have me do with makeup factory? Would you deny me BEAUTY!"],
+            [DT.flavor, "I am the Queen of all who enter this court, and just who are you!?"],
+            [DT.perspective, "I wish to occupy the island of Flib Flab, so that my makeup ships may tranfer supplies. They have no way of resisting my fleets!"],
+            [DT.flavor, "You seem to be from a small Kingdom too. What would you have me do with makeup factory? Would you deny me BEAUTY!"],
         ],
         id: 1,
         name: "The Queen",
@@ -1959,12 +1950,12 @@ export const characters: Character[] = [
         page: 1,
         id: 1,
         dialogue: [
-            [DT.introduction, "Welcome mortals, we've had such fun watching you."],
-            [DT.quest, "Let me ask you? How do we react to watching you mortals live your lives?"],
-            [DT.lore, "(First God) It makes me weep."],
-            [DT.lore, "(Second God) It makes me smile."],
-            [DT.lore, "(Third God) It makes me laugh."],
-            [DT.quest, "Ah, very insightful. Here, take this gift for your troubles."],
+            [DT.flavor, "Welcome mortals, we've had such fun watching you."],
+            [DT.flavor, "Let me ask you? How do we react to watching you mortals live your lives?"],
+            [DT.perspective, "(First God) It makes me weep."],
+            [DT.perspective, "(Second God) It makes me smile."],
+            [DT.perspective, "(Third God) It makes me laugh."],
+            [DT.opportunity, "Ah, very insightful. Here, take this gift for your troubles."],
         ],
         name: "The 3 Gods",
         title: "Watching Freeside",
@@ -2006,11 +1997,11 @@ export const characters: Character[] = [
         quests: [[`Burn down the pirate Base.`, `Conrads position and a cut of the trade.`]],
         race: "human",
         dialogue: [
-            [DT.introduction, "What do you want. Do you know how valuable my time is?"],
-            [DT.lore, "I'm from the 8 famlies of the foudning captains of the convoy."],
-            [DT.lore, "Let's get things straight, when you're at the top like me, there's only one thing that matters, and that's money."],
-            [DT.loreClue, "The Convoy has some big plans with Freeside, but that idiot Conrad sure is taking his sweet time."],
-            [DT.quest, "You know that toilet all the Pirates get together at, you'd think some kind of accident might cause a fire there sooner or later?"],
+            [DT.flavor, "What do you want. Do you know how valuable my time is?"],
+            [DT.perspective, "I'm from the 8 famlies of the foudning captains of the convoy."],
+            [DT.perspective, "Let's get things straight, when you're at the top like me, there's only one thing that matters, and that's money."],
+            [DT.clue, "The Convoy has some big plans with Freeside, but that idiot Conrad sure is taking his sweet time."],
+            [DT.opportunity, "You know that toilet all the Pirates get together at, you'd think some kind of accident might cause a fire there sooner or later?"],
         ],
         detailOne: "No one really knows him, he could be any Convoy official to most people.",    
         page: 2,
