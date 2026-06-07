@@ -1,0 +1,24 @@
+# Cloudflare Worker config for freeside.
+# `npm run dev`     -> local dev at http://localhost:8787 (D1 is simulated locally)
+# `npm run deploy`  -> deploy to Cloudflare (needs a real account + D1 database id below)
+name = "freeside"
+main = "src/index.ts"
+compatibility_date = "2025-05-26"
+compatibility_flags = ["nodejs_compat"]
+
+# Static frontend (HTML + Web Components) is served from ./public.
+# Files that match a request path are served directly; anything else falls
+# through to the Worker (so the SPA shell and /api/* both work).
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Everything (adventure content, users, sessions, game-session state) lives in D1.
+# Local dev/tests simulate this.
+# Before deploying:
+#   npx wrangler d1 create freeside-adventure
+# then paste the returned database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "freeside-adventure"
+database_id = "00000000-0000-0000-0000-000000000000"

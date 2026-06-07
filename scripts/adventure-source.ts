@@ -1,5 +1,3 @@
-import { CLIENT_RENEG_LIMIT } from "tls";
-import { Tracing } from "trace_events";
 
 export const getNpc = (id: number) => {
     return characters.filter((npc) => {

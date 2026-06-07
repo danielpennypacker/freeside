@@ -7,9 +7,26 @@
 
 # testing
 /coverage
+test-results/
+playwright-report/
+.playwright/
 
 # production
 /build
+/dist
+
+# cloudflare / wrangler
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# generated adventure seed — regenerated from scripts/adventure-source.ts
+db/adventure.sql
+
+# local screenshot scratch
+_shot.mjs
+shot-*.png
 
 # misc
 .DS_Store

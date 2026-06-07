@@ -1,0 +1,70 @@
+/* Global page chrome (the topbar/footer live in the light DOM; component
+   internals style themselves inside shadow roots via app.js baseStyles). */
+:root {
+  --ink: #1b140d;
+  --parchment: #f4ecd8;
+  --accent: #7a2d12;
+  --rule: #cdbb95;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #2c2419;
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(#241a10, #160f08);
+  color: #f0e3c8;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar h1 {
+  margin: 0;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+.topbar h1 a { color: #f0e3c8; text-decoration: none; }
+.topbar h1 span { color: #d98b53; }
+
+.topnav { display: flex; gap: 1rem; flex: 1; }
+.topnav a {
+  color: #d8c39c;
+  text-decoration: none;
+  font-size: 1.05rem;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+}
+.topnav a:hover, .topnav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+
+.userslot { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; }
+.userslot img { width: 28px; height: 28px; border-radius: 50%; }
+.userslot button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #6b4a2b;
+  background: #3a2817;
+  color: #f0e3c8;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+}
+.userslot button:hover { background: #4c3520; }
+
+main { min-height: 70vh; padding: 1rem; }
+
+footer {
+  padding: 1rem 1.25rem;
+  color: #b6a585;
+  text-align: center;
+  border-top: 1px solid #3a2c1c;
+}

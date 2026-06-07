@@ -1,46 +1,85 @@
-# Getting Started with Create React App
+# Freeside
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A run-from-the-page homebrew D&D adventure, delivered as a web app.
 
-## Available Scripts
+Freeside started life as a static [Create React App](https://create-react-app.dev/)
+page that rendered a single hand-authored `data.ts`. It is now a **Cloudflare
+Worker** (Hono) backed by a **normalized D1 database**, with a **native
+Web-Components** frontend and **no build step** — modeled on the `edhzero`
+architecture.
 
-In the project directory, you can run:
+## What it does
 
-### `npm start`
+- **DM view** — the full "book": every location, NPC, and dungeon with stat
+  blocks, dialogue, quests, events, and the relationships between them. Sign in
+  (Google / Discord) to edit content in the browser.
+- **Game sessions** — the DM creates a session and **reveals** locations and
+  faces as the party discovers them, and tracks party HP.
+- **Player view** — a shareable `/play/<session>` link showing **only** what the
+  DM has revealed, as a **minimal name + image** gallery. No spoilers, no stats.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## The data model
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The adventure is stored relationally (the headline change from the static app):
 
-### `npm test`
+| Relationship | Tables |
+| --- | --- |
+| Location → events / random NPCs (1:M) | `location_events`, `location_random_npcs` |
+| Character → dialogue / quests / misc (1:M) | `character_dialogue`, `character_quests`, `character_misc` |
+| Dungeon → rooms / monsters (1:M) | `dungeon_rooms`, `dungeon_monsters` |
+| **Characters ↔ Locations (M:N)** — named-NPC appearances | `location_characters` |
+| **Locations ↔ Locations (M:N)** — connected areas | `location_connections` |
+| Reading order | `pages` |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Quick start
 
-### `npm run build`
+```bash
+npm install
+npm run db:seed:local   # build the adventure SQL from the source + load local D1
+npm run dev             # http://localhost:8787  (dev-login enabled)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Open the app, click **Dev login** (or sign in), browse the **Adventure**, then
+create a **Game session**, reveal a few entities, and open the **player link**
+in another tab.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm test          # Vitest API/D1 tests (real D1 in the Workers runtime)
+npm run test:e2e  # Playwright happy-path (boots its own wrangler dev)
+npm run check     # typecheck + unit + e2e
+```
 
-### `npm run eject`
+## Deploying
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Create the database and paste its id into `wrangler.toml`:
+   ```bash
+   npx wrangler d1 create freeside-adventure
+   ```
+2. Set OAuth secrets (register `https://<your-domain>/auth/{google,discord}/callback`):
+   ```bash
+   npx wrangler secret put GOOGLE_CLIENT_ID
+   npx wrangler secret put GOOGLE_CLIENT_SECRET
+   npx wrangler secret put DISCORD_CLIENT_ID
+   npx wrangler secret put DISCORD_CLIENT_SECRET
+   ```
+3. Deploy and seed the remote DB:
+   ```bash
+   npm run deploy
+   npm run build:adventure && npm run db:load   # loads db/adventure.sql into remote D1
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Do **not** set `ALLOW_DEV_LOGIN` in production — it gates a passwordless login
+used only for local dev and E2E.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Editing the adventure content
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Two ways:
 
-## Learn More
+- **In the browser** (DM, signed in): edit location/character fields and the
+  character↔location links live; changes persist to D1.
+- **At the source**: edit `scripts/adventure-source.ts`, then
+  `npm run db:seed:local` to regenerate and reload.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+See `CLAUDE.md` for the full development playbook.
