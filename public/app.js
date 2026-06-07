@@ -47,20 +47,25 @@ const art = (src, cls) =>
 const baseStyles = sheet(`
   :host { display: block; color: #1b140d; font-family: 'Cormorant Garamond', Georgia, serif; }
   .page {
+    position: relative;
     background: #fff; border: 1px solid #cdbb95; border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.35);
     width: 13cm; max-width: 94vw; margin: 10px; padding: 0 10px 12px;
     overflow: hidden; font-size: 11px; line-height: 1.3;
   }
   /* header: id + page on both sides, name centered (the React layout) */
-  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 12px; font-size: 14pt; padding: 5px 0; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 0; font-size: 14pt; padding: 5px 0; }
   .idContainer { display: flex; flex-direction: column; align-items: center; width: 60px; }
-  .name { font-family: 'Cinzel Decorative', serif; font-size: 15pt; text-align: center; flex: 1; }
-  .id { font-weight: 700; }
+  .idContainer.left { align-items: flex-start; }
+  .idContainer.right { align-items: flex-end; }
+  .nameBlock { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .name { font-family: 'Cinzel Decorative', serif; font-size: 12pt; text-align: center; }
+  .subtitle { font-size: 10pt; color: #5b4632; text-align: center; }
+  .id { font-weight: 700; font-size: 12pt; }
   .id.loc { color: #1d4e89; }
   .id.char { color: #2f7d32; }
   .id.dungeon { color: #7a2d12; }
-  .pageNumber { font-size: 8pt; color: #9b8a6a; }
+  .pageNumber { font-size: 12pt; color: #9b8a6a; }
   .notesCallout { background: #ececec; padding: 5px; text-align: center; font-style: italic; }
   .splash { width: 100%; height: 188px; object-fit: cover; display: block; }
   .mapImage { width: 100%; display: block; }
@@ -83,12 +88,12 @@ const baseStyles = sheet(`
   .flexEven div { width: 33%; text-align: center; }
 
   /* StatBlock */
-  .StatBlock { background: #e7e7e7; margin-top: 10px; }
+  .StatBlock { background: #e7e7e7; margin-top: 5px; }
   .StatBlock .flex { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
   .portrait { flex: 0 0 75px; width: 75px; height: 100px; object-fit: cover; background: #d8cdb3; }
   .combatStats td, .basicStats td, .skills td { padding: 1px 3px; }
   /* the three stat tables share the remaining width evenly */
-  .combatStats, .basicStats, .skills { flex: 1 1 0; width: auto; }
+  .combatStats, .basicStats, .skills { flex: 1 1 0; width: auto; margin-top: 0; }
   .StatBlock tbody tr:nth-child(odd) td { background: #f5f2f2; }
   .combatActions th { text-decoration: underline; }
   h3 { margin: 8px 0 0; font-size: 12px; }
@@ -97,7 +102,8 @@ const baseStyles = sheet(`
   .roomItemHeader { display: flex; gap: 6px; font-weight: 700; }
 
   /* DM edit affordance (kept unobtrusive) */
-  .editbtn { font: inherit; cursor: pointer; border: 1px solid #7a2d12; background: transparent; color: #7a2d12; border-radius: 4px; padding: 0 6px; font-size: 10px; }
+  .editbtn { position: absolute; top: 8px; right: 8px; z-index: 2; opacity: 0; pointer-events: none; transition: opacity 0.15s; font: inherit; cursor: pointer; border: 1px solid #7a2d12; background: #fff; color: #7a2d12; border-radius: 4px; padding: 0 6px; font-size: 10px; }
+  .page:hover .editbtn { opacity: 1; pointer-events: auto; }
   .editbtn:hover { background: #7a2d12; color: #fff; }
   form.edit { margin-top: 8px; display: grid; gap: 5px; background: #f6efe0; padding: 8px; border-radius: 4px; }
   form.edit label { font-size: 10px; color: #5b4632; display: grid; gap: 2px; }
@@ -109,10 +115,12 @@ const baseStyles = sheet(`
 const adopt = (root) => { root.adoptedStyleSheets = [baseStyles]; };
 
 // header block: id + page on the left, name centered, id + page on the right
-const headerHtml = (idClass, idText, name, page) => {
-  // Both corners use the SAME order: id on top, page below.
-  const corner = `<div class="idContainer"><div class="id ${idClass}">${esc(idText)}</div><div class="pageNumber">p. ${esc(page ?? '')}</div></div>`;
-  return `<div class="header">${corner}<div class="name">${esc(name)}</div>${corner}</div>`;
+const headerHtml = (idClass, idText, name, page, sub) => {
+  // id on the left, page number on the right.
+  const left = `<div class="idContainer left"><div class="id ${idClass}">${esc(idText)}</div></div>`;
+  const right = `<div class="idContainer right"><div class="pageNumber">p. ${esc(page ?? '')}</div></div>`;
+  const nameBlock = `<div class="nameBlock"><div class="name">${esc(name)}</div>${sub ? `<div class="subtitle">${sub}</div>` : ''}</div>`;
+  return `<div class="header">${left}${nameBlock}${right}</div>`;
 };
 
 const noneRow = `<tr><td colspan="20">None.</td></tr>`;
@@ -129,7 +137,7 @@ class StatBlock extends HTMLElement {
     const it = this._d;
     const abilities = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma'];
     const skills = [...(it.skills || [])].sort();
-    const pad = Math.max(0, 5 - skills.length);
+    const pad = Math.max(0, 4 - skills.length);
     this.shadowRoot.innerHTML = `
       <div class="StatBlock">
         <div class="flex">
@@ -160,8 +168,7 @@ class StatBlock extends HTMLElement {
               <tr><td>Prof. Bonus</td><td class="right">+${esc(it.proficiencyBonus)}</td></tr>
               ${skills.map((s) => `<tr><td>${esc(titleCase(s))}</td><td class="right">+${esc(it.proficiencyBonus)}</td></tr>`).join('')}
               ${Array(pad).fill(0).map(() => `<tr><td>-</td><td></td></tr>`).join('')}
-              <tr><td colspan="2">${esc(it.alignment || '')}</td></tr>
-              <tr><td colspan="2">${esc(it.race || '')}</td></tr>
+              <tr><td colspan="2">${[it.race, it.alignment].filter(Boolean).map(esc).join(' · ')}</td></tr>
             </tbody>
           </table>
         </div>
@@ -233,7 +240,7 @@ class LocationCard extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <div class="page" data-testid="location" data-name="${esc(l.name)}">
         ${headerHtml('loc', `L${l.id}`, l.name, l.page)}
-        ${this._editable ? `<div style="text-align:right"><button class="editbtn" id="edit">✎ Edit</button></div>` : ''}
+        ${this._editable ? `<button class="editbtn" id="edit">✎ Edit</button>` : ''}
         ${art(l.image, 'splash')}
         <table class="brownBlock stripeFirst">
           <thead><tr><th colspan="20">Descriptions</th></tr></thead>
