@@ -83,7 +83,6 @@ const baseStyles = sheet(`
   .dialogue td { vertical-align: top; }
   .dialogue td.dtype { width: 80px; font-weight: 700; white-space: nowrap; }
   .dialogue td div { margin-bottom: 4px; }
-  .dialogue .none { color: #9b8a6a; font-style: italic; }
 
   .boldText { font-weight: 700; }
   .greenText { color: #2f7d32; }
@@ -134,10 +133,11 @@ const noneRow = `<tr><td colspan="20">None.</td></tr>`;
 // Fixed-order dialogue categories: [stored type, display label].
 const DIALOGUE_CATS = [
   ['flavor', 'Flavor'],
-  ['opportunity', 'Quest'],
-  ['lead', 'Lead'],
-  ['perspective', 'Perspective'],
+  ['opinion', 'Opinion'],
+  ['roleplay', 'Roleplay'],
   ['clue', 'Clue'],
+  ['lead', 'Lead'],
+  ['opportunity', 'Quest'],
 ];
 
 // ---------------------------------------------------------------------------
@@ -225,7 +225,8 @@ class CharacterCard extends HTMLElement {
           <thead><tr><th colspan="2">Dialogue</th></tr></thead>
           <tbody>${DIALOGUE_CATS.map(([key, label]) => {
             const lines = (c.dialogue || []).filter((d) => d.type === key);
-            return `<tr><td class="dtype">${label}</td><td>${lines.length ? lines.map((d) => `<div>"${esc(d.text)}"</div>`).join('') : '<span class="none">none</span>'}</td></tr>`;
+            if (!lines.length) return '';
+            return `<tr><td class="dtype">${label}</td><td>${lines.map((d) => `<div>"${esc(d.text)}"</div>`).join('')}</td></tr>`;
           }).join('')}</tbody>
         </table>
       </div>`;
